@@ -1,0 +1,2025 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nesab Vehicle Oils - Shop</title>
+    <meta name="description" content="Complete e-commerce system for Nesab Vehicle Oils. Buy premium lubricants online with secure checkout, multiple payment methods, and order tracking.">
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    
+    <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+    
+    <style>
+        :root {
+            --primary-dark: #0a0a0a;
+            --copper: #d4a574;
+            --copper-dark: #b87333;
+            --steel-blue: #6b8db5;
+            --steel-blue-dark: #4a6fa5;
+            --success: #10b981;
+            --danger: #ef4444;
+        }
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            background: var(--primary-dark);
+            color: white;
+            scroll-behavior: smooth;
+        }
+        
+        .copper-accent { 
+            color: var(--copper); 
+        }
+        .steel-accent { 
+            color: var(--steel-blue); 
+        }
+        
+        /* Cart Sidebar */
+        .cart-sidebar {
+            transform: translateX(100%);
+            transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        
+        .cart-sidebar.open {
+            transform: translateX(0);
+        }
+        
+        /* Modal Backdrop */
+        .modal-backdrop {
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.3s ease;
+        }
+        
+        .modal-backdrop.show {
+            opacity: 1;
+            pointer-events: all;
+        }
+        
+        /* Product Grid */
+        .product-card {
+            transition: all 0.3s ease;
+            border: 1px solid #374151;
+        }
+        
+        .product-card:hover {
+            border-color: var(--copper);
+            transform: translateY(-4px);
+            box-shadow: 0 10px 25px rgba(212, 165, 116, 0.1);
+        }
+        
+        /* Cookie Banner */
+        .cookie-banner {
+            transform: translateY(100%);
+            transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        
+        .cookie-banner.show {
+            transform: translateY(0);
+        }
+
+        
+        /* Stock Status */
+        .in-stock { color: var(--success); }
+        .low-stock { color: var(--copper); }
+        .out-of-stock { color: var(--danger); }
+        
+        /* Form Validation */
+        .form-error {
+            border-color: var(--danger);
+        }
+        
+        .error-message {
+            color: var(--danger);
+            font-size: 0.875rem;
+            margin-top: 0.25rem;
+        }
+
+        /* Back to Top Button */
+        .back-to-top {
+            opacity: 0;
+            transform: scale(0.8);
+            transition: all 0.3s ease;
+            pointer-events: none;
+        }
+        
+        .back-to-top.visible {
+            opacity: 1;
+            transform: scale(1);
+            pointer-events: all;
+        }
+        
+        /* Loading Spinner */
+        .spinner {
+            border: 2px solid transparent;
+            border-top: 2px solid var(--copper);
+            border-radius: 50%;
+            width: 20px;
+            height: 20px;
+            animation: spin 1s linear infinite;
+        }
+        
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        
+        /* Admin Panel Styles */
+        .admin-panel {
+            display: none;
+        }
+        
+        .admin-panel.active {
+            display: block;
+        }
+        
+        /* Responsive Table */
+        .mobile-table {
+            display: block;
+            overflow-x: auto;
+        }
+        
+        /* Print Styles */
+        @media print {
+            .no-print { display: none !important; }
+            body { background: white; color: black; }
+        }
+        
+        /* Focus Styles */
+        *:focus-visible {
+            outline: 2px solid var(--copper);
+            outline-offset: 2px;
+        }
+        
+        /* Language Selector Styles */
+        .language-selector {
+            position: relative;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(212, 165, 116, 0.3);
+            border-radius: 8px;
+            padding: 0.5rem;
+            backdrop-filter: blur(10px);
+        }
+        
+        .language-selector select {
+            background: transparent;
+            border: none;
+            color: white;
+            outline: none;
+            cursor: pointer;
+        }
+        
+        .language-selector select option {
+            background: var(--primary-dark);
+        }
+    </style>
+</head>
+<body>
+    <a href="#main-content" class="sr-only focus:not-sr-only focus:absolute focus:top-0 focus:left-0 bg-copper text-white p-2 z-50">Skip to main content</a>
+
+    <nav id="navbar" class="fixed top-0 left-0 right-0 z-50 bg-gray-900/95 backdrop-blur-md border-b border-gray-700 no-print">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <a href="../index.html" class="flex items-center gap-2 text-2xl font-bold copper-accent hover:scale-105 transition-transform">
+                    <img src="../resources/images/logo.png" alt="Nesab" class="h-10 w-auto">
+                    نّساب Nesab
+                </a>
+                
+                <div class="hidden md:flex items-center gap-6">
+                    <div class="flex items-center gap-8">
+                        <a href="../index.html" class="text-white hover:text-copper transition-colors duration-200 py-2">Home</a>
+                        <a href="shop.html" class="text-copper font-semibold py-2">Shop</a>
+                        <a href="services.html" class="text-white hover:text-copper transition-colors duration-200 py-2">Services</a>
+                        <a href="about.html" class="text-white hover:text-copper transition-colors duration-200 py-2">About</a>
+                        <a href="contact.html" class="text-white hover:text-copper transition-colors duration-200 py-2">Contact</a>
+                    </div>
+                    
+                    <div class="flex items-center gap-4 pl-6 border-l border-gray-700">
+                        <div class="language-selector flex items-center gap-2">
+                            <i data-lucide="globe" class="w-4 h-4 copper-accent"></i>
+                            <select id="language-selector" class="text-sm pr-2" data-translate="language-selector">
+                                <option value="en">English</option>
+                                <option value="am">አማርኛ</option>
+                                <option value="ar">العربية</option>
+                                <option value="so">Somali</option>
+                            </select>
+                        </div>
+                        <button id="account-btn" class="text-white hover:text-copper transition-colors flex items-center gap-2">
+                            <i data-lucide="user" class="w-5 h-5"></i>
+                            <span data-translate="account">Account</span>
+                        </button>
+                        <button id="cart-btn" class="relative text-white hover:text-copper transition-colors flex items-center gap-2">
+                            <i data-lucide="shopping-cart" class="w-5 h-5"></i>
+                            <span data-translate="cart">Cart</span>
+                            <span id="cart-count" class="absolute -top-2 -right-2 bg-copper text-xs rounded-full w-5 h-5 flex items-center justify-center text-white font-bold">0</span>
+                        </button>
+                    </div>
+                </div>
+                
+                <button id="mobile-menu-btn" class="md:hidden text-white hover:text-copper transition-colors" aria-label="Toggle mobile menu">
+                    <i data-lucide="menu" class="w-6 h-6"></i>
+                </button>
+            </div>
+        </div>
+        
+        <div id="mobile-menu" class="fixed right-0 top-16 h-full w-64 bg-gray-900 border-l border-gray-700 transform translate-x-full transition-transform md:hidden no-print z-40">
+            <div class="p-6 space-y-4">
+                <a href="../index.html" class="block text-white hover:text-copper transition-colors py-2">Home</a>
+                <a href="shop.html" class="block copper-accent py-2">Shop</a>
+                <a href="services.html" class="block text-white hover:text-copper transition-colors py-2">Services</a>
+                <a href="about.html" class="block text-white hover:text-copper transition-colors py-2">About</a>
+                <a href="contact.html" class="block text-white hover:text-copper transition-colors py-2">Contact</a>
+                <hr class="border-gray-700">
+                <div class="language-selector flex items-center gap-2">
+                    <i data-lucide="globe" class="w-4 h-4 copper-accent"></i>
+                    <select id="language-selector-mobile" class="w-full text-white bg-transparent" data-translate="language-selector">
+                        <option value="en">English</option>
+                        <option value="am">አማርኛ</option>
+                        <option value="ar">العربية</option>
+                        <option value="so">Somali</option>
+                    </select>
+                </div>
+                <button id="mobile-account-btn" class="block text-white hover:text-copper transition-colors py-2 text-left w-full">
+                    <i data-lucide="user" class="w-5 h-5 inline mr-2"></i>
+                    <span data-translate="account">Account</span>
+                </button>
+                <button id="mobile-cart-btn" class="block text-white hover:text-copper transition-colors py-2 text-left w-full">
+                    <i data-lucide="shopping-cart" class="w-5 h-5 inline mr-2"></i>
+                    <span data-translate="cart">Cart</span>
+                    <span id="mobile-cart-count" class="ml-2 bg-copper text-xs rounded-full px-2 py-1 text-white font-bold">0</span>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <main id="main-content" class="pt-24 min-h-screen bg-gray-800">
+        
+        <div id="admin-toggle" class="no-print hidden fixed top-20 right-4 z-40">
+            <button id="admin-btn" class="bg-red-600 hover:bg-red-700 px-4 py-2 rounded-lg text-white font-medium flex items-center gap-2">
+                <i data-lucide="shield" class="w-4 h-4"></i>
+                Admin Panel
+            </button>
+        </div>
+
+        <div id="customer-view">
+            
+            <section class="bg-gray-900 py-12 relative overflow-hidden">
+                <div class="absolute inset-0 bg-gradient-to-br from-copper/10 to-steel-blue/10"></div>
+                <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
+                    <img src="../resources/hero-shop.png" alt="Nesab Shop" class="w-32 h-32 mx-auto rounded-full mb-6 border-4 border-copper/30">
+                    <h1 class="text-4xl lg:text-6xl font-bold mb-4 copper-accent tracking-tight" data-translate="shop-title">Premium Lubricants Shop</h1>
+                    <p class="text-gray-300 text-lg mb-8" data-translate="shop-subtitle">Engineered for Ethiopian conditions. Genuine products. Fast delivery.</p>
+                    
+                    <div class="max-w-2xl mx-auto">
+                        <div class="relative">
+                            <i data-lucide="search" class="absolute left-4 top-1/2 transform -translate-y-1/2 w-5 h-5 text-gray-400"></i>
+                            <input type="text" id="product-search" placeholder="Search products by name, viscosity, or vehicle..." class="w-full pl-12 pr-4 py-4 bg-gray-800 border border-gray-700 rounded-lg text-white placeholder-gray-400 focus:border-copper focus:outline-none" data-translate="search-placeholder">
+                        </div>
+                        <p class="text-sm text-gray-400 mt-2" data-translate="search-shortcut">Press <kbd class="px-2 py-1 bg-gray-700 rounded">Ctrl</kbd> + <kbd class="px-2 py-1 bg-gray-700 rounded">K</kbd> to search</p>
+                    </div>
+                </div>
+            </section>
+
+            <section class="py-6 bg-gray-800 border-b border-gray-700 no-print">
+                <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                    <div class="flex flex-wrap gap-4 items-center justify-between">
+                        <div class="flex flex-wrap gap-3">
+                            <select id="filter-category" class="bg-gray-900 border border-gray-700 rounded-lg px-4 py-2 text-white focus:border-copper focus:outline-none" data-translate="filter-category">
+                                <option value="">All Categories</option>
+                                <option value="engine-oil">Engine Oils</option>
+                                <option value="gear-oil">Gear Oils</option>
+                                <option value="coolant">Coolants</option>
+                                <option value="grease">Grease</option>
+                                <option value="transmission">Transmission Fluids</option>
+                            </select>
+                            <select id="filter-brand" class="bg-gray-900 border border-gray-700 rounded-lg px-4 py-2 text-white focus:border-copper focus:outline-none" data-translate="filter-brand">
+                                <option value="">All Brands</option>
+                                <option value="TotalEnergies">TotalEnergies</option>
+                                <option value="Shell">Shell</option>
+                                <option value="Castrol">Castrol</option>
+                                <option value="Mobil 1">Mobil 1</option>
+                            </select>
+                            <select id="filter-viscosity" class="bg-gray-900 border border-gray-700 rounded-lg px-4 py-2 text-white focus:border-copper focus:outline-none" data-translate="filter-viscosity">
+                                <option value="">All Viscosities</option>
+                                <option value="0W-20">0W-20</option>
+                                <option value="5W-30">5W-30</option>
+                                <option value="10W-40">10W-40</option>
+                                <option value="15W-40">15W-40</option>
+                                <option value="20W-50">20W-50</option>
+                                <option value="80W-90">80W-90</option>
+                            </select>
+                            <select id="filter-stock" class="bg-gray-900 border border-gray-700 rounded-lg px-4 py-2 text-white focus:border-copper focus:outline-none" data-translate="filter-stock">
+                                <option value="">All Stock</option>
+                                <option value="in-stock">In Stock Only</option>
+                                <option value="low-stock">Low Stock</option>
+                            </select>
+                        </div>
+                        <div class="flex items-center gap-2">
+                            <span class="text-gray-400" data-translate="sort-by">Sort by:</span>
+                            <select id="sort-products" class="bg-gray-900 border border-gray-700 rounded-lg px-4 py-2 text-white focus:border-copper focus:outline-none" data-translate="sort-options">
+                                <option value="name">Name</option>
+                                <option value="price-low">Price: Low to High</option>
+                                <option value="price-high">Price: High to Low</option>
+                                <option value="stock">Stock Level</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="py-12 bg-gray-800">
+                <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                    <div id="products-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+                        </div>
+                    
+                    <div id="loading" class="text-center py-12 hidden">
+                        <div class="spinner mx-auto mb-4"></div>
+                        <p class="text-gray-400" data-translate="loading">Loading products...</p>
+                    </div>
+                    
+                    <div id="no-products" class="text-center py-12 hidden">
+                        <i data-lucide="package-x" class="w-16 h-16 steel-accent mx-auto mb-4"></i>
+                        <h3 class="text-xl font-semibold mb-2" data-translate="no-products-title">No products found</h3>
+                        <p class="text-gray-400 mb-6" data-translate="no-products-desc">Try adjusting your search or filters.</p>
+                        <button onclick="clearFilters()" class="bg-copper hover:bg-copper-dark px-6 py-3 rounded-lg font-medium transition-colors" data-translate="clear-filters">Clear Filters</button>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <div id="admin-view" class="admin-panel">
+            
+            <section class="bg-red-900 py-8">
+                <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                    <div class="flex justify-between items-center">
+                        <h1 class="text-3xl font-bold">Admin Panel</h1>
+                        <button id="exit-admin" class="bg-white text-red-900 px-4 py-2 rounded-lg font-medium hover:bg-gray-100 transition-colors">
+                            Exit Admin
+                        </button>
+                    </div>
+                </div>
+            </section>
+
+            <section class="py-6 bg-gray-900 border-b border-gray-700">
+                <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                    <div class="flex flex-wrap gap-2">
+                        <button class="admin-tab active bg-copper text-white px-4 py-2 rounded-lg" data-tab="products">Products</button>
+                        <button class="admin-tab bg-gray-800 text-white px-4 py-2 rounded-lg" data-tab="orders">Orders</button>
+                        <button class="admin-tab bg-gray-800 text-white px-4 py-2 rounded-lg" data-tab="customers">Customers</button>
+                        <button class="admin-tab bg-gray-800 text-white px-4 py-2 rounded-lg" data-tab="analytics">Analytics</button>
+                        <button class="admin-tab bg-gray-800 text-white px-4 py-2 rounded-lg" data-tab="content">Content</button>
+                    </div>
+                </div>
+            </section>
+
+            <section class="py-12 bg-gray-800">
+                <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                    
+                    <div id="admin-products" class="admin-tab-content">
+                        <div class="flex justify-between items-center mb-6">
+                            <h2 class="text-2xl font-bold copper-accent">Product Management</h2>
+                            <button id="add-product-btn" class="bg-copper hover:bg-copper-dark px-4 py-2 rounded-lg font-medium transition-colors flex items-center gap-2">
+                                <i data-lucide="plus" class="w-4 h-4"></i>
+                                Add Product
+                            </button>
+                        </div>
+                        
+                        <div class="bg-gray-900 rounded-lg border border-gray-700 overflow-hidden mobile-table">
+                            <table class="w-full">
+                                <thead class="bg-gray-900">
+                                    <tr class="border-b border-gray-700">
+                                        <th class="px-6 py-4 text-left">Product</th>
+                                        <th class="px-6 py-4 text-left">SKU</th>
+                                        <th class="px-6 py-4 text-left">Price</th>
+                                        <th class="px-6 py-4 text-left">Stock</th>
+                                        <th class="px-6 py-4 text-left">Status</th>
+                                        <th class="px-6 py-4 text-right">Actions</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="admin-products-table">
+                                    </tbody>
+                            </table>
+                        </div>
+                    </div>
+
+                    <div id="admin-orders" class="admin-tab-content hidden">
+                        <div class="flex justify-between items-center mb-6">
+                            <h2 class="text-2xl font-bold copper-accent">Order Management</h2>
+                            <div class="flex gap-2">
+                                <select id="order-status-filter" class="bg-gray-900 border border-gray-700 rounded-lg px-4 py-2 text-white">
+                                    <option value="">All Status</option>
+                                    <option value="pending">Pending</option>
+                                    <option value="processing">Processing</option>
+                                    <option value="shipped">Shipped</option>
+                                    <option value="delivered">Delivered</option>
+                                    <option value="cancelled">Cancelled</option>
+                                </select>
+                            </div>
+                        </div>
+                        
+                        <div class="bg-gray-900 rounded-lg border border-gray-700 overflow-hidden mobile-table">
+                            <table class="w-full">
+                                <thead class="bg-gray-900">
+                                    <tr class="border-b border-gray-700">
+                                        <th class="px-6 py-4 text-left">Order #</th>
+                                        <th class="px-6 py-4 text-left">Customer</th>
+                                        <th class="px-6 py-4 text-left">Amount</th>
+                                        <th class="px-6 py-4 text-left">Date</th>
+                                        <th class="px-6 py-4 text-left">Status</th>
+                                        <th class="px-6 py-4 text-right">Actions</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="admin-orders-table">
+                                    </tbody>
+                            </table>
+                        </div>
+                    </div>
+
+                    <div id="admin-customers" class="admin-tab-content hidden">
+                        <h2 class="text-2xl font-bold copper-accent mb-6">Customer Management</h2>
+                        <div class="bg-gray-900 rounded-lg border border-gray-700 overflow-hidden mobile-table">
+                            <table class="w-full">
+                                <thead class="bg-gray-900">
+                                    <tr class="border-b border-gray-700">
+                                        <th class="px-6 py-4 text-left">Name</th>
+                                        <th class="px-6 py-4 text-left">Email</th>
+                                        <th class="px-6 py-4 text-left">Phone</th>
+                                        <th class="px-6 py-4 text-left">Type</th>
+                                        <th class="px-6 py-4 text-left">Orders</th>
+                                        <th class="px-6 py-4 text-right">Actions</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="admin-customers-table">
+                                    </tbody>
+                            </table>
+                        </div>
+                    </div>
+
+                    <div id="admin-analytics" class="admin-tab-content hidden">
+                        <h2 class="text-2xl font-bold copper-accent mb-6">Analytics Dashboard</h2>
+                        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
+                            <div class="bg-gray-900 p-6 rounded-lg border border-gray-700">
+                                <div class="flex items-center justify-between">
+                                    <div>
+                                        <p class="text-gray-400 text-sm">Total Sales</p>
+                                        <p class="text-2xl font-bold text-white">ETB 1,247,580</p>
+                                        <p class="text-green-400 text-sm">↑ 12.5% vs last month</p>
+                                    </div>
+                                    <i data-lucide="trending-up" class="w-8 h-8 steel-accent"></i>
+                                </div>
+                            </div>
+                            <div class="bg-gray-900 p-6 rounded-lg border border-gray-700">
+                                <div class="flex items-center justify-between">
+                                    <div>
+                                        <p class="text-gray-400 text-sm">Orders</p>
+                                        <p class="text-2xl font-bold text-white">342</p>
+                                        <p class="text-green-400 text-sm">↑ 8.3% vs last month</p>
+                                    </div>
+                                    <i data-lucide="shopping-bag" class="w-8 h-8 steel-accent"></i>
+                                </div>
+                            </div>
+                            <div class="bg-gray-900 p-6 rounded-lg border border-gray-700">
+                                <div class="flex items-center justify-between">
+                                    <div>
+                                        <p class="text-gray-400 text-sm">Customers</p>
+                                        <p class="text-2xl font-bold text-white">128</p>
+                                        <p class="text-green-400 text-sm">↑ 15.2% vs last month</p>
+                                    </div>
+                                    <i data-lucide="users" class="w-8 h-8 steel-accent"></i>
+                                </div>
+                            </div>
+                            <div class="bg-gray-900 p-6 rounded-lg border border-gray-700">
+                                <div class="flex items-center justify-between">
+                                    <div>
+                                        <p class="text-gray-400 text-sm">Avg Order Value</p>
+                                        <p class="text-2xl font-bold text-white">ETB 3,648</p>
+                                        <p class="text-red-400 text-sm">↓ 2.1% vs last month</p>
+                                    </div>
+                                    <i data-lucide="dollar-sign" class="w-8 h-8 steel-accent"></i>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+                            <div class="bg-gray-900 p-6 rounded-lg border border-gray-700">
+                                <h3 class="text-lg font-semibold mb-4">Top Selling Products</h3>
+                                <div id="top-products-chart" class="h-64">
+                                    <div class="space-y-3">
+                                        <div class="flex justify-between items-center">
+                                            <span>Nesab Synth 5W-30</span>
+                                            <span class="copper-accent">87 units</span>
+                                        </div>
+                                        <div class="flex justify-between items-center">
+                                            <span>Nesab HD 15W-40</span>
+                                            <span class="copper-accent">64 units</span>
+                                        </div>
+                                        <div class="flex justify-between items-center">
+                                            <span>Nesab Coolant Green</span>
+                                            <span class="copper-accent">52 units</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="bg-gray-900 p-6 rounded-lg border border-gray-700">
+                                <h3 class="text-lg font-semibold mb-4">Order Status Distribution</h3>
+                                <div id="order-status-chart" class="h-64">
+                                    <div class="space-y-3">
+                                        <div class="flex justify-between items-center">
+                                            <span>Delivered</span>
+                                            <span class="text-green-400">68%</span>
+                                        </div>
+                                        <div class="flex justify-between items-center">
+                                            <span>Processing</span>
+                                            <span class="text-copper">22%</span>
+                                        </div>
+                                        <div class="flex justify-between items-center">
+                                            <span>Pending</span>
+                                            <span class="text-gray-400">10%</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div id="admin-content" class="admin-tab-content hidden">
+                        <h2 class="text-2xl font-bold copper-accent mb-6">Content Management</h2>
+                        <div class="space-y-6">
+                            <div class="bg-gray-900 p-6 rounded-lg border border-gray-700">
+                                <h3 class="text-lg font-semibold mb-4">Quick Links</h3>
+                                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+                                    <button class="admin-content-btn bg-gray-800 hover:bg-gray-700 p-4 rounded-lg text-left transition-colors" data-page="home">
+                                        <i data-lucide="home" class="w-5 h-5 inline mr-2"></i>
+                                        Edit Home Page
+                                    </button>
+                                    <button class="admin-content-btn bg-gray-800 hover:bg-gray-700 p-4 rounded-lg text-left transition-colors" data-page="faq">
+                                        <i data-lucide="help-circle" class="w-5 h-5 inline mr-2"></i>
+                                        Edit FAQ
+                                    </button>
+                                    <button class="admin-content-btn bg-gray-800 hover:bg-gray-700 p-4 rounded-lg text-left transition-colors" data-page="blog">
+                                        <i data-lucide="edit" class="w-5 h-5 inline mr-2"></i>
+                                        Blog Posts
+                                    </button>
+                                    <button class="admin-content-btn bg-gray-800 hover:bg-gray-700 p-4 rounded-lg text-left transition-colors" data-page="testimonials">
+                                        <i data-lucide="message-square" class="w-5 h-5 inline mr-2"></i>
+                                        Testimonials
+                                    </button>
+                                    <button class="admin-content-btn bg-gray-800 hover:bg-gray-700 p-4 rounded-lg text-left transition-colors" data-page="promotions">
+                                        <i data-lucide="tag" class="w-5 h-5 inline mr-2"></i>
+                                        Promotions
+                                    </button>
+                                    <button class="admin-content-btn bg-gray-800 hover:bg-gray-700 p-4 rounded-lg text-left transition-colors" data-page="seo">
+                                        <i data-lucide="search" class="w-5 h-5 inline mr-2"></i>
+                                        SEO Settings
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <div id="cart-sidebar" class="cart-sidebar fixed right-0 top-0 h-full w-full md:w-96 bg-gray-900 border-l border-gray-700 z-50 no-print">
+        <div class="flex flex-col h-full">
+            <div class="flex justify-between items-center p-6 border-b border-gray-700">
+                <h2 class="text-xl font-bold copper-accent" data-translate="cart-title">Shopping Cart</h2>
+                <button id="close-cart" class="text-gray-400 hover:text-white">
+                    <i data-lucide="x" class="w-6 h-6"></i>
+                </button>
+            </div>
+            
+            <div id="cart-items" class="flex-1 overflow-y-auto p-6">
+                <div class="text-center text-gray-400 py-12">
+                    <i data-lucide="shopping-cart" class="w-16 h-16 mx-auto mb-4"></i>
+                    <p data-translate="cart-empty">Your cart is empty</p>
+                </div>
+            </div>
+            
+            <div id="cart-footer" class="border-t border-gray-700 p-6 space-y-4 hidden">
+                <div class="flex justify-between items-center">
+                    <span class="text-lg font-semibold" data-translate="total">Total:</span>
+                    <span id="cart-total" class="text-2xl font-bold copper-accent">ETB 0.00</span>
+                </div>
+                <button id="checkout-btn" class="w-full bg-copper hover:bg-copper-dark py-3 rounded-lg font-medium transition-colors flex items-center justify-center gap-2">
+                    <span data-translate="checkout">Proceed to Checkout</span>
+                    <i data-lucide="arrow-right" class="w-4 h-4"></i>
+                </button>
+                <button id="clear-cart" class="w-full bg-gray-800 hover:bg-gray-700 py-3 rounded-lg font-medium transition-colors border border-gray-600" data-translate="clear-cart">
+                    Clear Cart
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <div id="account-modal" class="modal-backdrop fixed inset-0 bg-black/50 z-50 no-print">
+        <div class="flex items-center justify-center min-h-screen p-4">
+            <div class="bg-gray-900 rounded-lg border border-gray-700 w-full max-w-md">
+                <div id="login-form" class="p-6">
+                    <div class="flex justify-between items-center mb-6">
+                        <h2 class="text-2xl font-bold copper-accent" data-translate="login-title">Account Login</h2>
+                        <button id="close-account" class="text-gray-400 hover:text-white">
+                            <i data-lucide="x" class="w-6 h-6"></i>
+                        </button>
+                    </div>
+                    
+                    <form id="login-form-element" class="space-y-4">
+                        <div>
+                            <label class="block text-sm font-medium mb-2" data-translate="email-phone">Email or Phone</label>
+                            <input type="text" id="login-email" class="w-full bg-gray-800 border border-gray-700 rounded-lg px-4 py-3 text-white focus:border-copper focus:outline-none" placeholder="admin@nesab-oil.com or +251..." required>
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium mb-2" data-translate="password">Password</label>
+                            <input type="password" id="login-password" class="w-full bg-gray-800 border border-gray-700 rounded-lg px-4 py-3 text-white focus:border-copper focus:outline-none" placeholder="••••••••" required>
+                        </div>
+                        <div class="flex items-center justify-between">
+                            <label class="flex items-center">
+                                <input type="checkbox" class="mr-2">
+                                <span class="text-sm" data-translate="remember-me">Remember me</span>
+                            </label>
+                            <a href="#" class="text-sm copper-accent hover:underline" data-translate="forgot-password">Forgot password?</a>
+                        </div>
+                        <button type="submit" class="w-full bg-copper hover:bg-copper-dark py-3 rounded-lg font-medium transition-colors">
+                            <span data-translate="login">Login</span>
+                        </button>
+                        <p class="text-center text-sm text-gray-400">
+                            <span data-translate="new-customer">New customer?</span> <button type="button" id="show-register" class="copper-accent hover:underline" data-translate="register">Register</button>
+                        </p>
+                    </form>
+                </div>
+
+                <div id="register-form" class="p-6 hidden">
+                    <div class="flex justify-between items-center mb-6">
+                        <h2 class="text-2xl font-bold copper-accent" data-translate="register-title">Create Account</h2>
+                        <button id="close-register" class="text-gray-400 hover:text-white">
+                            <i data-lucide="x" class="w-6 h-6"></i>
+                        </button>
+                    </div>
+                    
+                    <form id="register-form-element" class="space-y-4">
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                            <div>
+                                <label class="block text-sm font-medium mb-2" data-translate="first-name">First Name</label>
+                                <input type="text" id="register-firstname" class="w-full bg-gray-800 border border-gray-700 rounded-lg px-4 py-3 text-white focus:border-copper focus:outline-none" required>
+                            </div>
+                            <div>
+                                <label class="block text-sm font-medium mb-2" data-translate="last-name">Last Name</label>
+                                <input type="text" id="register-lastname" class="w-full bg-gray-800 border border-gray-700 rounded-lg px-4 py-3 text-white focus:border-copper focus:outline-none" required>
+                            </div>
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium mb-2" data-translate="email">Email</label>
+                            <input type="email" id="register-email" class="w-full bg-gray-800 border border-gray-700 rounded-lg px-4 py-3 text-white focus:border-copper focus:outline-none" required>
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium mb-2" data-translate="phone">Phone</label>
+                            <input type="tel" id="register-phone" class="w-full bg-gray-800 border border-gray-700 rounded-lg px-4 py-3 text-white focus:border-copper focus:outline-none" placeholder="+251..." required>
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium mb-2" data-translate="password">Password</label>
+                            <input type="password" id="register-password" class="w-full bg-gray-800 border border-gray-700 rounded-lg px-4 py-3 text-white focus:border-copper focus:outline-none" placeholder="••••••••" required>
+                            <p id="password-error" class="error-message hidden">Password must be at least 8 characters long and contain one number.</p>
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium mb-2" data-translate="confirm-password">Confirm Password</label>
+                            <input type="password" id="register-confirm-password" class="w-full bg-gray-800 border border-gray-700 rounded-lg px-4 py-3 text-white focus:border-copper focus:outline-none" placeholder="••••••••" required>
+                            <p id="confirm-password-error" class="error-message hidden">Passwords do not match.</p>
+                        </div>
+                        <button type="submit" class="w-full bg-copper hover:bg-copper-dark py-3 rounded-lg font-medium transition-colors">
+                            <span data-translate="create-account">Create Account</span>
+                        </button>
+                        <p class="text-center text-sm text-gray-400">
+                            <span data-translate="have-account">Already have an account?</span> <button type="button" id="show-login" class="copper-accent hover:underline" data-translate="login">Login</button>
+                        </p>
+                    </form>
+                </div>
+
+                <div id="account-dashboard" class="p-6 hidden">
+                    <div class="flex justify-between items-center mb-6">
+                        <h2 class="text-2xl font-bold copper-accent">
+                            <span data-translate="welcome">Welcome,</span> <span id="dashboard-user-name">Guest</span>!
+                        </h2>
+                        <button id="close-dashboard" class="text-gray-400 hover:text-white">
+                            <i data-lucide="x" class="w-6 h-6"></i>
+                        </button>
+                    </div>
+                    
+                    <div class="grid grid-cols-2 gap-4 mb-6">
+                        <button class="account-btn bg-gray-800 hover:bg-gray-700 p-4 rounded-lg text-left transition-colors border border-gray-600" data-section="profile">
+                            <i data-lucide="user-circle" class="w-6 h-6 copper-accent mb-2"></i>
+                            <h3 class="font-semibold mb-1" data-translate="profile">Profile</h3>
+                            <p class="text-sm text-gray-400" data-translate="profile-desc">Edit personal details</p>
+                        </button>
+                        <button class="account-btn bg-gray-800 hover:bg-gray-700 p-4 rounded-lg text-left transition-colors border border-gray-600" data-section="orders">
+                            <i data-lucide="package" class="w-6 h-6 copper-accent mb-2"></i>
+                            <h3 class="font-semibold mb-1" data-translate="orders">My Orders</h3>
+                            <p class="text-sm text-gray-400" data-translate="orders-desc">Track, view, and manage</p>
+                        </button>
+                        <button class="account-btn bg-gray-800 hover:bg-gray-700 p-4 rounded-lg text-left transition-colors border border-gray-600" data-section="addresses">
+                            <i data-lucide="map-pin" class="w-6 h-6 copper-accent mb-2"></i>
+                            <h3 class="font-semibold mb-1" data-translate="addresses">Addresses</h3>
+                            <p class="text-sm text-gray-400" data-translate="addresses-desc">Manage delivery locations</p>
+                        </button>
+                        <button class="account-btn bg-gray-800 hover:bg-gray-700 p-4 rounded-lg text-left transition-colors border border-gray-600" data-section="quotes">
+                            <i data-lucide="file-text" class="w-6 h-6 copper-accent mb-2"></i>
+                            <h3 class="font-semibold mb-1" data-translate="quotes">Quotes</h3>
+                            <p class="text-sm text-gray-400" data-translate="quotes-desc">Saved quotes and estimates</p>
+                        </button>
+                        <button class="account-btn bg-gray-800 hover:bg-gray-700 p-4 rounded-lg text-left transition-colors border border-gray-600" data-section="documents">
+                            <i data-lucide="download" class="w-6 h-6 copper-accent mb-2"></i>
+                            <h3 class="font-semibold mb-1" data-translate="documents">Documents</h3>
+                            <p class="text-sm text-gray-400" data-translate="documents-desc">Invoices, SDS, COA files</p>
+                        </button>
+                    </div>
+                    
+                    <button id="logout-btn" class="w-full bg-red-900 hover:bg-red-800 py-3 rounded-lg font-medium transition-colors border border-red-700">
+                        <span data-translate="logout">Logout</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="checkout-modal" class="modal-backdrop fixed inset-0 bg-black/50 z-50 no-print">
+        <div class="flex items-center justify-center min-h-screen p-4">
+            <div class="bg-gray-900 rounded-lg border border-gray-700 w-full max-w-4xl max-h-[90vh] overflow-y-auto">
+                <div class="p-6">
+                    <div class="flex justify-between items-center mb-6">
+                        <h2 class="text-2xl font-bold copper-accent" data-translate="checkout-title">Secure Checkout</h2>
+                        <button id="close-checkout" class="text-gray-400 hover:text-white">
+                            <i data-lucide="x" class="w-6 h-6"></i>
+                        </button>
+                    </div>
+                    
+                    <form id="checkout-form">
+                        <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+                            
+                            <div class="lg:col-span-2 space-y-4">
+                                <h3 class="text-xl font-semibold mb-4 steel-accent" data-translate="shipping-info">Shipping Information</h3>
+                                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                                    <div>
+                                        <label class="block text-sm font-medium mb-2" data-translate="full-name">Full Name</label>
+                                        <input type="text" id="checkout-fullname" class="w-full bg-gray-800 border border-gray-700 rounded-lg px-4 py-2 text-white focus:border-copper focus:outline-none" required>
+                                    </div>
+                                    <div>
+                                        <label class="block text-sm font-medium mb-2" data-translate="phone-number">Phone Number</label>
+                                        <input type="tel" id="checkout-phone" class="w-full bg-gray-800 border border-gray-700 rounded-lg px-4 py-2 text-white focus:border-copper focus:outline-none" placeholder="+251..." required>
+                                    </div>
+                                </div>
+                                <div>
+                                    <label class="block text-sm font-medium mb-2" data-translate="email-optional">Email (Optional)</label>
+                                    <input type="email" id="checkout-email" class="w-full bg-gray-800 border border-gray-700 rounded-lg px-4 py-2 text-white focus:border-copper focus:outline-none">
+                                </div>
+                                <div>
+                                    <label class="block text-sm font-medium mb-2" data-translate="city">City / Region</label>
+                                    <select id="checkout-city" class="w-full bg-gray-800 border border-gray-700 rounded-lg px-4 py-2 text-white focus:border-copper focus:outline-none" required>
+                                        <option value="">Select City / Region</option>
+                                        <option value="addis-ababa">Addis Ababa</option>
+                                        <option value="adama">Adama (Nazret)</option>
+                                        <option value="bahir-dar">Bahir Dar</option>
+                                        <option value="hawassa">Hawassa</option>
+                                        <option value="dire-dawa">Dire Dawa</option>
+                                    </select>
+                                </div>
+                                <div>
+                                    <label class="block text-sm font-medium mb-2" data-translate="delivery-address">Detailed Delivery Address</label>
+                                    <textarea id="checkout-address" rows="3" class="w-full bg-gray-800 border border-gray-700 rounded-lg px-4 py-2 text-white focus:border-copper focus:outline-none" placeholder="Sub-city, Woreda, Landmark..." required></textarea>
+                                </div>
+                                <div>
+                                    <label class="block text-sm font-medium mb-2" data-translate="order-notes">Order Notes (Optional)</label>
+                                    <textarea id="checkout-notes" rows="2" class="w-full bg-gray-800 border border-gray-700 rounded-lg px-4 py-2 text-white focus:border-copper focus:outline-none" placeholder="e.g. Call before delivery, specific drop-off time..."></textarea>
+                                </div>
+                                
+                                <h3 class="text-xl font-semibold mt-6 mb-4 steel-accent" data-translate="payment-method">Payment Method</h3>
+                                <div class="space-y-3">
+                                    <label class="flex items-center p-3 rounded-lg border border-gray-700 cursor-pointer hover:bg-gray-700">
+                                        <input type="radio" name="payment" value="m-pesa" class="mr-3">
+                                        <i data-lucide="wallet" class="w-5 h-5 mr-2 steel-accent"></i>
+                                        <span data-translate="m-pesa">M-Pesa (Safaricom)</span>
+                                    </label>
+                                    <label class="flex items-center p-3 rounded-lg border border-gray-700 cursor-pointer hover:bg-gray-700">
+                                        <input type="radio" name="payment" value="telebirr" class="mr-3">
+                                        <i data-lucide="smartphone" class="w-5 h-5 mr-2 steel-accent"></i>
+                                        <span data-translate="telebirr">Telebirr (Ethio Telecom)</span>
+                                    </label>
+                                    <label class="flex items-center p-3 rounded-lg border border-gray-700 cursor-pointer hover:bg-gray-700">
+                                        <input type="radio" name="payment" value="cbe" class="mr-3">
+                                        <i data-lucide="banknote" class="w-5 h-5 mr-2 steel-accent"></i>
+                                        <span data-translate="cbe">CBE Birr / Bank Transfer</span>
+                                    </label>
+                                    <label class="flex items-center p-3 rounded-lg border border-gray-700 cursor-pointer hover:bg-gray-700">
+                                        <input type="radio" name="payment" value="cod" class="mr-3">
+                                        <i data-lucide="truck" class="w-5 h-5 mr-2 steel-accent"></i>
+                                        <span data-translate="cod">Cash on Delivery (max ETB 5,000)</span>
+                                    </label>
+                                </div>
+                                
+                                <div id="m-pesa-instructions" class="hidden p-4 bg-gray-800 rounded-lg border border-copper/30">
+                                    <p class="text-sm mb-2" data-translate="m-pesa-instruction">Send payment to <strong class="copper-accent">+251 933 680 059</strong></p>
+                                    <p class="text-sm text-gray-400" data-translate="transaction-id">Enter transaction ID below:</p>
+                                    <input type="text" id="mpesa-transaction" class="w-full mt-2 bg-gray-900 border border-gray-700 rounded-lg px-4 py-2 text-white focus:border-copper focus:outline-none" placeholder="M-Pesa Transaction ID">
+                                </div>
+                                <div id="telebirr-instructions" class="hidden p-4 bg-gray-800 rounded-lg border border-copper/30">
+                                    <p class="text-sm mb-2" data-translate="telebirr-instruction">Scan QR code or dial <strong class="copper-accent">*127#</strong></p>
+                                    <div class="bg-white p-4 rounded w-32 h-32 mx-auto flex items-center justify-center">
+                                        <img src="../resources/telebirr-qr.png" alt="Telebirr QR" class="w-full h-full">
+                                    </div>
+                                    <input type="text" id="telebirr-reference" class="w-full mt-2 bg-gray-900 border border-gray-700 rounded-lg px-4 py-2 text-white focus:border-copper focus:outline-none" placeholder="Payment Reference">
+                                </div>
+                                <div id="cbe-instructions" class="hidden p-4 bg-gray-800 rounded-lg border border-copper/30">
+                                    <p class="text-sm mb-2" data-translate="transfer-details">Transfer to Commercial Bank of Ethiopia (CBE) account:</p>
+                                    <p class="text-lg font-bold copper-accent">1000 354 876 211</p>
+                                    <p class="text-sm text-gray-400 mb-2" data-translate="account-name">Account Name: Nesab Vehicle Oils PLC</p>
+                                    <input type="text" id="cbe-reference" class="w-full mt-2 bg-gray-900 border border-gray-700 rounded-lg px-4 py-2 text-white focus:border-copper focus:outline-none" placeholder="Deposit Slip/Reference Number">
+                                </div>
+                            </div>
+                            
+                            <div class="bg-gray-800 p-6 rounded-lg border border-gray-700 h-fit">
+                                <h3 class="text-xl font-semibold mb-4 copper-accent" data-translate="order-summary">Order Summary</h3>
+                                <div id="checkout-items" class="space-y-2 border-b border-gray-700 pb-4 mb-4 text-gray-300">
+                                    </div>
+                                <div class="flex justify-between items-center mb-4">
+                                    <span class="text-base font-semibold" data-translate="subtotal">Subtotal:</span>
+                                    <span id="checkout-subtotal" class="font-semibold">ETB 0.00</span>
+                                </div>
+                                <div class="flex justify-between items-center mb-4">
+                                    <span class="text-base font-semibold" data-translate="shipping">Shipping:</span>
+                                    <span id="checkout-shipping" class="font-semibold text-green-400" data-translate="free">FREE</span>
+                                </div>
+                                <div class="flex justify-between items-center border-t border-gray-700 pt-4">
+                                    <span class="text-2xl font-bold" data-translate="total-due">Total Due:</span>
+                                    <span id="checkout-total" class="text-3xl font-bold copper-accent">ETB 0.00</span>
+                                </div>
+                                
+                                <button type="submit" class="w-full bg-steel-blue hover:bg-steel-blue-dark py-3 mt-6 rounded-lg font-medium transition-colors flex items-center justify-center gap-2">
+                                    <i data-lucide="lock" class="w-5 h-5"></i>
+                                    <span data-translate="place-order">Place Order</span>
+                                </button>
+                                <p class="text-center text-xs text-gray-400 mt-2" data-translate="secure-checkout">Your transaction is secured with 256-bit encryption.</p>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="product-detail-modal" class="modal-backdrop fixed inset-0 bg-black/50 z-50 no-print">
+        <div class="flex items-center justify-center min-h-screen p-4">
+            <div id="product-detail-content" class="bg-gray-900 rounded-lg border border-gray-700 w-full max-w-4xl max-h-[90vh] overflow-y-auto">
+                </div>
+        </div>
+    </div>
+
+    <footer class="bg-gray-900 border-t border-gray-700 no-print">
+        <div class="max-w-7xl mx-auto py-12 px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-2 md:grid-cols-5 gap-8">
+                <div>
+                    <h3 class="text-lg font-semibold copper-accent mb-4" data-translate="footer-company">Company</h3>
+                    <ul class="space-y-3 text-sm text-gray-400">
+                        <li><a href="about.html" class="hover:text-copper transition-colors" data-translate="footer-about">About Us</a></li>
+                        <li><a href="services.html" class="hover:text-copper transition-colors" data-translate="footer-services">Our Services</a></li>
+                        <li><a href="#" class="hover:text-copper transition-colors" data-translate="footer-careers">Careers</a></li>
+                        <li><a href="#" class="hover:text-copper transition-colors" data-translate="footer-partners">Partnerships</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="text-lg font-semibold copper-accent mb-4" data-translate="footer-support">Support</h3>
+                    <ul class="space-y-3 text-sm text-gray-400">
+                        <li><a href="contact.html" class="hover:text-copper transition-colors" data-translate="footer-contact">Contact Us</a></li>
+                        <li><a href="#" class="hover:text-copper transition-colors" data-translate="footer-faq">FAQ</a></li>
+                        <li><a href="#" class="hover:text-copper transition-colors" data-translate="footer-shipping">Shipping Info</a></li>
+                        <li><a href="#" class="hover:text-copper transition-colors" data-translate="footer-returns">Returns Policy</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="text-lg font-semibold copper-accent mb-4" data-translate="footer-legal">Legal</h3>
+                    <ul class="space-y-3 text-sm text-gray-400">
+                        <li><a href="#" class="hover:text-copper transition-colors" data-translate="footer-terms">Terms of Service</a></li>
+                        <li><a href="#" class="hover:text-copper transition-colors" data-translate="footer-privacy">Privacy Policy</a></li>
+                        <li><a href="#" class="hover:text-copper transition-colors" data-translate="footer-disclaimer">Disclaimer</a></li>
+                        <li><a href="#" class="hover:text-copper transition-colors" data-translate="footer-sitemap">Sitemap</a></li>
+                    </ul>
+                </div>
+                <div class="col-span-2 md:col-span-2">
+                    <h3 class="text-lg font-semibold copper-accent mb-4" data-translate="footer-newsletter">Join Our Newsletter</h3>
+                    <p class="text-sm text-gray-400 mb-4" data-translate="footer-newsletter-desc">Get updates on new products and promotions.</p>
+                    <form class="flex">
+                        <input type="email" placeholder="Your email address" class="w-full px-4 py-2 bg-gray-800 border border-gray-700 rounded-l-lg text-white placeholder-gray-500 focus:border-copper focus:outline-none" data-translate="footer-email-placeholder">
+                        <button type="submit" class="bg-copper hover:bg-copper-dark px-6 py-2 rounded-r-lg font-medium transition-colors" data-translate="footer-subscribe">Subscribe</button>
+                    </form>
+                </div>
+            </div>
+            
+            <div class="mt-12 border-t border-gray-800 pt-8 flex flex-col md:flex-row items-center justify-between">
+                <p class="text-sm text-gray-500 order-2 md:order-1 mt-4 md:mt-0" data-translate="footer-copyright">
+                    &copy; <span id="current-year">2025</span> Nesab Vehicle Oils. All rights reserved.
+                </p>
+                <div class="flex space-x-6 order-1 md:order-2">
+                    <a href="#" class="text-gray-400 hover:text-copper transition-colors" aria-label="Facebook">
+                        <i data-lucide="facebook" class="w-5 h-5"></i>
+                    </a>
+                    <a href="#" class="text-gray-400 hover:text-copper transition-colors" aria-label="Telegram">
+                        <i data-lucide="send" class="w-5 h-5"></i>
+                    </a>
+                    <a href="#" class="text-gray-400 hover:text-copper transition-colors" aria-label="Instagram">
+                        <i data-lucide="instagram" class="w-5 h-5"></i>
+                    </a>
+                    <a href="#" class="text-gray-400 hover:text-copper transition-colors" aria-label="LinkedIn">
+                        <i data-lucide="linkedin" class="w-5 h-5"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Back to Top Button -->
+    <button id="back-to-top" class="back-to-top fixed bottom-8 right-8 bg-copper-dark hover:bg-copper text-white p-3 rounded-full shadow-lg z-40 no-print" aria-label="Back to top">
+        <i data-lucide="arrow-up" class="w-5 h-5"></i>
+        <svg class="progress-ring" width="48" height="48" style="position: absolute; top: -4px; left: -4px;">
+            <circle class="progress-ring-circle" stroke="var(--copper)" stroke-width="2" fill="transparent" r="22" cx="24" cy="24"/>
+        </svg>
+    </button>
+
+    <!-- Cookie Consent Banner -->
+    <div id="cookie-banner" class="cookie-banner fixed bottom-0 left-0 right-0 bg-gray-900 border-t border-gray-700 p-6 z-50 no-print">
+        <div class="max-w-4xl mx-auto flex flex-col md:flex-row items-center justify-between gap-4">
+            <div class="flex items-start gap-3">
+                <i data-lucide="cookie" class="w-6 h-6 steel-accent mt-1"></i>
+                <div>
+                    <h4 class="font-semibold text-white mb-1">We use cookies</h4>
+                    <p class="text-sm text-gray-300">We use cookies to enhance your experience. By continuing, you agree to our Privacy Policy.</p>
+                </div>
+            </div>
+            <div class="flex gap-3">
+                <button onclick="rejectCookies()" class="px-4 py-2 text-gray-300 hover:text-white transition-colors">Reject</button>
+                <button onclick="acceptCookies()" class="bg-copper hover:bg-copper-dark px-4 py-2 rounded-lg font-medium transition-colors">Accept</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Global data structure for products
+        const products = [
+            // --- TotalEnergies Products (Common in Ethiopia) ---
+            {
+                id: 'total-quartz-9000-5w40-4l',
+                name: 'Total Quartz 9000 5W-40',
+                brand: 'TotalEnergies',
+                category: 'engine-oil',
+                viscosity: '5W-40',
+                price: 3800.00, // Example ETB Price
+                stock: 75,
+                image: '../resources/products/total-quartz-9000.png',
+                specs: {
+                    type: 'Full Synthetic',
+                    api: 'SN/CF',
+                    acea: 'A3/B4',
+                    capacity: '4 Liters',
+                    drainInterval: '10,000 km',
+                    warranty: '3 years'
+                },
+                description: 'High-performance Synthetic Engine Oil for Gasoline and Diesel engines. Provides excellent protection at high temperatures. (4 Liters)',
+                compatibility: ['Modern Petrol Cars', 'European Vehicles', 'Turbocharged'],
+                sds: '../resources/sds/total-quartz-9000-sds.pdf',
+                tds: '../resources/tds/total-quartz-9000-tds.pdf',
+                coa: '../resources/coa/total-quartz-9000-coa.pdf'
+            },
+            {
+                id: 'total-rubia-tir-7400-15w40-20l',
+                name: 'Total Rubia TIR 7400 15W-40',
+                brand: 'TotalEnergies',
+                category: 'engine-oil',
+                viscosity: '15W-40',
+                price: 18500.00, // Example ETB Price (for 20L)
+                stock: 30,
+                image: '../resources/products/total-rubia-tir.png',
+                specs: {
+                    type: 'Mineral/Semi-Synthetic',
+                    api: 'CI-4/CH-4',
+                    acea: 'E7',
+                    capacity: '20 Liters',
+                    drainInterval: '15,000 km',
+                    warranty: '2 years'
+                },
+                description: 'Mineral oil specifically designed for Heavy Duty Diesel (HDD) applications and trucks, meeting API CI-4/CH-4. (20 Liters)',
+                compatibility: ['Isuzu Truck', 'Fuso', 'Heavy Duty Vehicles', 'Mixed Fleets'],
+                sds: '../resources/sds/total-rubia-tir-sds.pdf',
+                tds: '../resources/tds/total-rubia-tir-tds.pdf',
+                coa: '../resources/coa/total-rubia-tir-coa.pdf'
+            },
+        
+            // --- Shell Products (Common in Ethiopia) ---
+            {
+                id: 'shell-helix-ultra-5w30-1l',
+                name: 'Shell Helix Ultra 5W-30',
+                brand: 'Shell',
+                category: 'engine-oil',
+                viscosity: '5W-30',
+                price: 1050.00, // Example ETB Price
+                stock: 200,
+                image: '../resources/products/shell-helix-ultra.png',
+                specs: {
+                    type: 'Full Synthetic (PurePlus)',
+                    api: 'SN Plus/SP',
+                    acea: 'C3',
+                    capacity: '1 Liter',
+                    drainInterval: '10,000 km',
+                    warranty: '5 years'
+                },
+                description: 'Fully synthetic motor oil made from natural gas. Provides long-lasting engine performance and superior wear protection. (1 Liter)',
+                compatibility: ['Toyota', 'Honda', 'Modern Petrol Cars', 'High-end Vehicles'],
+                sds: '../resources/sds/shell-helix-ultra-sds.pdf',
+                tds: '../resources/tds/shell-helix-ultra-tds.pdf',
+                coa: '../resources/coa/shell-helix-ultra-coa.pdf'
+            },
+            {
+                id: 'shell-rimula-r4-15w40-5l',
+                name: 'Shell Rimula R4 X 15W-40',
+                brand: 'Shell',
+                category: 'engine-oil',
+                viscosity: '15W-40',
+                price: 4500.00, // Example ETB Price
+                stock: 120,
+                image: '../resources/products/shell-rimula-r4.png',
+                specs: {
+                    type: 'Mineral',
+                    api: 'CI-4/SL',
+                    acea: 'E7',
+                    capacity: '5 Liters',
+                    drainInterval: '5,000 km',
+                    warranty: '2 years'
+                },
+                description: 'Premium multi-grade heavy duty diesel engine oil. Ideal for mixed fleets and severe operating conditions. (5 Liters)',
+                compatibility: ['Heavy Duty Diesel', 'Isuzu', 'Toyota Hiace (Diesel)', 'Trucks'],
+                sds: '../resources/sds/shell-rimula-r4-sds.pdf',
+                tds: '../resources/tds/shell-rimula-r4-tds.pdf',
+                coa: '../resources/coa/shell-rimula-r4-coa.pdf'
+            },
+        
+            // --- Castrol Products ---
+            {
+                id: 'castrol-ep-80w90-4l',
+                name: 'Castrol Axle GL-5 80W-90',
+                brand: 'Castrol',
+                category: 'gear-oil',
+                viscosity: '80W-90',
+                price: 2900.00, // Example ETB Price
+                stock: 60,
+                image: '../resources/products/castrol-gl5.png',
+                specs: {
+                    type: 'Mineral EP',
+                    api: 'GL-5',
+                    acea: 'N/A',
+                    capacity: '4 Liters',
+                    drainInterval: '30,000 km',
+                    warranty: '2 years'
+                },
+                description: 'Mineral axle and final drive oil suitable for use in differentials, manual gearboxes, and transaxles requiring API GL-5. (4 Liters)',
+                compatibility: ['Differentials', 'Manual Gearboxes (GL-5 required)', 'Heavy Axles'],
+                sds: '../resources/sds/castrol-gl5-sds.pdf',
+                tds: '../resources/tds/castrol-gl5-tds.pdf',
+                coa: '../resources/coa/castrol-gl5-coa.pdf'
+            },
+            {
+                id: 'castrol-atf-dex3-1l',
+                name: 'Castrol ATF Dexron III',
+                brand: 'Castrol',
+                category: 'transmission',
+                viscosity: 'N/A',
+                price: 850.00,
+                stock: 80,
+                image: '../resources/products/castrol-atf-dex3.png',
+                specs: {
+                    type: 'Mineral ATF',
+                    api: 'DEXRON III',
+                    acea: 'N/A',
+                    capacity: '1 Liter',
+                    drainInterval: '50,000 km',
+                    warranty: '2 years'
+                },
+                description: 'Automatic Transmission Fluid suitable for use in automatic transmissions and power steering systems requiring GM DEXRON®-III or Ford Mercon®. (1 Liter)',
+                compatibility: ['Older Automatic Transmissions', 'Power Steering Systems', 'GM', 'Ford'],
+                sds: '../resources/sds/castrol-atf-dex3-sds.pdf',
+                tds: '../resources/tds/castrol-atf-dex3-tds.pdf',
+                coa: '../resources/coa/castrol-atf-dex3-coa.pdf'
+            },
+        
+            // --- Mobil 1 Products ---
+            {
+                id: 'mobil1-esp-5w30-4l',
+                name: 'Mobil 1 ESP Formula 5W-30',
+                brand: 'Mobil 1',
+                category: 'engine-oil',
+                viscosity: '5W-30',
+                price: 4500.00,
+                stock: 40,
+                image: '../resources/products/mobil1-esp.png',
+                specs: {
+                    type: 'Full Synthetic (Low Ash)',
+                    api: 'SN/SM',
+                    acea: 'C2/C3',
+                    capacity: '4 Liters',
+                    drainInterval: '15,000 km',
+                    warranty: '3 years'
+                },
+                description: 'Advanced full synthetic motor oil designed to help prolong the life of Diesel Particulate Filters (DPFs) and Gasoline Catalytic Converters (CATs).',
+                compatibility: ['European Vehicles', 'DPF equipped Diesels', 'Mercedes-Benz', 'BMW'],
+                sds: '../resources/sds/mobil1-esp-sds.pdf',
+                tds: '../resources/tds/mobil1-esp-tds.pdf',
+                coa: '../resources/coa/mobil1-esp-coa.pdf'
+            },
+            
+            // --- Coolant ---
+            {
+                id: 'total-glacelf-supra-1l',
+                name: 'Total Glacelf Supra (Red)',
+                brand: 'TotalEnergies',
+                category: 'coolant',
+                viscosity: 'N/A', // Coolants don't use viscosity
+                price: 950.00, // Example ETB Price
+                stock: 150,
+                image: '../resources/products/total-glacelf.png',
+                specs: {
+                    type: 'OAT Concentrate',
+                    api: 'ASTM D3306',
+                    acea: 'N/A',
+                    capacity: '1 Liter',
+                    drainInterval: '5 years',
+                    warranty: '1 year'
+                },
+                description: 'Long-life Organic Acid Technology (OAT) antifreeze concentrate. Excellent corrosion protection for all engine types. (1 Liter)',
+                compatibility: ['All Engine Types', 'Aluminum Radiators'],
+                sds: '../resources/sds/total-glacelf-sds.pdf',
+                tds: '../resources/tds/total-glacelf-tds.pdf',
+                coa: '../resources/coa/total-glacelf-coa.pdf'
+            }
+        ];
+
+        // Global data structure for cart (local storage is used for persistence)
+        let cart = JSON.parse(localStorage.getItem('nesab-cart')) || [];
+        let currentUser = JSON.parse(localStorage.getItem('nesab-current-user'));
+        let orders = JSON.parse(localStorage.getItem('nesab-orders')) || [];
+
+        // Global element references
+        const productsGrid = document.getElementById('products-grid');
+        const loadingSpinner = document.getElementById('loading');
+        const noProducts = document.getElementById('no-products');
+        const cartCount = document.getElementById('cart-count');
+        const mobileCartCount = document.getElementById('mobile-cart-count');
+        const cartItems = document.getElementById('cart-items');
+        const cartFooter = document.getElementById('cart-footer');
+        const dashboardUserName = document.getElementById('dashboard-user-name');
+        
+        // Admin Panel elements
+        const adminProductsTable = document.getElementById('admin-products-table');
+        const adminOrdersTable = document.getElementById('admin-orders-table');
+        const adminCustomersTable = document.getElementById('admin-customers-table');
+        const adminView = document.getElementById('admin-view');
+        const customerView = document.getElementById('customer-view');
+        
+        // Checkout elements
+        const checkoutBtn = document.getElementById('checkout-btn');
+        const checkoutModal = document.getElementById('checkout-modal');
+        const closeCheckout = document.getElementById('close-checkout');
+        const checkoutForm = document.getElementById('checkout-form');
+
+        // Utility functions
+        function saveCart() {
+            localStorage.setItem('nesab-cart', JSON.stringify(cart));
+            updateCartUI();
+        }
+
+        function updateCartUI() {
+            const totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
+            cartCount.textContent = totalItems;
+            mobileCartCount.textContent = totalItems;
+            
+            // Re-render cart sidebar if it's open
+            if (document.getElementById('cart-sidebar').classList.contains('open')) {
+                renderCart();
+            }
+        }
+        
+        function updateAccountUI() {
+            if (currentUser) {
+                dashboardUserName.textContent = currentUser.firstName;
+                document.getElementById('account-btn').innerHTML = `<i data-lucide="user-check" class="w-5 h-5"></i><span>${currentUser.firstName}</span>`;
+                document.getElementById('mobile-account-btn').innerHTML = `<i data-lucide="user-check" class="w-5 h-5 inline mr-2"></i><span>${currentUser.firstName}</span>`;
+            } else {
+                 document.getElementById('account-btn').innerHTML = `<i data-lucide="user" class="w-5 h-5"></i><span data-translate="account">Account</span>`;
+                 document.getElementById('mobile-account-btn').innerHTML = `<i data-lucide="user" class="w-5 h-5 inline mr-2"></i><span data-translate="account">Account</span>`;
+            }
+            // Re-create lucide icons after updating innerHTML
+            lucide.createIcons();
+        }
+
+        function addToCart(productId, quantity = 1) {
+            const existingItem = cart.find(item => item.id === productId);
+            const product = products.find(p => p.id === productId);
+
+            if (!product || product.stock < quantity) {
+                alert('Product is out of stock or requested quantity is too high.');
+                return;
+            }
+
+            if (existingItem) {
+                // Check if total quantity exceeds stock
+                if (existingItem.quantity + quantity > product.stock) {
+                     alert(`Cannot add ${quantity} more. Only ${product.stock - existingItem.quantity} left in stock.`);
+                     return;
+                }
+                existingItem.quantity += quantity;
+            } else {
+                cart.push({ id: productId, quantity: quantity });
+            }
+            saveCart();
+        }
+
+        function updateCartItem(productId, delta) {
+            const item = cart.find(i => i.id === productId);
+            const product = products.find(p => p.id === productId);
+
+            if (item) {
+                item.quantity += delta;
+                if (item.quantity <= 0) {
+                    cart = cart.filter(i => i.id !== productId);
+                } else if (item.quantity > product.stock) {
+                    item.quantity = product.stock; // Cap at max stock
+                    alert(`Maximum stock reached for ${product.name}.`);
+                }
+                saveCart();
+                renderCart(); // Re-render the cart UI immediately
+            }
+        }
+        
+        function removeFromCart(productId) {
+            cart = cart.filter(i => i.id !== productId);
+            saveCart();
+            renderCart();
+        }
+
+        function clearCart() {
+            cart = [];
+            saveCart();
+            renderCart();
+        }
+
+        // Update the renderCart function with error handling
+        function renderCart() {
+            // Force reload from localStorage to ensure latest data
+            cart = JSON.parse(localStorage.getItem('nesab-cart')) || [];
+            
+            if (!cartItems) {
+                console.error("Cart items element not found!");
+                return;
+            }
+
+            if (cart.length === 0) {
+                cartItems.innerHTML = `
+                <div class="text-center text-gray-400 py-12">
+                    <i data-lucide="shopping-cart" class="w-16 h-16 mx-auto mb-4"></i>
+                    <p data-translate="cart-empty">Your cart is empty</p>
+                </div>
+                `;
+                cartFooter.classList.add('hidden');
+                lucide.createIcons();
+                return;
+            }
+            
+            try {
+                cartItems.innerHTML = cart.map(item => {
+                    const product = products.find(p => p.id === item.id);
+                    
+                    // Defensive check: skip if product not found
+                    if (!product) {
+                        console.warn(`Product ${item.id} not found, removing from cart`);
+                        // Remove invalid item
+                        cart = cart.filter(i => i.id !== item.id);
+                        localStorage.setItem('nesab-cart', JSON.stringify(cart));
+                        return ''; // Return empty string for invalid items
+                    }
+                    
+                    return `
+                        <div class="flex gap-4 p-4 bg-gray-800 rounded-lg">
+                            <img src="${product.image}" alt="${product.name}" class="w-16 h-16 object-cover rounded">
+                            <div class="flex-1">
+                                <h4 class="font-semibold text-white">${product.brand} - ${product.name}</h4>
+                                <p class="text-sm text-gray-400">${product.specs.capacity}</p>
+                                <div class="flex items-center justify-between mt-2">
+                                    <span class="copper-accent font-semibold">ETB ${(product.price * item.quantity).toFixed(2)}</span>
+                                    <div class="flex items-center gap-2">
+                                        <button type="button" onclick="updateCartItem('${item.id}', -1)" class="w-8 h-8 bg-gray-700 hover:bg-gray-600 rounded flex items-center justify-center">-</button>
+                                        <span class="w-8 text-center">${item.quantity}</span>
+                                        <button type="button" onclick="updateCartItem('${item.id}', 1)" class="w-8 h-8 bg-gray-700 hover:bg-gray-600 rounded flex items-center justify-center">+</button>
+                                        <button type="button" onclick="removeFromCart('${item.id}')" class="ml-2 text-red-400 hover:text-red-300" aria-label="Remove item">
+                                            <i data-lucide="trash-2" class="w-4 h-4"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    `;
+                }).join('');
+                
+                // Clean up any empty strings from invalid items
+                if (cartItems.innerHTML.trim() === '') {
+                    cartItems.innerHTML = `
+                    <div class="text-center text-gray-400 py-12">
+                        <i data-lucide="shopping-cart" class="w-16 h-16 mx-auto mb-4"></i>
+                        <p data-translate="cart-empty">Your cart is empty</p>
+                    </div>
+                    `;
+                    cartFooter.classList.add('hidden');
+                    return;
+                }
+                
+                const total = cart.reduce((sum, item) => {
+                    const product = products.find(p => p.id === item.id);
+                    return product ? sum + (product.price * item.quantity) : sum;
+                }, 0);
+
+                document.getElementById('cart-total').textContent = `ETB ${total.toFixed(2)}`;
+                cartFooter.classList.remove('hidden');
+                lucide.createIcons();
+                
+            } catch (error) {
+                console.error("Error rendering cart:", error);
+                cartItems.innerHTML = `
+                <div class="text-center text-red-400 py-12">
+                    <i data-lucide="alert-circle" class="w-16 h-16 mx-auto mb-4"></i>
+                    <p>Error loading cart. Please try refreshing.</p>
+                </div>
+                `;
+                lucide.createIcons();
+            }
+        }
+
+
+
+        function filterAndSort() {
+            loadingSpinner.classList.remove('hidden');
+            productsGrid.innerHTML = '';
+            
+            // Simulate network latency
+            setTimeout(() => {
+                const searchTerm = document.getElementById('product-search').value.toLowerCase();
+                const categoryFilter = document.getElementById('filter-category').value;
+                // --- NEW FILTER READING ---
+                const brandFilter = document.getElementById('filter-brand').value; 
+                // --------------------------
+                const viscosityFilter = document.getElementById('filter-viscosity').value;
+                const stockFilter = document.getElementById('filter-stock').value;
+                const sortOption = document.getElementById('sort-products').value;
+                
+                let filteredProducts = products.filter(product => {
+                    // Search term filter - includes brand in search
+                    const searchMatch = product.name.toLowerCase().includes(searchTerm) ||
+                                        (product.brand && product.brand.toLowerCase().includes(searchTerm)) || // Checks for brand match
+                                        product.viscosity.toLowerCase().includes(searchTerm) ||
+                                        product.description.toLowerCase().includes(searchTerm);
+                                        
+                    // Category filter
+                    const categoryMatch = !categoryFilter || product.category === categoryFilter;
+                    
+                    // Brand filter --- NEW FILTER LOGIC ---
+                    const brandMatch = !brandFilter || (product.brand && product.brand === brandFilter);
+                    
+                    // Viscosity filter
+                    const viscosityMatch = !viscosityFilter || product.viscosity === viscosityFilter;
+                    
+                    // Stock filter
+                    let stockMatch = true;
+                    if (stockFilter === 'in-stock') {
+                        stockMatch = product.stock > 10;
+                    } else if (stockFilter === 'low-stock') {
+                        stockMatch = product.stock > 0 && product.stock <= 10;
+                    }
+
+                    // Combined match
+                    return searchMatch && categoryMatch && brandMatch && viscosityMatch && stockMatch;
+                });
+                
+                // Sorting
+                filteredProducts.sort((a, b) => {
+                    switch (sortOption) {
+                        case 'name':
+                            return (a.brand + a.name).localeCompare(b.brand + b.name);
+                        case 'price-low':
+                            return a.price - b.price;
+                        case 'price-high':
+                            return b.price - a.price;
+                        case 'stock':
+                            return b.stock - a.stock; // Highest stock first
+                        default:
+                            return 0;
+                    }
+                });
+
+                renderProducts(filteredProducts);
+            }, 300); // Small delay to show the loading spinner
+        }
+
+        window.addEventListener('scroll', () => {
+            const currentScroll = window.pageYOffset;
+            
+            if (currentScroll > 100) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+            
+            lastScroll = currentScroll;
+            
+            // Back to top visibility
+            const backToTop = document.getElementById('back-to-top');
+            if (currentScroll > 500) {
+                backToTop.classList.add('visible');
+            } else {
+                backToTop.classList.remove('visible');
+            }
+            
+            // Update scroll progress
+            updateScrollProgress();
+        });
+
+         // Cookie consent
+        function acceptCookies() {
+            localStorage.setItem('cookiesAccepted', 'true');
+            document.getElementById('cookie-banner').classList.remove('show');
+        }
+        
+        function rejectCookies() {
+            localStorage.setItem('cookiesAccepted', 'false');
+            document.getElementById('cookie-banner').classList.remove('show');
+            // Here you could disable non-essential cookies
+        }
+        
+        // Show cookie banner if not already set
+        if (!localStorage.getItem('cookiesAccepted')) {
+            setTimeout(() => {
+                document.getElementById('cookie-banner').classList.add('show');
+            }, 1000);
+        }
+        
+        // Scroll progress indicator
+        function updateScrollProgress() {
+            const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+            const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+            const scrolled = (winScroll / height) * 100;
+            const circle = document.querySelector('.progress-ring-circle');
+            const circumference = 2 * Math.PI * 22;
+            const offset = circumference - (scrolled / 100) * circumference;
+            circle.style.strokeDasharray = circumference;
+            circle.style.strokeDashoffset = offset;
+        }
+        
+        // Back to top
+        document.getElementById('back-to-top').addEventListener('click', () => {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+
+        function renderProducts(filteredProducts = products) {
+            loadingSpinner.classList.add('hidden');
+            
+            if (filteredProducts.length === 0) {
+                productsGrid.innerHTML = '';
+                noProducts.classList.remove('hidden');
+                return;
+            }
+            
+            noProducts.classList.add('hidden');
+            productsGrid.innerHTML = filteredProducts.map(product => {
+                const stockClass = product.stock > 10 ? 'in-stock' : product.stock > 0 ? 'low-stock' : 'out-of-stock';
+                const stockText = product.stock > 10 ? `In Stock: ${product.stock}` : product.stock > 0 ? `Low Stock: ${product.stock}` : 'Out of Stock';
+                const disabled = product.stock === 0 ? 'opacity-50 pointer-events-none' : '';
+                
+                return `
+                    <div class="product-card bg-gray-900 rounded-lg overflow-hidden ${disabled}" data-id="${product.id}">
+                        <div class="relative">
+                            <img src="${product.image}" alt="${product.brand} ${product.name}" class="w-full h-48 object-cover">
+                            <div class="absolute top-2 right-2">
+                                <span class="stock-status ${stockClass} text-xs px-2 py-1 bg-gray-900/80 rounded">${stockText}</span>
+                            </div>
+                        </div>
+                        <div class="p-4">
+                            <h3 class="font-semibold text-white mb-1">${product.brand} - ${product.name}</h3>
+                            <p class="text-sm text-gray-400 mb-2">${product.specs.type} • ${product.specs.capacity}</p>
+                            <p class="text-xs text-gray-500 mb-3">${product.description.substring(0, 80)}...</p>
+                            <div class="flex items-center justify-between mb-3">
+                                <span class="text-2xl font-bold copper-accent">ETB ${product.price.toFixed(2)}</span>
+                                <div class="flex items-center gap-1 text-xs text-gray-400">
+                                    <i data-lucide="check-circle" class="w-4 h-4"></i>
+                                    <span>OEM Approved</span>
+                                </div>
+                            </div>
+                            <button onclick="addToCart('${product.id}')" class="w-full bg-copper hover:bg-copper-dark py-2 rounded-lg font-medium transition-colors flex items-center justify-center gap-2">
+                                <i data-lucide="shopping-cart" class="w-4 h-4"></i> Add to Cart
+                            </button>
+                            <div class="mt-3 flex gap-2">
+                                <a href="${product.sds}" target="_blank" class="flex-1 text-center text-xs bg-gray-800 hover:bg-gray-700 py-1 rounded transition-colors">SDS</a>
+                                <a href="${product.tds}" target="_blank" class="flex-1 text-center text-xs bg-gray-800 hover:bg-gray-700 py-1 rounded transition-colors">TDS</a>
+                                <button onclick="showProductDetail('${product.id}')" class="flex-1 text-center text-xs bg-steel-blue hover:bg-steel-blue-dark py-1 rounded transition-colors">Details</button>
+                            </div>
+                        </div>
+                    </div>
+                `;
+            }).join('');
+            
+            // After rendering, initialize Lucide icons for the new HTML
+            lucide.createIcons();
+        }
+
+        function clearFilters() {
+            document.getElementById('product-search').value = '';
+            document.getElementById('filter-category').value = '';
+            // --- NEW FILTER CLEARING ---
+            document.getElementById('filter-brand').value = '';
+            // --------------------------
+            document.getElementById('filter-viscosity').value = '';
+            document.getElementById('filter-stock').value = '';
+            document.getElementById('sort-products').value = 'name';
+            filterAndSort();
+        }
+        
+        // ===== PRODUCT DETAIL MODAL =====
+        const productDetailModal = document.getElementById('product-detail-modal');
+        const productDetailContent = document.getElementById('product-detail-content');
+
+        function showProductDetail(productId) {
+            const product = products.find(p => p.id === productId);
+            if (!product) return;
+
+            const stockClass = product.stock > 10 ? 'in-stock' : product.stock > 0 ? 'low-stock' : 'out-of-stock';
+            const stockText = product.stock > 10 ? `In Stock: ${product.stock}` : product.stock > 0 ? `Low Stock: ${product.stock}` : 'Out of Stock';
+            const disabled = product.stock === 0 ? 'opacity-50 pointer-events-none' : '';
+
+            const compatibilityList = product.compatibility.map(item => `<li class="text-sm text-gray-400 flex items-center gap-2"><i data-lucide="car" class="w-4 h-4 steel-accent"></i>${item}</li>`).join('');
+
+            productDetailContent.innerHTML = `
+                <div class="p-6">
+                    <div class="flex justify-between items-center mb-6 border-b border-gray-700 pb-4">
+                        <h2 class="text-3xl font-bold copper-accent">${product.brand} - ${product.name}</h2>
+                        <button onclick="closeProductDetail()" class="text-gray-400 hover:text-white">
+                            <i data-lucide="x" class="w-6 h-6"></i>
+                        </button>
+                    </div>
+                    
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                        <div class="md:col-span-1">
+                            <img src="${product.image}" alt="${product.brand} ${product.name}" class="w-full h-auto object-cover rounded-lg mb-4 border border-gray-700">
+                            <div class="flex justify-between items-center bg-gray-800 p-4 rounded-lg">
+                                <span class="text-xl font-bold text-white">Price:</span>
+                                <span class="text-3xl font-bold copper-accent">ETB ${product.price.toFixed(2)}</span>
+                            </div>
+                            <div class="mt-4">
+                                <span class="stock-status ${stockClass} text-sm font-semibold px-3 py-1 bg-gray-800 rounded-lg">${stockText}</span>
+                            </div>
+                        </div>
+
+                        <div class="md:col-span-2 space-y-4">
+                            <p class="text-gray-300 text-lg">${product.description}</p>
+                            
+                            <div class="grid grid-cols-2 gap-4 bg-gray-800 p-4 rounded-lg border border-gray-700">
+                                <div class="space-y-2">
+                                    <h4 class="font-semibold steel-accent flex items-center gap-2"><i data-lucide="sliders" class="w-5 h-5"></i>Key Specifications</h4>
+                                    <p class="text-sm text-gray-400"><strong>Brand:</strong> ${product.brand}</p>
+                                    <p class="text-sm text-gray-400"><strong>Type:</strong> ${product.specs.type}</p>
+                                    <p class="text-sm text-gray-400"><strong>Capacity:</strong> ${product.specs.capacity}</p>
+                                    <p class="text-sm text-gray-400"><strong>Viscosity:</strong> ${product.viscosity}</p>
+                                </div>
+                                <div class="space-y-2">
+                                    <h4 class="font-semibold steel-accent flex items-center gap-2"><i data-lucide="wrench" class="w-5 h-5"></i>Approvals & Service</h4>
+                                    <p class="text-sm text-gray-400"><strong>API:</strong> ${product.specs.api}</p>
+                                    <p class="text-sm text-gray-400"><strong>Drain Interval:</strong> ${product.specs.drainInterval}</p>
+                                    <p class="text-sm text-gray-400"><strong>Warranty:</strong> ${product.specs.warranty}</p>
+                                </div>
+                            </div>
+
+                            <div class="mt-4">
+                                <h4 class="font-semibold steel-accent flex items-center gap-2 mb-3"><i data-lucide="hand-metal" class="w-5 h-5"></i>Compatible Vehicles</h4>
+                                <ul class="grid grid-cols-2 gap-2 max-h-40 overflow-y-auto pr-2">
+                                    ${compatibilityList}
+                                </ul>
+                            </div>
+                            
+                            <div class="flex gap-4 border-t border-gray-700 pt-4">
+                                <a href="${product.sds}" target="_blank" class="flex-1 text-center bg-gray-800 hover:bg-gray-700 py-2 rounded-lg transition-colors flex items-center justify-center gap-2">
+                                    <i data-lucide="file-text" class="w-4 h-4"></i> SDS (Safety Data Sheet)
+                                </a>
+                                <a href="${product.tds}" target="_blank" class="flex-1 text-center bg-gray-800 hover:bg-gray-700 py-2 rounded-lg transition-colors flex items-center justify-center gap-2">
+                                    <i data-lucide="file-text" class="w-4 h-4"></i> TDS (Technical Data Sheet)
+                                </a>
+                                <a href="${product.coa}" target="_blank" class="flex-1 text-center bg-gray-800 hover:bg-gray-700 py-2 rounded-lg transition-colors flex items-center justify-center gap-2">
+                                    <i data-lucide="file-text" class="w-4 h-4"></i> COA (Certificate of Analysis)
+                                </a>
+                            </div>
+
+                            <div class="mt-6 border-t border-gray-700 pt-4">
+                                <button onclick="addToCart('${product.id}')" class="w-full bg-copper hover:bg-copper-dark py-3 rounded-lg font-medium transition-colors flex items-center justify-center gap-3 text-lg ${disabled}">
+                                    <i data-lucide="shopping-cart" class="w-5 h-5"></i> Add to Cart
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            `;
+            
+            productDetailModal.classList.add('show');
+            lucide.createIcons();
+        }
+
+        function closeProductDetail() {
+            productDetailModal.classList.remove('show');
+        }
+
+        // ===== EVENT LISTENERS =====
+        document.getElementById('product-search').addEventListener('input', filterAndSort);
+        document.getElementById('filter-category').addEventListener('change', filterAndSort);
+        // --- NEW EVENT LISTENER ---
+        document.getElementById('filter-brand').addEventListener('change', filterAndSort); 
+        // --------------------------
+        document.getElementById('filter-viscosity').addEventListener('change', filterAndSort);
+        document.getElementById('filter-stock').addEventListener('change', filterAndSort);
+        document.getElementById('sort-products').addEventListener('change', filterAndSort);
+        
+        // Search shortcut (Ctrl+K)
+        document.addEventListener('keydown', (e) => {
+            if ((e.ctrlKey || e.metaKey) && e.key === 'k') {
+                e.preventDefault();
+                document.getElementById('product-search').focus();
+            }
+        });
+
+        // ===== CART SIDEBAR =====
+        const cartBtn = document.getElementById('cart-btn');
+        const mobileCartBtn = document.getElementById('mobile-cart-btn');
+        const cartSidebar = document.getElementById('cart-sidebar');
+        const closeCart = document.getElementById('close-cart');
+        
+        [cartBtn, mobileCartBtn].forEach(btn => {
+            btn.addEventListener('click', () => {
+                cartSidebar.classList.add('open');
+                renderCart();
+            });
+        });
+        
+        closeCart.addEventListener('click', () => {
+            cartSidebar.classList.remove('open');
+        });
+        
+        document.getElementById('clear-cart').addEventListener('click', clearCart);
+
+        // ===== ACCOUNT MODAL =====
+        const accountBtn = document.getElementById('account-btn');
+        const mobileAccountBtn = document.getElementById('mobile-account-btn');
+        const accountModal = document.getElementById('account-modal');
+        const closeAccount = document.getElementById('close-account');
+        const closeRegister = document.getElementById('close-register');
+        const closeDashboard = document.getElementById('close-dashboard');
+
+        [accountBtn, mobileAccountBtn].forEach(btn => {
+            btn.addEventListener('click', () => {
+                if (currentUser) {
+                    showDashboard();
+                } else {
+                    showLogin();
+                }
+                accountModal.classList.add('show');
+            });
+        });
+
+        function showLogin() {
+            document.getElementById('login-form').classList.remove('hidden');
+            document.getElementById('register-form').classList.add('hidden');
+            document.getElementById('account-dashboard').classList.add('hidden');
+        }
+        function showRegister() {
+            document.getElementById('login-form').classList.add('hidden');
+            document.getElementById('register-form').classList.remove('hidden');
+            document.getElementById('account-dashboard').classList.add('hidden');
+        }
+        function showDashboard() {
+            document.getElementById('login-form').classList.add('hidden');
+            document.getElementById('register-form').classList.add('hidden');
+            document.getElementById('account-dashboard').classList.remove('hidden');
+        }
+
+        // Close logic
+        [closeAccount, closeRegister, closeDashboard].forEach(btn => {
+            btn.addEventListener('click', () => {
+                accountModal.classList.remove('show');
+            });
+        });
+
+        // Toggles
+        document.getElementById('show-register').addEventListener('click', showRegister);
+        document.getElementById('show-login').addEventListener('click', showLogin);
+
+        // Form Submission (Stubs)
+        document.getElementById('login-form-element').addEventListener('submit', (e) => {
+            e.preventDefault();
+            // Mock login success
+            currentUser = { firstName: 'Mekonnen', email: document.getElementById('login-email').value };
+            localStorage.setItem('nesab-current-user', JSON.stringify(currentUser));
+            updateAccountUI();
+            showDashboard();
+            if (currentUser.email === 'admin@nesab-oil.com') {
+                document.getElementById('admin-toggle').classList.remove('hidden');
+            }
+        });
+
+        document.getElementById('register-form-element').addEventListener('submit', (e) => {
+            e.preventDefault();
+            // Simple validation
+            const password = document.getElementById('register-password').value;
+            const confirmPassword = document.getElementById('register-confirm-password').value;
+
+            if (password !== confirmPassword) {
+                document.getElementById('confirm-password-error').classList.remove('hidden');
+                return;
+            } else {
+                document.getElementById('confirm-password-error').classList.add('hidden');
+            }
+            
+            // Mock registration success
+            currentUser = { firstName: document.getElementById('register-firstname').value, email: document.getElementById('register-email').value };
+            localStorage.setItem('nesab-current-user', JSON.stringify(currentUser));
+            updateAccountUI();
+            showDashboard();
+        });
+
+        document.getElementById('logout-btn').addEventListener('click', () => {
+            currentUser = null;
+            localStorage.removeItem('nesab-current-user');
+            updateAccountUI();
+            document.getElementById('admin-toggle').classList.add('hidden');
+            showLogin();
+        });
+
+        // Account dashboard section navigation (stubs)
+        document.querySelectorAll('.account-btn').forEach(btn => {
+            btn.addEventListener('click', () => {
+                const section = btn.dataset.section;
+                alert(`Navigating to ${section} section... (Functionality not implemented yet)`);
+            });
+        });
+        
+        // ===== CHECKOUT MODAL =====
+        checkoutBtn.addEventListener('click', () => {
+            if (cart.length === 0) {
+                alert("Your cart is empty. Please add products before checking out.");
+                return;
+            }
+            renderCheckoutSummary();
+            checkoutModal.classList.add('show');
+            cartSidebar.classList.remove('open');
+        });
+
+        closeCheckout.addEventListener('click', () => {
+            checkoutModal.classList.remove('show');
+        });
+
+        function renderCheckoutSummary() {
+            const checkoutItems = document.getElementById('checkout-items');
+            const checkoutSubtotal = document.getElementById('checkout-subtotal');
+            const checkoutTotal = document.getElementById('checkout-total');
+            
+            let subtotal = 0;
+            
+            checkoutItems.innerHTML = cart.map(item => {
+                const product = products.find(p => p.id === item.id);
+                const itemTotal = product.price * item.quantity;
+                subtotal += itemTotal;
+                return `
+                    <div class="flex justify-between text-sm">
+                        <span>${item.quantity} x ${product.name}</span>
+                        <span>ETB ${itemTotal.toFixed(2)}</span>
+                    </div>
+                `;
+            }).join('');
+            
+            const shipping = 0; // Free shipping for simplicity
+            const total = subtotal + shipping;
+            
+            checkoutSubtotal.textContent = `ETB ${subtotal.toFixed(2)}`;
+            checkoutTotal.textContent = `ETB ${total.toFixed(2)}`;
+
+            // Pre-fill fields if user is logged in (stub)
+            if (currentUser) {
+                document.getElementById('checkout-fullname').value = currentUser.firstName + ' ' + (currentUser.lastName || '');
+                document.getElementById('checkout-email').value = currentUser.email || '';
+            }
+        }
+        
+        // Payment method selection logic
+        document.querySelectorAll('input[name="payment"]').forEach(radio => {
+            radio.addEventListener('change', (e) => {
+                document.getElementById('m-pesa-instructions').classList.add('hidden');
+                document.getElementById('telebirr-instructions').classList.add('hidden');
+                document.getElementById('cbe-instructions').classList.add('hidden');
+                
+                if (e.target.value === 'm-pesa') {
+                    document.getElementById('m-pesa-instructions').classList.remove('hidden');
+                } else if (e.target.value === 'telebirr') {
+                    document.getElementById('telebirr-instructions').classList.remove('hidden');
+                } else if (e.target.value === 'cbe') {
+                    document.getElementById('cbe-instructions').classList.remove('hidden');
+                }
+            });
+        });
+
+        checkoutForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            
+            const paymentMethod = document.querySelector('input[name="payment"]:checked');
+            if (!paymentMethod) {
+                alert("Please select a payment method.");
+                return;
+            }
+            
+            // Mock Order Processing
+            const orderId = 'NESAB-' + Math.floor(Math.random() * 900000 + 100000);
+            const total = parseFloat(document.getElementById('checkout-total').textContent.replace('ETB ', '').replace(/,/g, ''));
+            
+            const newOrder = {
+                id: orderId,
+                date: new Date().toISOString().substring(0, 10),
+                customer: document.getElementById('checkout-fullname').value,
+                items: cart,
+                total: total,
+                status: 'pending',
+                payment: paymentMethod.value,
+                address: document.getElementById('checkout-address').value
+            };
+            
+            orders.unshift(newOrder); // Add to the start
+            localStorage.setItem('nesab-orders', JSON.stringify(orders));
+            clearCart();
+            
+            checkoutModal.classList.remove('show');
+            alert(`Order Placed Successfully! Your Order ID is ${orderId}. You will receive a confirmation email.`);
+            
+            // Reset form and UI
+            checkoutForm.reset();
+            document.getElementById('m-pesa-instructions').classList.add('hidden');
+            document.getElementById('telebirr-instructions').classList.add('hidden');
+            document.getElementById('cbe-instructions').classList.add('hidden');
+        });
+        
+        // ===== ADMIN PANEL LOGIC =====
+        const adminBtn = document.getElementById('admin-btn');
+        const exitAdminBtn = document.getElementById('exit-admin');
+        const adminTabs = document.querySelectorAll('.admin-tab');
+        const adminTabContents = document.querySelectorAll('.admin-tab-content');
+        
+        adminBtn.addEventListener('click', () => {
+            customerView.classList.add('hidden');
+            adminView.classList.add('active');
+            renderAdminProducts(); // Initial content load for Admin
+            renderAdminOrders();
+            renderAdminCustomers();
+        });
+        
+        exitAdminBtn.addEventListener('click', () => {
+            adminView.classList.remove('active');
+            customerView.classList.remove('hidden');
+        });
+        
+        adminTabs.forEach(tab => {
+            tab.addEventListener('click', () => {
+                adminTabs.forEach(t => {
+                    t.classList.remove('bg-copper', 'text-white', 'active');
+                    t.classList.add('bg-gray-800', 'text-white');
+                });
+                tab.classList.add('bg-copper', 'text-white', 'active');
+                tab.classList.remove('bg-gray-800');
+                
+                const tabId = tab.dataset.tab;
+                adminTabContents.forEach(content => {
+                    content.classList.add('hidden');
+                });
+                document.getElementById(`admin-${tabId}`).classList.remove('hidden');
+            });
+        });
+
+        // Admin rendering stubs
+        function getStockStatus(stock) {
+            if (stock > 10) return `<span class="in-stock font-medium">In Stock</span>`;
+            if (stock > 0) return `<span class="low-stock font-medium">Low Stock</span>`;
+            return `<span class="out-of-stock font-medium">Out of Stock</span>`;
+        }
+
+        function renderAdminProducts() {
+            adminProductsTable.innerHTML = products.map(product => `
+                <tr class="border-b border-gray-800 hover:bg-gray-800 transition-colors">
+                    <td class="px-6 py-4 flex items-center gap-3">
+                        <img src="${product.image}" alt="${product.name}" class="w-10 h-10 object-cover rounded">
+                        <span>${product.brand} - ${product.name}</span>
+                    </td>
+                    <td class="px-6 py-4 text-sm text-gray-400">${product.id}</td>
+                    <td class="px-6 py-4 copper-accent font-medium">ETB ${product.price.toFixed(2)}</td>
+                    <td class="px-6 py-4">${product.stock}</td>
+                    <td class="px-6 py-4">${getStockStatus(product.stock)}</td>
+                    <td class="px-6 py-4 text-right">
+                        <button class="text-steel-blue hover:text-copper transition-colors" onclick="alert('Editing ${product.name}')">Edit</button>
+                        <button class="text-red-500 hover:text-red-400 ml-4 transition-colors" onclick="alert('Deleting ${product.name}')">Delete</button>
+                    </td>
+                </tr>
+            `).join('');
+        }
+
+        function renderAdminOrders() {
+            adminOrdersTable.innerHTML = orders.map(order => {
+                let statusColor = 'text-yellow-400';
+                if (order.status === 'shipped') statusColor = 'text-steel-blue';
+                if (order.status === 'delivered') statusColor = 'text-success';
+                if (order.status === 'cancelled') statusColor = 'text-danger';
+
+                return `
+                    <tr class="border-b border-gray-800 hover:bg-gray-800 transition-colors">
+                        <td class="px-6 py-4 text-sm copper-accent font-medium">${order.id}</td>
+                        <td class="px-6 py-4 text-sm">${order.customer}</td>
+                        <td class="px-6 py-4 text-white font-medium">ETB ${order.total.toFixed(2)}</td>
+                        <td class="px-6 py-4 text-sm text-gray-400">${order.date}</td>
+                        <td class="px-6 py-4"><span class="${statusColor} capitalize">${order.status}</span></td>
+                        <td class="px-6 py-4 text-right">
+                            <button class="text-steel-blue hover:text-copper transition-colors" onclick="alert('Viewing Order ${order.id}')">View</button>
+                            <button class="text-red-500 hover:text-red-400 ml-4 transition-colors" onclick="alert('Updating status for Order ${order.id}')">Update</button>
+                        </td>
+                    </tr>
+                `;
+            }).join('') || '<tr><td colspan="6" class="text-center py-6 text-gray-500">No orders found.</td></tr>';
+        }
+
+        function renderAdminCustomers() {
+            // Mock Customer Data
+            const mockCustomers = [
+                { name: 'Amar Hassen', email: 'amarshisheno@gmail.com', phone: '+251933680059', type: 'Retail', orders: 4 },
+                { name: 'Nardos Amanuel', email: 'nardosamaneul@gmail.com', phone: '+251933680059', type: 'Corporate', orders: 12 },
+                { name: 'Kim Minjun', email: 'kimsabu36@gmail.com', phone: '+251901992477', type: 'Retail', orders: 1 }
+            ];
+
+            adminCustomersTable.innerHTML = mockCustomers.map(customer => `
+                <tr class="border-b border-gray-800 hover:bg-gray-800 transition-colors">
+                    <td class="px-6 py-4 font-medium">${customer.name}</td>
+                    <td class="px-6 py-4 text-sm text-gray-400">${customer.email}</td>
+                    <td class="px-6 py-4 text-sm text-gray-400">${customer.phone}</td>
+                    <td class="px-6 py-4 text-steel-blue">${customer.type}</td>
+                    <td class="px-6 py-4 text-white">${customer.orders}</td>
+                    <td class="px-6 py-4 text-right">
+                        <button class="text-steel-blue hover:text-copper transition-colors" onclick="alert('Viewing Customer ${customer.name}')">View</button>
+                        <button class="text-red-500 hover:text-red-400 ml-4 transition-colors" onclick="alert('Deleting Customer ${customer.name}')">Ban</button>
+                    </td>
+                </tr>
+            `).join('');
+        }
+        
+        // Admin content buttons
+        document.querySelectorAll('.admin-content-btn').forEach(btn => {
+            btn.addEventListener('click', () => {
+                const page = btn.dataset.page;
+                alert(`Opening ${page} editor...`);
+            });
+        });
+        
+        // ===== MOBILE MENU =====
+        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        
+        mobileMenuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('open');
+        });
+        
+        // Close mobile menu on link click
+        mobileMenu.querySelectorAll('a, button').forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.remove('open');
+            });
+        });
+        
+        // ===== INITIALIZATION =====
+        document.addEventListener('DOMContentLoaded', () => {
+            renderProducts();
+            updateCartUI();
+            updateAccountUI();
+            
+            // Check for admin user
+            if (currentUser && currentUser.email === 'admin@nesab-oil.com') {
+                document.getElementById('admin-toggle').classList.remove('hidden');
+            }
+        });
+    </script>
+    <script src="../scripts/main.js"></script>
+    <script src="../scripts/language.js"></script>
+</body>
+</html>

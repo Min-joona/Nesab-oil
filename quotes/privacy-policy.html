@@ -1,0 +1,796 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Privacy Policy - Nesab Vehicle Oils</title>
+    <meta name="description" content="Nesab Vehicle Oils Privacy Policy. How we collect, use, and protect your personal data. GDPR compliant.">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Custom Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+    
+    <style>
+        :root {
+            --primary-dark: #0a0a0a;
+            --copper: #d4a574;
+            --copper-dark: #b87333;
+            --steel-blue: #6b8db5;
+            --steel-blue-dark: #4a6fa5;
+            --light-gray: #f5f5f5;
+            --text-dark: #2d2d2d;
+            --text-light: #a0aec0;
+        }
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            background: var(--primary-dark);
+            color: white;
+            scroll-behavior: smooth;
+        }
+        
+        .copper-accent { color: var(--copper); }
+        .steel-accent { color: var(--steel-blue); }
+        
+        .legal-content h2 { 
+            @apply text-3xl font-bold mt-12 mb-6 copper-accent pb-4 border-b border-gray-700;
+            position: relative;
+        }
+        .legal-content h2::after {
+            content: '';
+            position: absolute;
+            bottom: -1px;
+            left: 0;
+            width: 80px;
+            height: 2px;
+            background: var(--copper);
+        }
+        
+        .legal-content h3 { 
+            @apply text-xl font-semibold mt-8 mb-4 steel-accent flex items-center gap-3;
+        }
+        
+        .legal-content p { 
+            @apply mb-5 text-gray-300 leading-relaxed text-base;
+        }
+        
+        .legal-content ul { 
+            @apply list-disc pl-8 mb-6 text-gray-300 space-y-3;
+        }
+        
+        .legal-content ol { 
+            @apply list-decimal pl-8 mb-6 text-gray-300 space-y-3;
+        }
+        
+        .legal-content strong { 
+            @apply text-white font-semibold;
+        }
+        
+        /* Sticky Navigation */
+        .nav-sticky {
+            transform: translateY(-100%);
+            transition: transform 0.3s ease;
+        }
+        
+        .nav-sticky.scrolled {
+            transform: translateY(0);
+        }
+        
+        /* Back to Top Button */
+        .back-to-top {
+            opacity: 0;
+            transform: scale(0.8);
+            transition: all 0.3s ease;
+            pointer-events: none;
+        }
+        
+        .back-to-top.visible {
+            opacity: 1;
+            transform: scale(1);
+            pointer-events: all;
+        }
+        
+        /* TOC Active State */
+        .toc-link {
+            transition: all 0.2s ease;
+            border-left: 3px solid transparent;
+            padding-left: 1rem;
+        }
+        
+        .toc-link.active {
+            color: var(--copper);
+            border-left-color: var(--copper);
+            background: rgba(212, 165, 116, 0.1);
+        }
+        
+        /* Accordion */
+        .accordion-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease;
+        }
+        
+        .accordion-content.open {
+            max-height: 1000px;
+        }
+        
+        /* Cookie Banner */
+        .cookie-banner {
+            transform: translateY(100%);
+            transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        
+        .cookie-banner.show {
+            transform: translateY(0);
+        }
+        
+        /* Print Styles */
+        @media print {
+            .no-print { display: none !important; }
+            body { background: white; color: black; }
+            .legal-content h2 { color: black; border-bottom: 2px solid #000; }
+        }
+        
+        /* Mobile Menu */
+        .mobile-menu {
+            transform: translateX(100%);
+            transition: transform 0.3s ease;
+        }
+        
+        .mobile-menu.open {
+            transform: translateX(0);
+        }
+        
+        /* Focus Styles */
+        *:focus-visible {
+            outline: 2px solid var(--copper);
+            outline-offset: 2px;
+        }
+    </style>
+</head>
+<body>
+    <!-- Skip to main content for accessibility -->
+    <a href="#main-content" class="sr-only focus:not-sr-only focus:absolute focus:top-0 focus:left-0 bg-copper text-white p-2 z-50">Skip to main content</a>
+
+    <!-- Navigation -->
+    <nav id="navbar" class="fixed top-0 left-0 right-0 z-50 bg-gray-900/95 backdrop-blur-md border-b border-gray-700 nav-sticky">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <a href="../index.html" class="text-2xl font-bold copper-accent hover:scale-105 transition-transform">نّساب Nesab</a>
+                
+                <!-- Desktop Menu -->
+                <div class="hidden md:block">
+                    <div class="ml-10 flex items-center space-x-8">
+                        <a href="../index.html" class="text-white hover:text-copper transition-colors duration-200 py-2">Home</a>
+                        <a href="../pages/shop.html" class="text-copper font-semibold">Shop</a>
+                        <a href="../pages/services.html" class="text-white hover:text-copper transition-colors duration-200 py-2">Services</a>
+                        <a href="../pages/about.html" class="text-white hover:text-copper transition-colors duration-200 py-2">About</a>
+                        <a href="../pages/contact.html" class="text-white hover:text-copper transition-colors duration-200 py-2">Contact</a>
+                    </div>
+                </div>
+                
+                <!-- Mobile Menu Button -->
+                <button id="mobile-menu-btn" class="md:hidden text-white hover:text-copper transition-colors no-print" aria-label="Toggle mobile menu">
+                    <i data-lucide="menu" class="w-6 h-6"></i>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Mobile Menu -->
+    <div id="mobile-menu" class="mobile-menu fixed right-0 top-16 h-full w-64 bg-gray-900 border-l border-gray-700 md:hidden no-print">
+        <div class="p-6 space-y-4">
+            <a href="../index.html" class="block text-white hover:text-copper transition-colors py-2">Home</a>
+            <a href="../pages/products.html" class="block text-white hover:text-copper transition-colors py-2">Products</a>
+            <a href="../pages/services.html" class="block text-white hover:text-copper transition-colors py-2">Services</a>
+            <a href="about.html" class="block text-white hover:text-copper transition-colors py-2">About</a>
+            <a href="contact.html" class="block text-white hover:text-copper transition-colors py-2">Contact</a>
+        </div>
+    </div>
+
+    <!-- Header -->
+    <section class="pt-24 pb-12 bg-gray-900 relative overflow-hidden">
+        <div class="absolute inset-0 bg-gradient-to-br from-copper/10 to-steel-blue/10"></div>
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
+            <div class="inline-flex items-center gap-2 bg-copper/10 px-4 py-2 rounded-full mb-4">
+                <i data-lucide="shield-check" class="w-4 h-4 copper-accent"></i>
+                <span class="text-sm copper-accent font-medium">GDPR Compliant</span>
+            </div>
+            <h1 class="text-4xl lg:text-6xl font-bold mb-4 copper-accent tracking-tight">Privacy Policy</h1>
+            <p class="text-gray-300">Last Updated: November 1, 2024</p>
+            <div class="mt-6 flex justify-center gap-4 no-print">
+                <button onclick="window.print()" class="btn-secondary flex items-center gap-2 px-4 py-2 rounded-lg border border-gray-600 hover:border-copper transition-colors">
+                    <i data-lucide="printer" class="w-4 h-4"></i>
+                    Print
+                </button>
+                <button onclick="sharePolicy()" class="btn-secondary flex items-center gap-2 px-4 py-2 rounded-lg border border-gray-600 hover:border-copper transition-colors">
+                    <i data-lucide="share-2" class="w-4 h-4"></i>
+                    Share
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Table of Contents -->
+    <aside id="toc" class="fixed right-2 top-32 w-64 bg-gray-900/95 backdrop-blur-md rounded-lg p-6 border border-gray-700 hidden lg:block no-print">
+        <h4 class="copper-accent font-semibold mb-4 flex items-center gap-2">
+            <i data-lucide="list" class="w-4 h-4"></i>
+            Quick Navigation
+        </h4>
+        <nav class="space-y-2 text-sm">
+            <a href="#section-1" class="toc-link block py-1 text-gray-300 hover:text-copper">1. Information We Collect</a>
+            <a href="#section-2" class="toc-link block py-1 text-gray-300 hover:text-copper">2. How We Use Information</a>
+            <a href="#section-3" class="toc-link block py-1 text-gray-300 hover:text-copper">3. Legal Basis (GDPR)</a>
+            <a href="#section-4" class="toc-link block py-1 text-gray-300 hover:text-copper">4. Data Sharing</a>
+            <a href="#section-5" class="toc-link block py-1 text-gray-300 hover:text-copper">5. Data Retention</a>
+            <a href="#section-6" class="toc-link block py-1 text-gray-300 hover:text-copper">6. Your Rights</a>
+            <a href="#section-7" class="toc-link block py-1 text-gray-300 hover:text-copper">7. Cookies</a>
+            <a href="#section-8" class="toc-link block py-1 text-gray-300 hover:text-copper">8. Data Security</a>
+            <a href="#section-9" class="toc-link block py-1 text-gray-300 hover:text-copper">9. International Transfers</a>
+            <a href="#section-10" class="toc-link block py-1 text-gray-300 hover:text-copper">10. Children's Privacy</a>
+            <a href="#section-11" class="toc-link block py-1 text-gray-300 hover:text-copper">11. Policy Changes</a>
+            <a href="#section-12" class="toc-link block py-1 text-gray-300 hover:text-copper">12. Contact</a>
+        </nav>
+    </aside>
+
+    <!-- Main Content -->
+    <main id="main-content" class="py-12 bg-gray-800">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="legal-content text-gray-300">
+                <p class="text-lg mb-8"><strong>Nesab Vehicle Oil Company</strong> ("we," "our," "us") is committed to protecting your privacy. This Privacy Policy explains how we collect, use, disclose, and safeguard your information when you visit our website <strong class="copper-accent">nesab-oil.com</strong> or make purchases from us.</p>
+
+                <!-- Section 1 -->
+                <section id="section-1" class="accordion-section">
+                    <div class="accordion-header flex justify-between items-center cursor-pointer no-print">
+                        <h2>1. Information We Collect</h2>
+                        <i data-lucide="chevron-down" class="accordion-icon w-6 h-6 text-copper transition-transform"></i>
+                    </div>
+                    <div class="accordion-content">
+                        <h3>1.1 Personal Information</h3>
+                        <p>We collect personal information you provide directly to us, including:</p>
+                        <ul>
+                            <li>Name, email address, phone number</li>
+                            <li>Company name and business details</li>
+                            <li>Delivery addresses</li>
+                            <li>Payment information (processed securely; we don't store full card details)</li>
+                            <li>Vehicle information and service requirements</li>
+                        </ul>
+
+                        <h3>1.2 Automatically Collected Information</h3>
+                        <p>When you visit our website, we automatically collect:</p>
+                        <ul>
+                            <li>IP address, browser type, device information</li>
+                            <li>Pages visited, time spent, navigation paths</li>
+                            <li>Location data (approximate region, not precise GPS)</li>
+                            <li>Cookies and tracking technologies</li>
+                        </ul>
+                    </div>
+                </section>
+
+                <!-- Section 2 -->
+                <section id="section-2" class="accordion-section">
+                    <div class="accordion-header flex justify-between items-center cursor-pointer no-print">
+                        <h2>2. How We Use Your Information</h2>
+                        <i data-lucide="chevron-down" class="accordion-icon w-6 h-6 text-copper transition-transform"></i>
+                    </div>
+                    <div class="accordion-content">
+                        <p>We use your information to:</p>
+                        <ul>
+                            <li>Process and fulfill your orders</li>
+                            <li>Provide technical consultation and support</li>
+                            <li>Send order confirmations, invoices, and delivery updates</li>
+                            <li>Respond to inquiries and provide customer service</li>
+                            <li>Improve our products, services, and website</li>
+                            <li>Send marketing communications (with your consent)</li>
+                            <li>Comply with legal obligations</li>
+                        </ul>
+                    </div>
+                </section>
+
+                <!-- Section 3 -->
+                <section id="section-3" class="accordion-section">
+                    <div class="accordion-header flex justify-between items-center cursor-pointer no-print">
+                        <h2>3. Legal Basis for Processing (GDPR)</h2>
+                        <i data-lucide="chevron-down" class="accordion-icon w-6 h-6 text-copper transition-transform"></i>
+                    </div>
+                    <div class="accordion-content">
+                        <p>For customers in the EU/EEA, we process your data based on:</p>
+                        <ul>
+                            <li><strong>Contract:</strong> To fulfill your orders</li>
+                            <li><strong>Consent:</strong> For marketing communications</li>
+                            <li><strong>Legitimate Interest:</strong> For fraud prevention and business improvement</li>
+                            <li><strong>Legal Obligation:</strong> For tax and accounting records</li>
+                        </ul>
+                    </div>
+                </section>
+
+                <!-- Section 4 -->
+                <section id="section-4" class="accordion-section">
+                    <div class="accordion-header flex justify-between items-center cursor-pointer no-print">
+                        <h2>4. Data Sharing</h2>
+                        <i data-lucide="chevron-down" class="accordion-icon w-6 h-6 text-copper transition-transform"></i>
+                    </div>
+                    <div class="accordion-content">
+                        <p>We may share your data with:</p>
+                        <ul>
+                            <li><strong>Delivery Partners:</strong> To fulfill deliveries (name, address, phone)</li>
+                            <li><strong>Payment Processors:</strong> To process payments securely</li>
+                            <li><strong>Service Providers:</strong> IT support, analytics, marketing tools</li>
+                            <li><strong>Legal Authorities:</strong> When required by Ethiopian law</li>
+                        </ul>
+                        <p class="mt-4 p-4 bg-red-900/20 border-l-4 border-red-600 rounded"><strong class="text-red-300">We never sell your personal data to third parties.</strong></p>
+                    </div>
+                </section>
+
+                <!-- Section 5 -->
+                <section id="section-5" class="accordion-section">
+                    <div class="accordion-header flex justify-between items-center cursor-pointer no-print">
+                        <h2>5. Data Retention</h2>
+                        <i data-lucide="chevron-down" class="accordion-icon w-6 h-6 text-copper transition-transform"></i>
+                    </div>
+                    <div class="accordion-content">
+                        <p>We retain your data as follows:</p>
+                        <ul>
+                            <li>Order Information: <strong>7 years</strong> (legal requirement)</li>
+                            <li>Account Data: Until you delete your account</li>
+                            <li>Marketing Data: Until you unsubscribe</li>
+                            <li>Analytics Data: <strong>26 months</strong> (Google Analytics default)</li>
+                        </ul>
+                    </div>
+                </section>
+
+                <!-- Section 6 -->
+                <section id="section-6" class="accordion-section">
+                    <div class="accordion-header flex justify-between items-center cursor-pointer no-print">
+                        <h2>6. Your Rights</h2>
+                        <i data-lucide="chevron-down" class="accordion-icon w-6 h-6 text-copper transition-transform"></i>
+                    </div>
+                    <div class="accordion-content">
+                        <p>You have the right to:</p>
+                        <ul>
+                            <li>Access your personal data</li>
+                            <li>Correct inaccurate information</li>
+                            <li>Request deletion (where legally possible)</li>
+                            <li>Object to processing or marketing</li>
+                            <li>Data portability</li>
+                            <li>Withdraw consent at any time</li>
+                        </ul>
+                        <p class="mt-4">To exercise these rights, contact us at: 
+                            <button class="copper-accent hover:underline flex items-center gap-2 inline-flex" onclick="copyToClipboard('privacy@nesab-oil.com')">
+                                privacy@nesab-oil.com
+                                <i data-lucide="copy" class="w-4 h-4"></i>
+                            </button>
+                        </p>
+                    </div>
+                </section>
+
+                <!-- Section 7 -->
+                <section id="section-7" class="accordion-section">
+                    <div class="accordion-header flex justify-between items-center cursor-pointer no-print">
+                        <h2>7. Cookies</h2>
+                        <i data-lucide="chevron-down" class="accordion-icon w-6 h-6 text-copper transition-transform"></i>
+                    </div>
+                    <div class="accordion-content">
+                        <p>Our website uses cookies to:</p>
+                        <ul>
+                            <li>Remember your login session</li>
+                            <li>Store cart contents</li>
+                            <li>Track website usage (analytics)</li>
+                            <li>Personalize content and ads</li>
+                        </ul>
+                        <p class="mt-4">You can disable cookies in your browser settings, but some features may not work properly.</p>
+                    </div>
+                </section>
+
+                <!-- Section 8 -->
+                <section id="section-8" class="accordion-section">
+                    <div class="accordion-header flex justify-between items-center cursor-pointer no-print">
+                        <h2>8. Data Security</h2>
+                        <i data-lucide="chevron-down" class="accordion-icon w-6 h-6 text-copper transition-transform"></i>
+                    </div>
+                    <div class="accordion-content">
+                        <p>We implement appropriate technical and organizational measures:</p>
+                        <ul>
+                            <li>SSL encryption for all data in transit</li>
+                            <li>Encrypted storage for sensitive data</li>
+                            <li>Regular security audits and penetration testing</li>
+                            <li>Employee training on data protection</li>
+                            <li>Access controls and authentication</li>
+                        </ul>
+                    </div>
+                </section>
+
+                <!-- Section 9 -->
+                <section id="section-9" class="accordion-section">
+                    <div class="accordion-header flex justify-between items-center cursor-pointer no-print">
+                        <h2>9. International Transfers</h2>
+                        <i data-lucide="chevron-down" class="accordion-icon w-6 h-6 text-copper transition-transform"></i>
+                    </div>
+                    <div class="accordion-content">
+                        <p>Your data is stored on servers located in <strong class="copper-accent">Germany</strong> (Hetzner) and accessed only by authorized personnel in Ethiopia. We ensure adequate protection per GDPR requirements.</p>
+                    </div>
+                </section>
+
+                <!-- Section 10 -->
+                <section id="section-10" class="accordion-section">
+                    <div class="accordion-header flex justify-between items-center cursor-pointer no-print">
+                        <h2>10. Children's Privacy</h2>
+                        <i data-lucide="chevron-down" class="accordion-icon w-6 h-6 text-copper transition-transform"></i>
+                    </div>
+                    <div class="accordion-content">
+                        <p>Our services are not intended for individuals under 16. We do not knowingly collect children's data.</p>
+                    </div>
+                </section>
+
+                <!-- Section 11 -->
+                <section id="section-11" class="accordion-section">
+                    <div class="accordion-header flex justify-between items-center cursor-pointer no-print">
+                        <h2>11. Changes to This Policy</h2>
+                        <i data-lucide="chevron-down" class="accordion-icon w-6 h-6 text-copper transition-transform"></i>
+                    </div>
+                    <div class="accordion-content">
+                        <p>We may update this policy periodically. Changes take effect immediately upon posting. Material changes will be notified via email or banner.</p>
+                    </div>
+                </section>
+
+                <!-- Section 12 -->
+                <section id="section-12" class="accordion-section">
+                    <div class="accordion-header flex justify-between items-center cursor-pointer no-print">
+                        <h2>12. Contact</h2>
+                        <i data-lucide="chevron-down" class="accordion-icon w-6 h-6 text-copper transition-transform"></i>
+                    </div>
+                    <div class="accordion-content">
+                        <p>For privacy inquiries, contact:</p>
+                        <ul class="space-y-3">
+                            <li><strong>Email:</strong> 
+                                <button class="copper-accent hover:underline flex items-center gap-2 inline-flex" onclick="copyToClipboard('privacy@nesab-oil.com')">
+                                    privacy@nesab-oil.com
+                                    <i data-lucide="copy" class="w-4 h-4"></i>
+                                </button>
+                            </li>
+                            <li><strong>Address:</strong> Lafto Square, Addis Ababa, Ethiopia</li>
+                            <li><strong>Phone:</strong> +251 93 368 0059</li>
+                        </ul>
+                        <p class="mt-4 p-4 bg-steel-blue/10 border-l-4 border-steel-blue rounded">You also have the right to lodge a complaint with the Ethiopian Information Security Agency.</p>
+                    </div>
+                </section>
+            </div>
+        </div>
+    </main>
+
+    <!-- Back to Top Button -->
+    <button id="back-to-top" class="back-to-top fixed bottom-8 right-8 bg-copper-dark hover:bg-copper text-white p-3 rounded-full shadow-lg z-40 no-print" aria-label="Back to top">
+        <i data-lucide="arrow-up" class="w-5 h-5"></i>
+        <svg class="progress-ring" width="48" height="48" style="position: absolute; top: -4px; left: -4px;">
+            <circle class="progress-ring-circle" stroke="var(--copper)" stroke-width="2" fill="transparent" r="22" cx="24" cy="24"/>
+        </svg>
+    </button>
+
+    <!-- Cookie Consent Banner -->
+    <div id="cookie-banner" class="cookie-banner fixed bottom-0 left-0 right-0 bg-gray-900 border-t border-gray-700 p-6 z-50 no-print">
+        <div class="max-w-4xl mx-auto flex flex-col md:flex-row items-center justify-between gap-4">
+            <div class="flex items-start gap-3">
+                <i data-lucide="cookie" class="w-6 h-6 steel-accent mt-1"></i>
+                <div>
+                    <h4 class="font-semibold text-white mb-1">We use cookies</h4>
+                    <p class="text-sm text-gray-300">We use cookies to enhance your experience. By continuing, you agree to our Privacy Policy.</p>
+                </div>
+            </div>
+            <div class="flex gap-3">
+                <button onclick="rejectCookies()" class="px-4 py-2 text-gray-300 hover:text-white transition-colors">Reject</button>
+                <button onclick="acceptCookies()" class="bg-copper hover:bg-copper-dark px-4 py-2 rounded-lg font-medium transition-colors">Accept</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 border-t border-gray-700 no-print">
+        <div class="max-w-7xl mx-auto py-12 px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-2 md:grid-cols-5 gap-8">
+                <div>
+                    <h3 class="text-lg font-semibold copper-accent mb-4" data-translate="footer-company">Company</h3>
+                    <ul class="space-y-3 text-sm text-gray-400">
+                        <li><a href="../pages/about.html" class="hover:text-copper transition-colors" data-translate="footer-about">About Us</a></li>
+                        <li><a href="../pages/services.html" class="hover:text-copper transition-colors" data-translate="footer-services">Our Services</a></li>
+                        <li><a href="#" class="hover:text-copper transition-colors" data-translate="footer-careers">Careers</a></li>
+                        <li><a href="#" class="hover:text-copper transition-colors" data-translate="footer-partners">Partnerships</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="text-lg font-semibold copper-accent mb-4" data-translate="footer-support">Support</h3>
+                    <ul class="space-y-3 text-sm text-gray-400">
+                        <li><a href="../pages/contact.html" class="hover:text-copper transition-colors" data-translate="footer-contact">Contact Us</a></li>
+                        <li><a href="faq.html" class="hover:text-copper transition-colors" data-translate="footer-faq">FAQ</a></li>
+                        <li><a href="#" class="hover:text-copper transition-colors" data-translate="footer-shipping">Shipping Info</a></li>
+                        <li><a href="#" class="hover:text-copper transition-colors" data-translate="footer-returns">Returns Policy</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="text-lg font-semibold copper-accent mb-4" data-translate="footer-legal">Legal</h3>
+                    <ul class="space-y-3 text-sm text-gray-400">
+                        <li><a href="terms-of-service.html" class="hover:text-copper transition-colors" data-translate="footer-terms">Terms of Service</a></li>
+                        <li><a href="privacy-policy.html" class="hover:text-copper transition-colors" data-translate="footer-privacy">Privacy Policy</a></li>
+                        <li><a href="#" class="hover:text-copper transition-colors" data-translate="footer-disclaimer">Disclaimer</a></li>
+                        <li><a href="#" class="hover:text-copper transition-colors" data-translate="footer-sitemap">Sitemap</a></li>
+                    </ul>
+                </div>
+                <div class="col-span-2 md:col-span-2">
+                    <h3 class="text-lg font-semibold copper-accent mb-4" data-translate="footer-newsletter">Join Our Newsletter</h3>
+                    <p class="text-sm text-gray-400 mb-4" data-translate="footer-newsletter-desc">Get updates on new products and promotions.</p>
+                    <form class="flex">
+                        <input type="email" placeholder="Your email address" class="w-full px-4 py-2 bg-gray-800 border border-gray-700 rounded-l-lg text-white placeholder-gray-500 focus:border-copper focus:outline-none" data-translate="footer-email-placeholder">
+                        <button type="submit" class="bg-copper hover:bg-copper-dark px-6 py-2 rounded-r-lg font-medium transition-colors" data-translate="footer-subscribe">Subscribe</button>
+                    </form>
+                </div>
+            </div>
+            
+            <div class="mt-12 border-t border-gray-800 pt-8 flex flex-col md:flex-row items-center justify-between">
+                <p class="text-sm text-gray-500 order-2 md:order-1 mt-4 md:mt-0" data-translate="footer-copyright">
+                    &copy; <span id="current-year">2025</span> Nesab Vehicle Oils. All rights reserved.
+                </p>
+                <div class="flex space-x-6 order-1 md:order-2">
+                    <a href="#" class="text-gray-400 hover:text-copper transition-colors" aria-label="Facebook">
+                        <i data-lucide="facebook" class="w-5 h-5"></i>
+                    </a>
+                    <a href="#" class="text-gray-400 hover:text-copper transition-colors" aria-label="Telegram">
+                        <i data-lucide="send" class="w-5 h-5"></i>
+                    </a>
+                    <a href="#" class="text-gray-400 hover:text-copper transition-colors" aria-label="Instagram">
+                        <i data-lucide="instagram" class="w-5 h-5"></i>
+                    </a>
+                    <a href="#" class="text-gray-400 hover:text-copper transition-colors" aria-label="LinkedIn">
+                        <i data-lucide="linkedin" class="w-5 h-5"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Initialize Lucide icons
+        lucide.createIcons();
+        
+        // Mobile menu toggle
+        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        let menuOpen = false;
+        
+        mobileMenuBtn.addEventListener('click', () => {
+            menuOpen = !menuOpen;
+            mobileMenu.classList.toggle('open');
+            const icon = mobileMenuBtn.querySelector('i');
+            icon.setAttribute('data-lucide', menuOpen ? 'x' : 'menu');
+            lucide.createIcons();
+        });
+        
+        // Close mobile menu on link click
+        mobileMenu.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.remove('open');
+                menuOpen = false;
+                mobileMenuBtn.querySelector('i').setAttribute('data-lucide', 'menu');
+                lucide.createIcons();
+            });
+        });
+        
+        // Sticky nav on scroll
+        let lastScroll = 0;
+        const navbar = document.getElementById('navbar');
+        
+        window.addEventListener('scroll', () => {
+            const currentScroll = window.pageYOffset;
+            
+            if (currentScroll > 100) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+            
+            lastScroll = currentScroll;
+            
+            // Back to top visibility
+            const backToTop = document.getElementById('back-to-top');
+            if (currentScroll > 500) {
+                backToTop.classList.add('visible');
+            } else {
+                backToTop.classList.remove('visible');
+            }
+            
+            // Update TOC active state
+            updateTOC();
+            
+            // Update scroll progress
+            updateScrollProgress();
+        });
+        
+        // Smooth scroll for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+        
+       window.addEventListener('scroll', () => {
+            const currentScroll = window.pageYOffset;
+            
+            if (currentScroll > 100) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+            
+            lastScroll = currentScroll;
+            
+            // Back to top visibility
+            const backToTop = document.getElementById('back-to-top');
+            if (currentScroll > 500) {
+                backToTop.classList.add('visible');
+            } else {
+                backToTop.classList.remove('visible');
+            }
+            
+            // Update scroll progress
+            updateScrollProgress();
+        });
+        
+        // Scroll progress indicator
+        function updateScrollProgress() {
+            const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+            const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+            const scrolled = (winScroll / height) * 100;
+            const circle = document.querySelector('.progress-ring-circle');
+            const circumference = 2 * Math.PI * 22;
+            const offset = circumference - (scrolled / 100) * circumference;
+            circle.style.strokeDasharray = circumference;
+            circle.style.strokeDashoffset = offset;
+        }
+        
+        // Back to top
+        document.getElementById('back-to-top').addEventListener('click', () => {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+        
+        // Scroll progress indicator
+        function updateScrollProgress() {
+            const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+            const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+            const scrolled = (winScroll / height) * 100;
+            const circle = document.querySelector('.progress-ring-circle');
+            const circumference = 2 * Math.PI * 22;
+            const offset = circumference - (scrolled / 100) * circumference;
+            circle.style.strokeDasharray = circumference;
+            circle.style.strokeDashoffset = offset;
+        }
+        
+        // TOC highlight on scroll
+        function updateTOC() {
+            const sections = document.querySelectorAll('section[id]');
+            const tocLinks = document.querySelectorAll('.toc-link');
+            
+            let current = '';
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.clientHeight;
+                if (window.pageYOffset >= sectionTop - 200) {
+                    current = section.getAttribute('id');
+                }
+            });
+            
+            tocLinks.forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href') === `#${current}`) {
+                    link.classList.add('active');
+                }
+            });
+        }
+        
+        // Accordion functionality for mobile/tablet
+        const accordionHeaders = document.querySelectorAll('.accordion-header');
+        const isMobile = () => window.innerWidth < 768;
+        
+        function initAccordions() {
+            accordionHeaders.forEach(header => {
+                const content = header.nextElementSibling;
+                const icon = header.querySelector('.accordion-icon');
+                
+                if (isMobile()) {
+                    content.classList.remove('open');
+                    icon.style.transform = 'rotate(0deg)';
+                    
+                    header.addEventListener('click', function() {
+                        const isOpen = content.classList.contains('open');
+                        
+                        // Close all others
+                        document.querySelectorAll('.accordion-content').forEach(c => c.classList.remove('open'));
+                        document.querySelectorAll('.accordion-icon').forEach(i => i.style.transform = 'rotate(0deg)');
+                        
+                        if (!isOpen) {
+                            content.classList.add('open');
+                            icon.style.transform = 'rotate(180deg)';
+                        }
+                    });
+                } else {
+                    content.classList.add('open');
+                    icon.style.transform = 'rotate(180deg)';
+                }
+            });
+        }
+        
+        window.addEventListener('resize', initAccordions);
+        initAccordions();
+        
+        // Copy to clipboard
+        function copyToClipboard(text) {
+            navigator.clipboard.writeText(text).then(() => {
+                // Show temporary success message
+                const btn = event.target.closest('button');
+                const originalHTML = btn.innerHTML;
+                btn.innerHTML = '<i data-lucide="check" class="w-4 h-4"></i> Copied!';
+                lucide.createIcons();
+                setTimeout(() => {
+                    btn.innerHTML = originalHTML;
+                    lucide.createIcons();
+                }, 2000);
+            }).catch(err => {
+                console.error('Failed to copy: ', err);
+                alert('Failed to copy email address');
+            });
+        }
+        
+        // Share functionality
+        function sharePolicy() {
+            if (navigator.share) {
+                navigator.share({
+                    title: 'Nesab Vehicle Oils - Privacy Policy',
+                    url: window.location.href
+                }).catch(err => console.log('Error sharing:', err));
+            } else {
+                copyToClipboard(window.location.href);
+            }
+        }
+        
+        // Cookie consent
+        function acceptCookies() {
+            localStorage.setItem('cookiesAccepted', 'true');
+            document.getElementById('cookie-banner').classList.remove('show');
+        }
+        
+        function rejectCookies() {
+            localStorage.setItem('cookiesAccepted', 'false');
+            document.getElementById('cookie-banner').classList.remove('show');
+            // Here you could disable non-essential cookies
+        }
+        
+        // Show cookie banner if not already set
+        if (!localStorage.getItem('cookiesAccepted')) {
+            setTimeout(() => {
+                document.getElementById('cookie-banner').classList.add('show');
+            }, 1000);
+        }
+        
+        // Keyboard navigation
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Tab') {
+                document.body.classList.add('keyboard-nav');
+            }
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,712 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Nesab - Get in Touch | Addis Ababa</title>
+    <meta name="description" content="Contact Nesab Vehicle Oils in Addis Ababa. Phone, email, location, and contact form. Get expert lubrication advice and support.">
+    <link rel="shortcut icon" href="../resources/favicon.png" type="image/x-icon">
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    
+    <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+    
+    <style>
+        :root {
+            --primary-dark: #0a0a0a;
+            --copper: #d4a574;
+            --copper-dark: #b87333;
+            --steel-blue: #6b8db5;
+            --steel-blue-dark: #4a6fa5;
+            --light-gray: #f5f5f5;
+            --text-dark: #2d2d2d;
+        }
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            background: var(--primary-dark);
+            color: white;
+            scroll-behavior: smooth;
+        }
+        
+        .copper-accent { color: var(--copper); }
+        .steel-accent { color: var(--steel-blue); }
+        
+        .gradient-text {
+            background: linear-gradient(45deg, var(--copper), var(--steel-blue));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: gradientShift 3s ease-in-out infinite;
+            background-size: 200% 200%;
+        }
+        
+        @keyframes gradientShift {
+            0%, 100% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+        }
+        
+        .hover-lift {
+            transition: all 0.3s ease;
+        }
+        
+        .hover-lift:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+        }
+        
+        .language-selector {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(212, 165, 116, 0.3);
+            border-radius: 8px;
+            padding: 0.5rem;
+            backdrop-filter: blur(10px);
+        }
+        
+        .language-selector select {
+            background: transparent;
+            border: none;
+            color: white;
+            outline: none;
+            cursor: pointer;
+        }
+        
+        .language-selector select option {
+            background: var(--primary-dark);
+        }
+        
+                *:focus-visible {
+            outline: 2px solid var(--copper);
+            outline-offset: 2px;
+        }
+
+        /* Cookie Banner */
+        .cookie-banner {
+            transform: translateY(100%);
+            transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        
+        .cookie-banner.show {
+            transform: translateY(0);
+        }
+        
+        /* Back to Top Button */
+        .back-to-top {
+            opacity: 0;
+            transform: scale(0.8);
+            transition: all 0.3s ease;
+            pointer-events: none;
+        }
+        
+        .back-to-top.visible {
+            opacity: 1;
+            transform: scale(1);
+            pointer-events: all;
+        }
+
+        .contact-card {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 12px;
+            transition: all 0.3s ease;
+        }
+        
+        .contact-card:hover {
+            border-color: var(--copper);
+            transform: translateY(-4px);
+            box-shadow: 0 10px 25px rgba(184, 115, 51, 0.1);
+        }
+    </style>
+</head>
+<body>
+    <a href="#main-content" class="sr-only focus:not-sr-only focus:absolute focus:top-0 focus:left-0 bg-copper text-white p-2 z-50">Skip to main content</a>
+
+    <!-- Navigation (Copied from shop.html for consistency) -->
+    <nav id="navbar" class="fixed top-0 left-0 right-0 z-50 bg-gray-900/95 backdrop-blur-md border-b border-gray-700">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <a href="../index.html" class="flex items-center gap-2 text-2xl font-bold copper-accent hover:scale-105 transition-transform">
+                    <img src="../resources/images/logo.png" alt="Nesab" class="h-10 w-auto">
+                    نّساب Nesab
+                </a>
+                
+                <div class="hidden md:flex items-center gap-6">
+                    <div class="flex items-center gap-8">
+                        <a href="../index.html" class="text-white hover:text-copper transition-colors duration-200 py-2">Home</a>
+                        <a href="shop.html" class="text-white hover:text-copper transition-colors duration-200 py-2">Shop</a>
+                        <a href="services.html" class="text-white hover:text-copper transition-colors duration-200 py-2">Services</a>
+                        <a href="about.html" class="text-white hover:text-copper transition-colors duration-200 py-2">About</a>
+                        <a href="contact.html" class="text-copper font-semibold py-2">Contact</a>
+                    </div>
+                    
+                    <div class="flex items-center gap-4 pl-6 border-l border-gray-700">
+                        <div class="language-selector flex items-center gap-2">
+                            <i data-lucide="globe" class="w-4 h-4 copper-accent"></i>
+                            <select id="language-selector" class="text-sm pr-2">
+                                <option value="en">English</option>
+                                <option value="am">አማርኛ</option>
+                                <option value="ar">العربية</option>
+                                <option value="so">Somali</option>
+                            </select>
+                        </div>
+                        <button id="account-btn" class="text-white hover:text-copper transition-colors flex items-center gap-2">
+                            <i data-lucide="user" class="w-5 h-5"></i>
+                            <span data-translate="account">Account</span>
+                        </button>
+                        <button id="cart-btn" class="relative text-white hover:text-copper transition-colors flex items-center gap-2">
+                            <i data-lucide="shopping-cart" class="w-5 h-5"></i>
+                            <span data-translate="cart">Cart</span>
+                            <span id="cart-count" class="absolute -top-2 -right-2 bg-copper text-xs rounded-full w-5 h-5 flex items-center justify-center text-white font-bold">0</span>
+                        </button>
+                    </div>
+                </div>
+                
+                <button id="mobile-menu-btn" class="md:hidden text-white hover:text-copper transition-colors" aria-label="Toggle mobile menu">
+                    <i data-lucide="menu" class="w-6 h-6"></i>
+                </button>
+            </div>
+        </div>
+        
+        <div id="mobile-menu" class="fixed right-0 top-16 h-full w-64 bg-gray-900 border-l border-gray-700 transform translate-x-full transition-transform md:hidden z-40">
+            <div class="p-6 space-y-4">
+                <a href="../index.html" class="block text-white hover:text-copper transition-colors py-2">Home</a>
+                <a href="shop.html" class="block text-white hover:text-copper transition-colors py-2">Shop</a>
+                <a href="services.html" class="block text-white hover:text-copper transition-colors py-2">Services</a>
+                <a href="about.html" class="block text-white hover:text-copper transition-colors py-2">About</a>
+                <a href="contact.html" class="block copper-accent py-2">Contact</a>
+                <hr class="border-gray-700">
+                <div class="language-selector flex items-center gap-2">
+                    <i data-lucide="globe" class="w-4 h-4 copper-accent"></i>
+                    <select id="language-selector-mobile" class="w-full text-white bg-transparent">
+                        <option value="en">English</option>
+                        <option value="am">አማርኛ</option>
+                        <option value="ar">العربية</option>
+                        <option value="so">Somali</option>
+                    </select>
+                </div>
+                <button id="mobile-account-btn" class="block text-white hover:text-copper transition-colors py-2 text-left w-full">
+                    <i data-lucide="user" class="w-5 h-5 inline mr-2"></i>
+                    <span data-translate="account">Account</span>
+                </button>
+                <button id="mobile-cart-btn" class="block text-white hover:text-copper transition-colors py-2 text-left w-full">
+                    <i data-lucide="shopping-cart" class="w-5 h-5 inline mr-2"></i>
+                    <span data-translate="cart">Cart</span>
+                    <span id="mobile-cart-count" class="ml-2 bg-copper text-xs rounded-full px-2 py-1 text-white font-bold">0</span>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <main id="main-content" class="pt-24 min-h-screen bg-gray-800">
+        <!-- Hero Section -->
+        <section class="py-20 bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900 relative">
+            <div class="absolute inset-0 bg-gradient-to-br from-copper/10 to-steel-blue/10"></div>
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+                <div class="text-center">
+                    <h1 class="text-5xl lg:text-6xl font-display mb-6 gradient-text" data-translate="contact-hero-title">
+                        Get in Touch
+                    </h1>
+                    <p class="text-xl text-gray-300 mb-8 max-w-3xl mx-auto" data-translate="contact-hero-subtitle">
+                        Have questions about oils? Need technical advice? Want to place an order? Our team is here to help 7 days a week.
+                    </p>
+                    <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                        <a href="tel:+251933680059" class="bg-copper text-white px-8 py-4 rounded-lg font-semibold hover-lift flex items-center justify-center gap-2">
+                            <i data-lucide="phone-call" class="w-5 h-5"></i>
+                            Call Now
+                        </a>
+                        <button onclick="scrollToContactForm()" class="border border-copper-accent text-copper-accent px-8 py-4 rounded-lg font-semibold hover:bg-copper-accent hover:text-white transition-all">
+                            Send Message
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Information Cards -->
+        <section class="py-20 bg-gray-900">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                    <div class="contact-card bg-gray-800 p-6 text-center">
+                        <div class="w-16 h-16 bg-copper/20 rounded-full flex items-center justify-center mx-auto mb-4">
+                            <i data-lucide="phone" class="w-8 h-8 copper-accent"></i>
+                        </div>
+                        <h3 class="text-xl font-bold mb-2 copper-accent" data-translate="phone">Phone</h3>
+                        <p class="text-gray-300 mb-2" data-translate="phone-available">Available 7 days</p>
+                        <a href="tel:+251933680059" class="text-lg steel-accent hover:text-copper transition-colors">+251 933 680 059</a>
+                    </div>
+                    
+                    <div class="contact-card bg-gray-800 p-6 text-center">
+                        <div class="w-16 h-16 bg-steel-blue/20 rounded-full flex items-center justify-center mx-auto mb-4">
+                            <i data-lucide="mail" class="w-8 h-8 steel-accent"></i>
+                        </div>
+                        <h3 class="text-xl font-bold mb-2 copper-accent" data-translate="email">Email</h3>
+                        <p class="text-gray-300 mb-2" data-translate="email-response">Response within 2 hours</p>
+                        <a href="mailto:info@nesab-oil.com" class="text-lg steel-accent hover:text-copper transition-colors">info@nesab-oil.com</a>
+                    </div>
+                    
+                    <div class="contact-card bg-gray-800 p-6 text-center">
+                        <div class="w-16 h-16 bg-copper/20 rounded-full flex items-center justify-center mx-auto mb-4">
+                            <i data-lucide="map-pin" class="w-8 h-8 copper-accent"></i>
+                        </div>
+                        <h3 class="text-xl font-bold mb-2 copper-accent" data-translate="location">Location</h3>
+                        <p class="text-gray-300 mb-2" data-translate="visit-us">Visit our workshop</p>
+                        <p class="text-lg steel-accent">Kazanchis, Addis Ababa</p>
+                    </div>
+                    
+                    <div class="contact-card bg-gray-800 p-6 text-center">
+                        <div class="w-16 h-16 bg-steel-blue/20 rounded-full flex items-center justify-center mx-auto mb-4">
+                            <i data-lucide="clock" class="w-8 h-8 steel-accent"></i>
+                        </div>
+                        <h3 class="text-xl font-bold mb-2 copper-accent" data-translate="hours">Business Hours</h3>
+                        <p class="text-gray-300 mb-2" data-translate="hours-details">Mon-Sun: 6AM-9PM</p>
+                        <p class="text-lg steel-accent" data-translate="hours-note">365 days service</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Form and Map -->
+        <section id="contact-form-section" class="py-20 bg-gray-800">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
+                    <!-- Contact Form -->
+                    <div>
+                        <h2 class="text-3xl font-display mb-6 copper-accent" data-translate="send-message">Send Us a Message</h2>
+                        <form id="contact-form" class="space-y-6">
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                                <div>
+                                    <label class="block text-sm font-medium mb-2" data-translate="full-name">Full Name</label>
+                                    <input type="text" id="contact-name" class="w-full bg-gray-900 border border-gray-700 rounded-lg px-4 py-3 text-white focus:border-copper focus:outline-none" required>
+                                </div>
+                                <div>
+                                    <label class="block text-sm font-medium mb-2" data-translate="phone-number">Phone Number</label>
+                                    <input type="tel" id="contact-phone" class="w-full bg-gray-900 border border-gray-700 rounded-lg px-4 py-3 text-white focus:border-copper focus:outline-none" required>
+                                </div>
+                            </div>
+                            
+                            <div>
+                                <label class="block text-sm font-medium mb-2" data-translate="email-address">Email Address</label>
+                                <input type="email" id="contact-email" class="w-full bg-gray-900 border border-gray-700 rounded-lg px-4 py-3 text-white focus:border-copper focus:outline-none" required>
+                            </div>
+                            
+                            <div>
+                                <label class="block text-sm font-medium mb-2" data-translate="subject">Subject</label>
+                                <select id="contact-subject" class="w-full bg-gray-900 border border-gray-700 rounded-lg px-4 py-3 text-white focus:border-copper focus:outline-none" required>
+                                    <option value="" data-translate="select-subject">Select a subject</option>
+                                    <option value="product-inquiry" data-translate="product-inquiry">Product Inquiry</option>
+                                    <option value="service-request" data-translate="service-request">Service Request</option>
+                                    <option value="technical-support" data-translate="technical-support">Technical Support</option>
+                                    <option value="bulk-order" data-translate="bulk-order">Bulk Order</option>
+                                    <option value="partnership" data-translate="partnership">Partnership</option>
+                                    <option value="other" data-translate="other">Other</option>
+                                </select>
+                            </div>
+                            
+                            <div>
+                                <label class="block text-sm font-medium mb-2" data-translate="message">Message</label>
+                                <textarea id="contact-message" rows="5" class="w-full bg-gray-900 border border-gray-700 rounded-lg px-4 py-3 text-white focus:border-copper focus:outline-none" placeholder="Tell us how we can help you..." required></textarea>
+                            </div>
+                            
+                            <button type="submit" class="w-full bg-copper hover:bg-copper-dark py-4 rounded-lg font-semibold transition-colors flex items-center justify-center gap-2" data-translate="send-message-btn">
+                                <i data-lucide="send" class="w-5 h-5"></i>
+                                Send Message
+                            </button>
+                        </form>
+                    </div>
+                    
+                    <!-- Map and Address -->
+                    <div>
+                        <h2 class="text-3xl font-display mb-6 steel-accent" data-translate="find-us">Find Us</h2>
+                        <div class="bg-gray-900 rounded-lg border border-gray-700 overflow-hidden mb-6">
+                            <!-- Embedded map placeholder - replace with actual Google Maps embed -->
+                            <div class="w-full h-96 bg-gray-800 flex items-center justify-center">
+                                <div class="text-center">
+                                    <i data-lucide="map" class="w-16 h-16 steel-accent mx-auto mb-4"></i>
+                                    <p class="text-gray-400" data-translate="map-view">Interactive Map View</p>
+                                    <p class="text-sm text-gray-500 mt-2">Kazanchis, Near Meskel Square</p>
+                                    <p class="text-sm text-gray-500">Addis Ababa, Ethiopia</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="bg-gray-900 p-6 rounded-lg border border-gray-700">
+                            <h3 class="text-xl font-semibold mb-4 copper-accent" data-translate="directions">Getting Here</h3>
+                            <div class="space-y-4 text-gray-300">
+                                <div class="flex gap-3">
+                                    <i data-lucide="car" class="w-5 h-5 steel-accent mt-1"></i>
+                                    <div>
+                                        <p class="font-medium" data-translate="by-car">By Car:</p>
+                                        <p class="text-sm" data-translate="parking">Parking available in front of workshop</p>
+                                    </div>
+                                </div>
+                                <div class="flex gap-3">
+                                    <i data-lucide="bus" class="w-5 h-5 steel-accent mt-1"></i>
+                                    <div>
+                                        <p class="font-medium" data-translate="by-bus">By Public Transport:</p>
+                                        <p class="text-sm" data-translate="bus-routes">Lines 24, 33, 54 stop at Meskel Square</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- FAQ Section -->
+        <section class="py-20 bg-gray-900">
+            <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center mb-12">
+                    <h2 class="text-4xl font-display mb-4 copper-accent" data-translate="faq">Frequently Asked Questions</h2>
+                    <p class="text-xl text-gray-300" data-translate="faq-subtitle">Quick answers to common questions</p>
+                </div>
+                
+                <div class="space-y-4">
+                    <details class="bg-gray-800 rounded-lg border border-gray-700 p-6">
+                        <summary class="font-semibold copper-accent cursor-pointer">
+                            <span data-translate="faq-1-q">What oil should I use for my Toyota Vitz?</span>
+                        </summary>
+                        <p class="text-gray-300 mt-3 ml-6" data-translate="faq-1-a">
+                            For most Toyota Vitz models (2005+), we recommend 5W-30 full synthetic oil. For older models or high-mileage engines, 10W-40 semi-synthetic works well. Use our Oil Finder tool on the homepage for a precise recommendation.
+                        </p>
+                    </details>
+                    
+                    <details class="bg-gray-800 rounded-lg border border-gray-700 p-6">
+                        <summary class="font-semibold copper-accent cursor-pointer">
+                            <span data-translate="faq-2-q">Do you offer mobile oil change services?</span>
+                        </summary>
+                        <p class="text-gray-300 mt-3 ml-6" data-translate="faq-2-a">
+                            Yes! Our mobile service units operate throughout Addis Ababa. We can perform oil changes at your home, office, or any location. Service includes oil, filter replacement, and basic vehicle check. Call +251 933 680 059 to schedule.
+                        </p>
+                    </details>
+                    
+                    <details class="bg-gray-800 rounded-lg border border-gray-700 p-6">
+                        <summary class="font-semibold copper-accent cursor-pointer">
+                            <span data-translate="faq-3-q">What payment methods do you accept?</span>
+                        </summary>
+                        <p class="text-gray-300 mt-3 ml-6" data-translate="faq-3-a">
+                            We accept M-Pesa, Telebirr, CBE Birr, bank transfers, and cash on delivery (for orders under ETB 5,000). Corporate clients can apply for 30-day credit terms with approved application.
+                        </p>
+                    </details>
+                    
+                    <details class="bg-gray-800 rounded-lg border border-gray-700 p-6">
+                        <summary class="font-semibold copper-accent cursor-pointer">
+                            <span data-translate="faq-4-q">How quickly can you deliver?</span>
+                        </summary>
+                        <p class="text-gray-300 mt-3 ml-6" data-translate="faq-4-a">
+                            Within Addis Ababa: Same-day delivery for orders placed before 3 PM. Next-day for orders after 3 PM. Outside Addis: 2-3 business days to major cities (Adama, Hawassa, Bahir Dar, Dire Dawa).
+                        </p>
+                    </details>
+                    
+                    <details class="bg-gray-800 rounded-lg border border-gray-700 p-6">
+                        <summary class="font-semibold copper-accent cursor-pointer">
+                            <span data-translate="faq-5-q">Are your products genuine?</span>
+                        </summary>
+                        <p class="text-gray-300 mt-3 ml-6" data-translate="faq-5-a">
+                            Absolutely. We are authorized distributors for TotalEnergies, Shell, Castrol, and Mobil 1. Every product comes with batch numbers and can be verified with manufacturers. We provide SDS, TDS, and COA documents for all products.
+                        </p>
+                    </details>
+                </div>
+                
+                <div class="text-center mt-12">
+                    <p class="text-gray-300 mb-4" data-translate="faq-more">Have more questions?</p>
+                    <a href="tel:+251933680059" class="bg-steel-blue text-white px-6 py-3 rounded-lg font-semibold hover:bg-steel-blue-dark transition-all">
+                        Call Our Experts
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- CTA Section -->
+        <section class="py-20 bg-gray-800">
+            <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+                <h2 class="text-4xl font-display mb-6 gradient-text" data-translate="contact-cta-title">Ready to Order?</h2>
+                <p class="text-xl text-gray-300 mb-8" data-translate="contact-cta-subtitle">
+                    Get expert consultation, competitive pricing, and reliable delivery. Start shopping now or call us for bulk orders.
+                </p>
+                <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                    <a href="shop.html" class="bg-copper text-white px-8 py-4 rounded-lg font-semibold hover-lift">
+                        Shop Now
+                    </a>
+                    <a href="services.html" class="border border-copper-accent text-copper-accent px-8 py-4 rounded-lg font-semibold hover:bg-copper-accent hover:text-white transition-all">
+                        View Services
+                    </a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer (Copied from shop.html) -->
+    <footer class="bg-gray-900 border-t border-gray-700">
+        <div class="max-w-7xl mx-auto py-12 px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-2 md:grid-cols-5 gap-8">
+                <div>
+                    <h3 class="text-lg font-semibold copper-accent mb-4" data-translate="footer-company">Company</h3>
+                    <ul class="space-y-3 text-sm text-gray-400">
+                        <li><a href="about.html" class="hover:text-copper transition-colors" data-translate="footer-about">About Us</a></li>
+                        <li><a href="services.html" class="hover:text-copper transition-colors" data-translate="footer-services">Our Services</a></li>
+                        <li><a href="#" class="hover:text-copper transition-colors" data-translate="footer-careers">Careers</a></li>
+                        <li><a href="#" class="hover:text-copper transition-colors" data-translate="footer-partners">Partnerships</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="text-lg font-semibold copper-accent mb-4" data-translate="footer-support">Support</h3>
+                    <ul class="space-y-3 text-sm text-gray-400">
+                        <li><a href="contact.html" class="hover:text-copper transition-colors" data-translate="footer-contact">Contact Us</a></li>
+                        <li><a href="#" class="hover:text-copper transition-colors" data-translate="footer-faq">FAQ</a></li>
+                        <li><a href="#" class="hover:text-copper transition-colors" data-translate="footer-shipping">Shipping Info</a></li>
+                        <li><a href="#" class="hover:text-copper transition-colors" data-translate="footer-returns">Returns Policy</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="text-lg font-semibold copper-accent mb-4" data-translate="footer-legal">Legal</h3>
+                    <ul class="space-y-3 text-sm text-gray-400">
+                        <li><a href="#" class="hover:text-copper transition-colors" data-translate="footer-terms">Terms of Service</a></li>
+                        <li><a href="#" class="hover:text-copper transition-colors" data-translate="footer-privacy">Privacy Policy</a></li>
+                        <li><a href="#" class="hover:text-copper transition-colors" data-translate="footer-disclaimer">Disclaimer</a></li>
+                        <li><a href="#" class="hover:text-copper transition-colors" data-translate="footer-sitemap">Sitemap</a></li>
+                    </ul>
+                </div>
+                <div class="col-span-2 md:col-span-2">
+                    <h3 class="text-lg font-semibold copper-accent mb-4" data-translate="footer-newsletter">Join Our Newsletter</h3>
+                    <p class="text-sm text-gray-400 mb-4" data-translate="footer-newsletter-desc">Get updates on new products and promotions.</p>
+                    <form class="flex">
+                        <input type="email" placeholder="Your email address" class="w-full px-4 py-2 bg-gray-800 border border-gray-700 rounded-l-lg text-white placeholder-gray-500 focus:border-copper focus:outline-none" data-translate="footer-email-placeholder">
+                        <button type="submit" class="bg-copper hover:bg-copper-dark px-6 py-2 rounded-r-lg font-medium transition-colors" data-translate="footer-subscribe">Subscribe</button>
+                    </form>
+                </div>
+            </div>
+            
+            <div class="mt-12 border-t border-gray-800 pt-8 flex flex-col md:flex-row items-center justify-between">
+                <p class="text-sm text-gray-500 order-2 md:order-1 mt-4 md:mt-0" data-translate="footer-copyright">
+                    &copy; <span id="current-year">2025</span> Nesab Vehicle Oils. All rights reserved.
+                </p>
+                <div class="flex space-x-6 order-1 md:order-2">
+                    <a href="#" class="text-gray-400 hover:text-copper transition-colors" aria-label="Facebook">
+                        <i data-lucide="facebook" class="w-5 h-5"></i>
+                    </a>
+                    <a href="#" class="text-gray-400 hover:text-copper transition-colors" aria-label="Telegram">
+                        <i data-lucide="send" class="w-5 h-5"></i>
+                    </a>
+                    <a href="#" class="text-gray-400 hover:text-copper transition-colors" aria-label="Instagram">
+                        <i data-lucide="instagram" class="w-5 h-5"></i>
+                    </a>
+                    <a href="#" class="text-gray-400 hover:text-copper transition-colors" aria-label="LinkedIn">
+                        <i data-lucide="linkedin" class="w-5 h-5"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Back to Top Button -->
+    <button id="back-to-top" class="back-to-top fixed bottom-8 right-8 bg-copper-dark hover:bg-copper text-white p-3 rounded-full shadow-lg z-40 no-print" aria-label="Back to top">
+        <i data-lucide="arrow-up" class="w-5 h-5"></i>
+        <svg class="progress-ring" width="48" height="48" style="position: absolute; top: -4px; left: -4px;">
+            <circle class="progress-ring-circle" stroke="var(--copper)" stroke-width="2" fill="transparent" r="22" cx="24" cy="24"/>
+        </svg>
+    </button>
+
+    <!-- Cookie Consent Banner -->
+    <div id="cookie-banner" class="cookie-banner fixed bottom-0 left-0 right-0 bg-gray-900 border-t border-gray-700 p-6 z-50 no-print">
+        <div class="max-w-4xl mx-auto flex flex-col md:flex-row items-center justify-between gap-4">
+            <div class="flex items-start gap-3">
+                <i data-lucide="cookie" class="w-6 h-6 steel-accent mt-1"></i>
+                <div>
+                    <h4 class="font-semibold text-white mb-1">We use cookies</h4>
+                    <p class="text-sm text-gray-300">We use cookies to enhance your experience. By continuing, you agree to our Privacy Policy.</p>
+                </div>
+            </div>
+            <div class="flex gap-3">
+                <button onclick="rejectCookies()" class="px-4 py-2 text-gray-300 hover:text-white transition-colors">Reject</button>
+                <button onclick="acceptCookies()" class="bg-copper hover:bg-copper-dark px-4 py-2 rounded-lg font-medium transition-colors">Accept</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Cart Sidebar -->
+    <div id="cart-sidebar" class="fixed right-0 top-0 h-full w-full md:w-96 bg-gray-900 border-l border-gray-700 z-50" style="transform: translateX(100%); transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);">
+        <div class="flex flex-col h-full">
+            <div class="flex justify-between items-center p-6 border-b border-gray-700">
+                <h2 class="text-xl font-bold copper-accent">Shopping Cart</h2>
+                <button id="close-cart" class="text-gray-400 hover:text-white">
+                    <i data-lucide="x" class="w-6 h-6"></i>
+                </button>
+            </div>
+            <div id="cart-items" class="flex-1 overflow-y-auto p-6">
+                <div class="text-center text-gray-400 py-12">
+                    <i data-lucide="shopping-cart" class="w-16 h-16 mx-auto mb-4"></i>
+                    <p>Your cart is empty</p>
+                </div>
+            </div>
+            <div id="cart-footer" class="border-t border-gray-700 p-6 space-y-4 hidden">
+                <div class="flex justify-between items-center">
+                    <span class="text-lg font-semibold">Total:</span>
+                    <span id="cart-total" class="text-2xl font-bold copper-accent">ETB 0.00</span>
+                </div>
+                <button id="checkout-btn" class="w-full bg-copper hover:bg-copper-dark py-3 rounded-lg font-medium transition-colors flex items-center justify-center gap-2">
+                    <span>Proceed to Checkout</span>
+                    <i data-lucide="arrow-right" class="w-4 h-4"></i>
+                </button>
+                <button id="clear-cart" class="w-full bg-gray-800 hover:bg-gray-700 py-3 rounded-lg font-medium transition-colors border border-gray-600">
+                    Clear Cart
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <div id="account-modal" class="fixed inset-0 bg-black/50 z-50" style="opacity: 0; pointer-events: none; transition: opacity 0.3s ease;">
+        <div class="flex items-center justify-center min-h-screen p-4">
+            <div class="bg-gray-900 rounded-lg border border-gray-700 w-full max-w-md">
+                <div id="login-form" class="p-6">
+                    <div class="flex justify-between items-center mb-6">
+                        <h2 class="text-2xl font-bold copper-accent">Account Login</h2>
+                        <button id="close-account" class="text-gray-400 hover:text-white">
+                            <i data-lucide="x" class="w-6 h-6"></i>
+                        </button>
+                    </div>
+                    <form id="login-form-element" class="space-y-4">
+                        <div>
+                            <label class="block text-sm font-medium mb-2">Email or Phone</label>
+                            <input type="text" id="login-email" class="w-full bg-gray-800 border border-gray-700 rounded-lg px-4 py-3 text-white focus:border-copper focus:outline-none" required>
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium mb-2">Password</label>
+                            <input type="password" id="login-password" class="w-full bg-gray-800 border border-gray-700 rounded-lg px-4 py-3 text-white focus:border-copper focus:outline-none" required>
+                        </div>
+                        <button type="submit" class="w-full bg-copper hover:bg-copper-dark py-3 rounded-lg font-medium transition-colors">Login</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="../scripts/main.js"></script>
+    <script src="../scripts/language.js"></script>
+    <script>
+        // Initialize Lucide icons
+        lucide.createIcons();
+        
+        // Mobile menu toggle
+        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        
+        mobileMenuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('open');
+        });
+        
+        // Cart and Account modal toggles
+        const cartBtn = document.getElementById('cart-btn');
+        const cartSidebar = document.getElementById('cart-sidebar');
+        const closeCart = document.getElementById('close-cart');
+        const accountBtn = document.getElementById('account-btn');
+        const accountModal = document.getElementById('account-modal');
+        const closeAccount = document.getElementById('close-account');
+        
+        cartBtn.addEventListener('click', () => cartSidebar.style.transform = 'translateX(0)');
+        closeCart.addEventListener('click', () => cartSidebar.style.transform = 'translateX(100%)');
+        accountBtn.addEventListener('click', () => {
+            accountModal.style.opacity = '1';
+            accountModal.style.pointerEvents = 'all';
+        });
+        closeAccount.addEventListener('click', () => {
+            accountModal.style.opacity = '0';
+            accountModal.style.pointerEvents = 'none';
+        });
+        
+        // Contact form submission
+        document.getElementById('contact-form').addEventListener('submit', (e) => {
+            e.preventDefault();
+            alert('Thank you for your message! Our team will respond within 2 hours.');
+            e.target.reset();
+        });
+        
+        function scrollToContactForm() {
+            document.getElementById('contact-form-section').scrollIntoView({ behavior: 'smooth' });
+        }
+        
+        // Update current year in footer
+        document.getElementById('current-year').textContent = new Date().getFullYear();
+        
+        // Sync language selectors
+        const desktopLang = document.getElementById('language-selector');
+        const mobileLang = document.getElementById('language-selector-mobile');
+        if (desktopLang && mobileLang) {
+            desktopLang.addEventListener('change', (e) => {
+                mobileLang.value = e.target.value;
+            });
+            mobileLang.addEventListener('change', (e) => {
+                desktopLang.value = e.target.value;
+            });
+        }
+
+        window.addEventListener('scroll', () => {
+            const currentScroll = window.pageYOffset;
+            
+            if (currentScroll > 100) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+            
+            lastScroll = currentScroll;
+            
+            // Back to top visibility
+            const backToTop = document.getElementById('back-to-top');
+            if (currentScroll > 500) {
+                backToTop.classList.add('visible');
+            } else {
+                backToTop.classList.remove('visible');
+            }
+            
+            // Update scroll progress
+            updateScrollProgress();
+        });
+        
+        // Scroll progress indicator
+        function updateScrollProgress() {
+            const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+            const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+            const scrolled = (winScroll / height) * 100;
+            const circle = document.querySelector('.progress-ring-circle');
+            const circumference = 2 * Math.PI * 22;
+            const offset = circumference - (scrolled / 100) * circumference;
+            circle.style.strokeDasharray = circumference;
+            circle.style.strokeDashoffset = offset;
+        }
+        
+        // Back to top
+        document.getElementById('back-to-top').addEventListener('click', () => {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+
+         // Cookie consent
+        function acceptCookies() {
+            localStorage.setItem('cookiesAccepted', 'true');
+            document.getElementById('cookie-banner').classList.remove('show');
+        }
+        
+        function rejectCookies() {
+            localStorage.setItem('cookiesAccepted', 'false');
+            document.getElementById('cookie-banner').classList.remove('show');
+            // Here you could disable non-essential cookies
+        }
+        
+        // Show cookie banner if not already set
+        if (!localStorage.getItem('cookiesAccepted')) {
+            setTimeout(() => {
+                document.getElementById('cookie-banner').classList.add('show');
+            }, 1000);
+        }
+    </script>
+</body>
+</html>
+        

@@ -1,0 +1,925 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us - Nesab Vehicle Oils | Leading Lubricant Supplier in Ethiopia</title>
+    <meta name="description" content="Learn about Nesab Vehicle Oils, Ethiopia's trusted provider of premium lubricants. Our history, mission, team, and commitment to quality.">
+    
+    <!-- Favicon -->
+    <link rel="shortcut icon" href="../resources/favicon.png" type="image/x-icon">
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Animation Libraries -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js"></script>
+    <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+
+    <!-- Custom Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    
+    <!--    Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <style>
+        :root {
+            --primary-dark: #1a1a1a;
+            --copper: #b87333;
+            --steel-blue: #4a6fa5;
+            --light-gray: #f5f5f5;
+            --text-dark: #2d2d2d;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            background: var(--primary-dark);
+            color: white;
+            overflow-x: hidden;
+            scroll-behavior: smooth;
+        }
+        
+        .font-display {
+            font-family: 'Inter', sans-serif;
+            font-weight: 700;
+        }
+        
+        /* Glass morphism */
+        .glass {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        
+        .copper-accent {
+            color: var(--copper);
+        }
+        
+        .copper-bg {
+            background: var(--copper);
+        }
+        
+        .steel-accent {
+            color: var(--steel-blue);
+        }
+        
+        .gradient-text {
+            background: linear-gradient(45deg, var(--copper), var(--steel-blue));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: gradientShift 3s ease-in-out infinite;
+        }
+        
+        @keyframes gradientShift {
+            0%, 100% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+        }
+
+        .hover-lift {
+            transition: all 0.3s ease;
+        }
+        
+        .hover-lift:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+        }
+        
+        .language-selector {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(212, 165, 116, 0.3);
+            border-radius: 8px;
+            padding: 0.5rem;
+            backdrop-filter: blur(10px);
+        }
+        
+        .language-selector select {
+            background: transparent;
+            border: none;
+            color: white;
+            outline: none;
+            cursor: pointer;
+        }
+        
+        .language-selector select option {
+            background: var(--primary-dark);
+        }
+        
+        *:focus-visible {
+            outline: 2px solid var(--copper);
+            outline-offset: 2px;
+        }
+        
+        /* Team cards */
+        .team-card {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 12px;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+        
+        .team-card:hover {
+            border-color: var(--copper);
+            transform: translateY(-4px);
+            box-shadow: 0 20px 40px rgba(184, 115, 51, 0.2);
+        }
+        
+        /* Certification badges */
+        .cert-badge {
+            background: rgba(74, 111, 165, 0.1);
+            border: 1px solid rgba(74, 111, 165, 0.3);
+            border-radius: 8px;
+            padding: 1rem;
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+        
+        .cert-badge:hover {
+            border-color: var(--copper);
+            background: rgba(184, 115, 51, 0.1);
+        }
+        
+        /* Timeline */
+        .timeline-item {
+            position: relative;
+            padding-left: 2rem;
+            margin-bottom: 2rem;
+        }
+        
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0.5rem;
+            width: 12px;
+            height: 12px;
+            background: var(--copper);
+            border-radius: 50%;
+        }
+        
+        .timeline-item::after {
+            content: '';
+            position: absolute;
+            left: 5px;
+            top: 1.25rem;
+            width: 2px;
+            height: calc(100% + 1rem);
+            background: rgba(184, 115, 51, 0.3);
+        }
+        
+        .timeline-item:last-child::after {
+            display: none;
+        }
+        
+        /* Cookie Banner */
+        .cookie-banner {
+            transform: translateY(100%);
+            transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        
+        .cookie-banner.show {
+            transform: translateY(0);
+        }
+
+        /* Navigation */
+        .nav-link {
+            position: relative;
+            transition: all 0.3s ease;
+        }
+        
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--copper);
+            transition: width 0.3s ease;
+        }
+        
+        .nav-link:hover::after {
+            width: 100%;
+        }
+        
+        /* Mobile Menu */
+        .mobile-menu {
+            transform: translateX(100%);
+            transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        
+        .mobile-menu.open {
+            transform: translateX(0);
+        }
+        
+        /* Back to Top Button */
+        .back-to-top {
+            opacity: 0;
+            transform: scale(0.8);
+            transition: all 0.3s ease;
+            pointer-events: none;
+        }
+        
+        .back-to-top.visible {
+            opacity: 1;
+            transform: scale(1);
+            pointer-events: all;
+        }
+
+        /* Scroll animations */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.6s ease;
+        }
+        
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+</head>
+<body>
+    <a href="#main-content" class="sr-only focus:not-sr-only focus:absolute focus:top-0 focus:left-0 bg-copper text-white p-2 z-50">Skip to main content</a>
+
+    <!-- Navigation -->
+    <nav id="navbar" class="fixed top-0 left-0 right-0 z-50 bg-gray-900/95 backdrop-blur-md border-b border-gray-700">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <a href="../index.html" class="flex items-center gap-2 text-2xl font-bold copper-accent hover:scale-105 transition-transform">
+                    <img src="../resources/images/logo.png" alt="Nesab" class="h-10 w-auto">
+                    نّساب Nesab
+                </a>
+                
+                <div class="hidden md:flex items-center gap-6">
+                    <div class="flex items-center gap-8">
+                        <a href="../index.html" class="text-white hover:text-copper transition-colors duration-200 py-2">Home</a>
+                        <a href="shop.html" class="text-white hover:text-copper transition-colors duration-200 py-2">Shop</a>
+                        <a href="services.html" class="text-white hover:text-copper transition-colors duration-200 py-2">Services</a>
+                        <a href="about.html" class="text-copper font-semibold py-2">About</a>
+                        <a href="contact.html" class="text-white hover:text-copper transition-colors duration-200 py-2">Contact</a>
+                    </div>
+                    
+                    <div class="flex items-center gap-4 pl-6 border-l border-gray-700">
+                        <div class="language-selector flex items-center gap-2">
+                            <i data-lucide="globe" class="w-4 h-4 copper-accent"></i>
+                            <select id="language-selector" class="text-sm pr-2">
+                                <option value="en">English</option>
+                                <option value="am">አማርኛ</option>
+                                <option value="ar">العربية</option>
+                                <option value="so">Somali</option>
+                            </select>
+                        </div>
+                        <button id="account-btn" class="text-white hover:text-copper transition-colors flex items-center gap-2">
+                            <i data-lucide="user" class="w-5 h-5"></i>
+                            <span data-translate="account">Account</span>
+                        </button>
+                        <button id="cart-btn" class="relative text-white hover:text-copper transition-colors flex items-center gap-2">
+                            <i data-lucide="shopping-cart" class="w-5 h-5"></i>
+                            <span data-translate="cart">Cart</span>
+                            <span id="cart-count" class="absolute -top-2 -right-2 bg-copper text-xs rounded-full w-5 h-5 flex items-center justify-center text-white font-bold">0</span>
+                        </button>
+                    </div>
+                </div>
+                
+                <button id="mobile-menu-btn" class="md:hidden text-white hover:text-copper transition-colors" aria-label="Toggle mobile menu">
+                    <i data-lucide="menu" class="w-6 h-6"></i>
+                </button>
+            </div>
+        </div>
+        
+        <div id="mobile-menu" class="mobile-menu fixed right-0 top-16 h-full w-64 bg-gray-900 border-l border-gray-700 md:hidden z-40">
+            <div class="p-6 space-y-4">
+                <a href="../index.html" class="block text-white hover:text-copper transition-colors py-2">Home</a>
+                <a href="shop.html" class="block text-white hover:text-copper transition-colors py-2">Shop</a>
+                <a href="services.html" class="block text-white hover:text-copper transition-colors py-2">Services</a>
+                <a href="about.html" class="block copper-accent py-2">About</a>
+                <a href="contact.html" class="block text-white hover:text-copper transition-colors py-2">Contact</a>
+                <hr class="border-gray-700">
+                <div class="language-selector flex items-center gap-2">
+                    <i data-lucide="globe" class="w-4 h-4 copper-accent"></i>
+                    <select id="language-selector-mobile" class="w-full text-white bg-transparent">
+                        <option value="en">English</option>
+                        <option value="am">አማርኛ</option>
+                        <option value="ar">العربية</option>
+                        <option value="so">Somali</option>
+                    </select>
+                </div>
+                <button id="mobile-account-btn" class="block text-white hover:text-copper transition-colors py-2 text-left w-full">
+                    <i data-lucide="user" class="w-5 h-5 inline mr-2"></i>
+                    <span data-translate="account">Account</span>
+                </button>
+                <button id="mobile-cart-btn" class="block text-white hover:text-copper transition-colors py-2 text-left w-full">
+                    <i data-lucide="shopping-cart" class="w-5 h-5 inline mr-2"></i>
+                    <span data-translate="cart">Cart</span>
+                    <span id="mobile-cart-count" class="ml-2 bg-copper text-xs rounded-full px-2 py-1 text-white font-bold">0</span>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="pt-24 pb-16 bg-gray-900">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                <div class="fade-in">
+                    <h1 class="text-5xl lg:text-6xl font-display mb-6 gradient-text">Pioneering Lubrication Excellence in Ethiopia</h1>
+                    <p class="text-xl text-gray-300 mb-8">
+                        Founded in 2018, Nesab Vehicle Oils objective is to grow from a small distributor to Ethiopia's leading 
+                        supplier of premium lubricants, serving thousands of customers across Addis Ababa and beyond.
+                    </p>
+                    <div class="grid grid-cols-3 gap-6 text-center">
+                        <div>
+                            <div class="text-3xl font-bold copper-accent">0+</div>
+                            <div class="text-sm text-gray-400">Startup Experience</div>
+                        </div>
+                        <div>
+                            <div class="text-3xl font-bold steel-accent">500+</div>
+                            <div class="text-sm text-gray-400">Fleet Clients</div>
+                        </div>
+                        <div>
+                            <div class="text-3xl font-bold copper-accent">5,000+</div>
+                            <div class="text-sm text-gray-400">Vehicles To be Served</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="fade-in">
+                    <img src="../resources/images/hero-nesab.png" alt="Nesab Warehouse Facility" class="rounded-lg shadow-2xl w-full h-96 object-cover">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Mission & Vision -->
+    <section class="py-16 bg-gray-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
+                <div class="fade-in">
+                    <h2 class="text-3xl font-display mb-6 copper-accent">Our Mission</h2>
+                    <p class="text-lg text-gray-300 mb-6">
+                        To provide Ethiopia's vehicle owners and fleet operators with world-class lubrication solutions 
+                        that maximize performance, minimize downtime, and reduce operational costs through technical 
+                        expertise and reliable service.
+                    </p>
+                    <p class="text-gray-400">
+                        We believe that every engine deserves the best protection, whether it's a single motorcycle 
+                        or a fleet of heavy-duty trucks. Our mission is to democratize access to premium lubricants 
+                        and expert knowledge across Ethiopia.
+                    </p>
+                </div>
+                <div class="fade-in">
+                    <h2 class="text-3xl font-display mb-6 steel-accent">Our Vision</h2>
+                    <p class="text-lg text-gray-300 mb-6">
+                        To become East Africa's most trusted lubrication partner, recognized for technical excellence, 
+                        environmental responsibility, and transformative impact on vehicle maintenance standards.
+                    </p>
+                    <p class="text-gray-400">
+                        By 2030, we aim to serve over 1 million vehicles annually, operate 10 distribution centers 
+                        across Ethiopia, and establish a state-of-the-art oil analysis laboratory in Addis Ababa.
+                    </p>
+                </div>
+            </div>
+            <div class="space-y-6">
+                <div class="fade-in"></div>
+                        <div class="bg-gray-900 p-6 rounded-lg border border-gray-700">
+                            <h3 class="text-xl font-semibold mb-4 copper-accent" data-translate="values">Our Values</h3>
+                            <ul class="space-y-3 text-gray-300">
+                                <li class="flex items-center gap-3">
+                                    <i data-lucide="shield-check" class="w-5 h-5 steel-accent"></i>
+                                    <span data-translate="value-1">Quality First</span>
+                                </li>
+                                <li class="flex items-center gap-3">
+                                    <i data-lucide="users" class="w-5 h-5 steel-accent"></i>
+                                    <span data-translate="value-2">Customer Focus</span>
+                                </li>
+                                <li class="flex items-center gap-3">
+                                    <i data-lucide="lightbulb" class="w-5 h-5 steel-accent"></i>
+                                    <span data-translate="value-3">Technical Expertise</span>
+                                </li>
+                                <li class="flex items-center gap-3">
+                                    <i data-lucide="handshake" class="w-5 h-5 steel-accent"></i>
+                                    <span data-translate="value-4">Integrity</span>
+                                </li>
+                            </ul>
+                        </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Company Timeline -->
+    <section class="py-16 bg-gray-900">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-12 fade-in">
+                <h2 class="text-3xl font-display mb-4 gradient-text">Our Journey</h2>
+                <p class="text-lg text-gray-300">From startup to industry leader in the future</p>
+            </div>
+            
+            <div class="space-y-8">
+                <div class="timeline-item fade-in">
+                    <div class="glass rounded-lg p-6">
+                        <div class="flex justify-between items-start mb-3">
+                            <h3 class="text-xl font-bold copper-accent">2018 - Foundation</h3>
+                            <span class="text-sm text-gray-400">Addis Ababa</span>
+                        </div>
+                        <p class="text-gray-300">
+                            Nesab was founded with a simple goal: to address the lack of quality lubricants and technical 
+                            expertise in Ethiopia's automotive sector. Started with 5 firends and a small warehouse in Lafto.
+                        </p>
+                    </div>
+                </div>
+                
+                <div class="timeline-item fade-in">
+                    <div class="flex justify-between items-start mb-3">
+                        <h3 class="text-xl font-bold steel-accent">Future Plans</h3>
+                        <span class="text-sm text-gray-400">Future</span>    
+                    </div>
+
+                    <div class="glass rounded-lg p-6">
+                        <div class="flex justify-between items-start mb-3">
+                            <h3 class="text-xl font-bold steel-accent">2019 - First Major Fleet Contract</h3>
+                            <span class="text-sm text-gray-400">Milestone</span>
+                        </div>
+                        <p class="text-gray-300">
+                            To Secure our first major fleet contract with a public transportation company, providing 
+                            lubricants for 150 buses. This will validate our business model and quality standards.
+                        </p>
+                    </div>
+                </div>
+                
+                <div class="timeline-item fade-in">
+                    <div class="glass rounded-lg p-6">
+                        <div class="flex justify-between items-start mb-3">
+                            <h3 class="text-xl font-bold copper-accent">2021 - Expansion & Certification</h3>
+                            <span class="text-sm text-gray-400">Growth</span>
+                        </div>
+                        <p class="text-gray-300">
+                            To Achieve API certification for our product line and expanded to a 2,000 sqm warehouse. 
+                            And to Launch technical consultation services.
+                        </p>
+                    </div>
+                </div>
+                
+                <div class="timeline-item fade-in">
+                    <div class="glass rounded-lg p-6">
+                        <div class="flex justify-between items-start mb-3">
+                            <h3 class="text-xl font-bold steel-accent">2023 - Digital Transformation</h3>
+                            <span class="text-sm text-gray-400">Innovation</span>
+                        </div>
+                        <p class="text-gray-300">
+                            Launch e-commerce platform, real-time inventory system, and GPS-tracked delivery fleet. 
+                            And then to serve over 500 fleet clients and process 1,000+ orders monthly.
+                        </p>
+                    </div>
+                </div>
+                
+                <div class="timeline-item fade-in">
+                    <div class="glass rounded-lg p-6">
+                        <div class="flex justify-between items-start mb-3">
+                            <h3 class="text-xl font-bold copper-accent">2024 - Leadership Position</h3>
+                            <span class="text-sm text-gray-400">Leadership</span>
+                        </div>
+                        <p class="text-gray-300">
+                            Market leader in Addis Ababa with 45% fleet market share. To be recognized by Ethiopian 
+                            Petroleum Association for excellence in distribution and customer service.
+                        </p>
+                    </div>
+                </div>
+            </div>
+            
+        </div>
+    </section>
+
+    <!-- Leadership Team -->
+    <section class="py-16 bg-gray-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-12 fade-in">
+                <h2 class="text-3xl font-display mb-4 copper-accent">Leadership Team</h2>
+                <p class="text-lg text-gray-300">Experienced professionals driving our success</p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div class="team-card fade-in">
+                    <img src="../resources/team/team-amar.png" alt="Amar Hassen" class="w-full h-64 object-cover">
+                    <div class="p-6">
+                        <h3 class="text-lg font-bold mb-1 copper-accent">Amar Hassen</h3>
+                        <p class="text-sm text-gray-400 mb-3">Founder & CEO</p>
+                        <p class="text-sm text-gray-300">
+                            5+ years in oil distribution. Former operations manager at Total Ethiopia.
+                        </p>
+                    </div>
+                </div>
+                
+                <div class="team-card fade-in">
+                    <img src="../resources/team/team-nardos.png" alt="Nardos Amanuel" class="w-full h-64 object-cover">
+                    <div class="p-6">
+                        <h3 class="text-lg font-bold mb-1 steel-accent">Nardos Amanuel</h3>
+                        <p class="text-sm text-gray-400 mb-3">Technical Director</p>
+                        <p class="text-sm text-gray-300">
+                            Oil Expert. API-certified lubrication specialist. Former student at Addis Ababa Tegabre-id Polytechnic College.
+                        </p>
+                    </div>
+                </div>
+                
+                <div class="team-card fade-in">
+                    <img src="../resources/team/team-ermias.png" alt="Ermias Beyene" class="w-full h-64 object-cover">
+                    <div class="p-6">
+                        <h3 class="text-lg font-bold mb-1 copper-accent">Ermias Beyene</h3>
+                        <p class="text-sm text-gray-400 mb-3">Operations Manager</p>
+                        <p class="text-sm text-gray-300">
+                            Logistics expert. Manages our fleet of 15 delivery vehicles and warehouse operations.
+                        </p>
+                    </div>
+                </div>
+                
+                <div class="team-card fade-in">
+                    <img src="../resources/team/team-samrawit.png" alt="Samrawit Haile" class="w-full h-64 object-cover">
+                    <div class="p-6">
+                        <h3 class="text-lg font-bold mb-1 steel-accent">Samrawit Haile</h3>
+                        <p class="text-sm text-gray-400 mb-3">Customer Experience Manager</p>
+                        <p class="text-sm text-gray-300">
+                            Ensures exceptional service delivery. Manages our 24/7 support center.
+                        </p>
+                    </div>
+                </div>
+                
+                <div class="team-card fade-in">
+                    <img src="../resources/team/team-bethe.png" alt="Bethelihem Lema" class="w-full h-64 object-cover">
+                    <div class="p-6">
+                        <h3 class="text-lg font-bold mb-1 steel-accent">Bethelihem Lema</h3>
+                        <p class="text-sm text-gray-400 mb-3">Finance Manager</p>
+                        <p class="text-sm text-gray-300">
+                            Expert financer. Manage and oversee our financial operations.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Certifications -->
+    <section class="py-16 bg-gray-900">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-12 fade-in">
+                <h2 class="text-3xl font-display mb-4 gradient-text">Certifications & Accreditations</h2>
+                <p class="text-lg text-gray-300">Meeting the highest international standards</p>
+            </div>
+            
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
+                <div class="cert-badge fade-in flex flex-col items-center text-center p-6 border border-gray-700 rounded-lg hover:border-copper transition-all duration-300">
+                    <i data-lucide="Award" class="text-3xl mb-3 block mx-auto text-yellow-400"></i>
+                    <h3 class="font-semibold mb-1 copper-accent">API Licensed</h3>
+                    <p class="text-xs text-gray-400">American Petroleum Institute</p>
+                </div>
+                
+                <div class="cert-badge fade-in">
+                    <i data-lucide="star" class="text-3xl mb-3 block mx-auto text-yellow-400"></i>
+                    <h3 class="font-semibold mb-1 steel-accent">ISO 9001:2015</h3>
+                    <p class="text-xs text-gray-400">Quality Management</p>
+                </div>
+                
+                <div class="cert-badge fade-in flex flex-col items-center text-center p-6 border border-gray-700 rounded-lg hover:border-copper transition-all duration-300">
+                    <i data-lucide="trophy" class="text-3xl mb-3 block mx-auto text-yellow-400"></i>
+                    <h3 class="font-semibold mb-1 copper-accent">EPA Certified</h3>
+                    <p class="text-xs text-gray-400">Environmental Compliance</p>
+                </div>
+                
+                <div class="cert-badge fade-in flex flex-col items-center text-center p-6 border border-gray-700 rounded-lg hover:border-copper transition-all duration-300">
+                    <i data-lucide="handshake" class="text-3xl mb-3 block mx-auto text-yellow-400"></i> 
+                    <h3 class="font-semibold mb-1 steel-accent">EPA Member</h3>
+                    <p class="text-xs text-gray-400">Ethiopian Petroleum Association</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Facilities -->
+    <section class="py-16 bg-gray-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-12 fade-in">
+                <h2 class="text-3xl font-display mb-4 copper-accent">Our Facilities</h2>
+                <p class="text-lg text-gray-300">Modern infrastructure ensuring quality and efficiency</p>
+            </div>
+            
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
+                <div class="fade-in">
+                    <img src="../resources/facilities/warehouse-nesab.png" alt="Nesab Warehouse" class="rounded-lg shadow-2xl w-full h-80 object-cover mb-6">
+                    <h3 class="text-xl font-bold mb-3 copper-accent">Distribution Center</h3>
+                    <p class="text-gray-300">
+                        Our 2,000 square meter facility in Lafto is equipped with climate-controlled storage, 
+                        automated dispensing systems, and a capacity of 500,000 liters. Strict FIFO inventory 
+                        management ensures fresh products always.
+                    </p>
+                </div>
+                
+                <div class="fade-in">
+                    <img src="../resources/facilities/lab-nesab.png" alt="Quality Control Lab" class="rounded-lg shadow-2xl w-full h-80 object-cover mb-6">
+                    <h3 class="text-xl font-bold mb-3 steel-accent">Quality Control Lab</h3>
+                    <p class="text-gray-300">
+                        On-site laboratory for quality verification, viscosity testing, and contamination analysis. 
+                        Every batch is tested before distribution, ensuring 100% compliance with specifications.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Call to Action -->
+    <section class="py-20 bg-gray-900">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <div class="fade-in">
+                <h2 class="text-4xl font-display mb-6 gradient-text">Partner with Ethiopia's Lubrication Leader</h2>
+                <p class="text-xl text-gray-300 mb-8">
+                    Whether you're a single vehicle owner or manage a fleet of 500, Nesab provides the same 
+                    commitment to quality, expertise, and service excellence.
+                </p>
+                <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                    <a href="../contact.html" class="bg-copper text-white px-8 py-4 rounded-lg font-semibold hover:bg-opacity-80 transition-all">
+                        Start Partnership
+                    </a>
+                    <a href="tel:+251933680059" class="border border-copper text-copper px-8 py-4 rounded-lg font-semibold hover:bg-copper hover:text-white transition-all">
+                        Call: +251933680059
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 border-t border-gray-700">
+        <div class="max-w-7xl mx-auto py-12 px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-2 md:grid-cols-5 gap-8">
+                <div>
+                    <h3 class="text-lg font-semibold copper-accent mb-4" data-translate="footer-company">Company</h3>
+                    <ul class="space-y-3 text-sm text-gray-400">
+                        <li><a href="about.html" class="hover:text-copper transition-colors" data-translate="footer-about">About Us</a></li>
+                        <li><a href="services.html" class="hover:text-copper transition-colors" data-translate="footer-services">Our Services</a></li>
+                        <li><a href="#" class="hover:text-copper transition-colors" data-translate="footer-careers">Careers</a></li>
+                        <li><a href="#" class="hover:text-copper transition-colors" data-translate="footer-partners">Partnerships</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="text-lg font-semibold copper-accent mb-4" data-translate="footer-support">Support</h3>
+                    <ul class="space-y-3 text-sm text-gray-400">
+                        <li><a href="contact.html" class="hover:text-copper transition-colors" data-translate="footer-contact">Contact Us</a></li>
+                        <li><a href="#" class="hover:text-copper transition-colors" data-translate="footer-faq">FAQ</a></li>
+                        <li><a href="#" class="hover:text-copper transition-colors" data-translate="footer-shipping">Shipping Info</a></li>
+                        <li><a href="#" class="hover:text-copper transition-colors" data-translate="footer-returns">Returns Policy</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="text-lg font-semibold copper-accent mb-4" data-translate="footer-legal">Legal</h3>
+                    <ul class="space-y-3 text-sm text-gray-400">
+                        <li><a href="#" class="hover:text-copper transition-colors" data-translate="footer-terms">Terms of Service</a></li>
+                        <li><a href="#" class="hover:text-copper transition-colors" data-translate="footer-privacy">Privacy Policy</a></li>
+                        <li><a href="#" class="hover:text-copper transition-colors" data-translate="footer-disclaimer">Disclaimer</a></li>
+                        <li><a href="#" class="hover:text-copper transition-colors" data-translate="footer-sitemap">Sitemap</a></li>
+                    </ul>
+                </div>
+                <div class="col-span-2 md:col-span-2">
+                    <h3 class="text-lg font-semibold copper-accent mb-4" data-translate="footer-newsletter">Join Our Newsletter</h3>
+                    <p class="text-sm text-gray-400 mb-4" data-translate="footer-newsletter-desc">Get updates on new products and promotions.</p>
+                    <form class="flex">
+                        <input type="email" placeholder="Your email address" class="w-full px-4 py-2 bg-gray-800 border border-gray-700 rounded-l-lg text-white placeholder-gray-500 focus:border-copper focus:outline-none" data-translate="footer-email-placeholder">
+                        <button type="submit" class="bg-copper hover:bg-copper-dark px-6 py-2 rounded-r-lg font-medium transition-colors" data-translate="footer-subscribe">Subscribe</button>
+                    </form>
+                </div>
+            </div>
+            
+            <div class="mt-12 border-t border-gray-800 pt-8 flex flex-col md:flex-row items-center justify-between">
+                <p class="text-sm text-gray-500 order-2 md:order-1 mt-4 md:mt-0" data-translate="footer-copyright">
+                    &copy; <span id="current-year">2024</span> Nesab Vehicle Oils. All rights reserved.
+                </p>
+                <div class="flex space-x-6 order-1 md:order-2">
+                    <a href="#" class="text-gray-400 hover:text-copper transition-colors" aria-label="Facebook">
+                        <i data-lucide="facebook" class="w-5 h-5"></i>
+                    </a>
+                    <a href="#" class="text-gray-400 hover:text-copper transition-colors" aria-label="Telegram">
+                        <i data-lucide="send" class="w-5 h-5"></i>
+                    </a>
+                    <a href="#" class="text-gray-400 hover:text-copper transition-colors" aria-label="Instagram">
+                        <i data-lucide="instagram" class="w-5 h-5"></i>
+                    </a>
+                    <a href="#" class="text-gray-400 hover:text-copper transition-colors" aria-label="LinkedIn">
+                        <i data-lucide="linkedin" class="w-5 h-5"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Back to Top Button -->
+    <button id="back-to-top" class="back-to-top fixed bottom-8 right-8 bg-copper-dark hover:bg-copper text-white p-3 rounded-full shadow-lg z-40 no-print" aria-label="Back to top">
+        <i data-lucide="arrow-up" class="w-5 h-5"></i>
+        <svg class="progress-ring" width="48" height="48" style="position: absolute; top: -4px; left: -4px;">
+            <circle class="progress-ring-circle" stroke="var(--copper)" stroke-width="2" fill="transparent" r="22" cx="24" cy="24"/>
+        </svg>
+    </button>
+
+    <!-- Cookie Consent Banner -->
+    <div id="cookie-banner" class="cookie-banner fixed bottom-0 left-0 right-0 bg-gray-900 border-t border-gray-700 p-6 z-50 no-print">
+        <div class="max-w-4xl mx-auto flex flex-col md:flex-row items-center justify-between gap-4">
+            <div class="flex items-start gap-3">
+                <i data-lucide="cookie" class="w-6 h-6 steel-accent mt-1"></i>
+                <div>
+                    <h4 class="font-semibold text-white mb-1">We use cookies</h4>
+                    <p class="text-sm text-gray-300">We use cookies to enhance your experience. By continuing, you agree to our Privacy Policy.</p>
+                </div>
+            </div>
+            <div class="flex gap-3">
+                <button onclick="rejectCookies()" class="px-4 py-2 text-gray-300 hover:text-white transition-colors">Reject</button>
+                <button onclick="acceptCookies()" class="bg-copper hover:bg-copper-dark px-4 py-2 rounded-lg font-medium transition-colors">Accept</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Cart Sidebar -->
+    <div id="cart-sidebar" class="fixed right-0 top-0 h-full w-full md:w-96 bg-gray-900 border-l border-gray-700 z-50" style="transform: translateX(100%); transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);">
+        <div class="flex flex-col h-full">
+            <div class="flex justify-between items-center p-6 border-b border-gray-700">
+                <h2 class="text-xl font-bold copper-accent">Shopping Cart</h2>
+                <button id="close-cart" class="text-gray-400 hover:text-white">
+                    <i data-lucide="x" class="w-6 h-6"></i>
+                </button>
+            </div>
+            <div id="cart-items" class="flex-1 overflow-y-auto p-6">
+                <div class="text-center text-gray-400 py-12">
+                    <i data-lucide="shopping-cart" class="w-16 h-16 mx-auto mb-4"></i>
+                    <p>Your cart is empty</p>
+                </div>
+            </div>
+            <div id="cart-footer" class="border-t border-gray-700 p-6 space-y-4 hidden">
+                <div class="flex justify-between items-center">
+                    <span class="text-lg font-semibold">Total:</span>
+                    <span id="cart-total" class="text-2xl font-bold copper-accent">ETB 0.00</span>
+                </div>
+                <button id="checkout-btn" class="w-full bg-copper hover:bg-copper-dark py-3 rounded-lg font-medium transition-colors flex items-center justify-center gap-2">
+                    <span>Proceed to Checkout</span>
+                    <i data-lucide="arrow-right" class="w-4 h-4"></i>
+                </button>
+                <button id="clear-cart" class="w-full bg-gray-800 hover:bg-gray-700 py-3 rounded-lg font-medium transition-colors border border-gray-600">
+                    Clear Cart
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <div id="account-modal" class="fixed inset-0 bg-black/50 z-50" style="opacity: 0; pointer-events: none; transition: opacity 0.3s ease;">
+        <div class="flex items-center justify-center min-h-screen p-4">
+            <div class="bg-gray-900 rounded-lg border border-gray-700 w-full max-w-md">
+                <div id="login-form" class="p-6">
+                    <div class="flex justify-between items-center mb-6">
+                        <h2 class="text-2xl font-bold copper-accent">Account Login</h2>
+                        <button id="close-account" class="text-gray-400 hover:text-white">
+                            <i data-lucide="x" class="w-6 h-6"></i>
+                        </button>
+                    </div>
+                    <form id="login-form-element" class="space-y-4">
+                        <div>
+                            <label class="block text-sm font-medium mb-2">Email or Phone</label>
+                            <input type="text" id="login-email" class="w-full bg-gray-800 border border-gray-700 rounded-lg px-4 py-3 text-white focus:border-copper focus:outline-none" required>
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium mb-2">Password</label>
+                            <input type="password" id="login-password" class="w-full bg-gray-800 border border-gray-700 rounded-lg px-4 py-3 text-white focus:border-copper focus:outline-none" required>
+                        </div>
+                        <button type="submit" class="w-full bg-copper hover:bg-copper-dark py-3 rounded-lg font-medium transition-colors">Login</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="../scripts/main.js"></script>
+    <script src="../scripts/language.js"></script>
+    <script>
+    // Initialize Lucide icons AFTER DOM is loaded
+    document.addEventListener('DOMContentLoaded', function() {
+        lucide.createIcons();
+        
+        // Mobile menu toggle
+        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        
+        mobileMenuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('open');
+        });
+        
+        // Close mobile menu when clicking a link
+        mobileMenu.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.remove('open');
+            });
+        });
+        
+        // Cart and Account modal toggles
+        const cartBtn = document.getElementById('cart-btn');
+        const cartSidebar = document.getElementById('cart-sidebar');
+        const closeCart = document.getElementById('close-cart');
+        const accountBtn = document.getElementById('account-btn');
+        const accountModal = document.getElementById('account-modal');
+        const closeAccount = document.getElementById('close-account');
+        
+        cartBtn.addEventListener('click', () => cartSidebar.style.transform = 'translateX(0)');
+        closeCart.addEventListener('click', () => cartSidebar.style.transform = 'translateX(100%)');
+        accountBtn.addEventListener('click', () => {
+            accountModal.style.opacity = '1';
+            accountModal.style.pointerEvents = 'all';
+        });
+        closeAccount.addEventListener('click', () => {
+            accountModal.style.opacity = '0';
+            accountModal.style.pointerEvents = 'none';
+        });
+        
+        // Update current year in footer
+        document.getElementById('current-year').textContent = new Date().getFullYear();
+        
+        // Sync language selectors
+        const desktopLang = document.getElementById('language-selector');
+        const mobileLang = document.getElementById('language-selector-mobile');
+        if (desktopLang && mobileLang) {
+            desktopLang.addEventListener('change', (e) => {
+                mobileLang.value = e.target.value;
+            });
+            mobileLang.addEventListener('change', (e) => {
+                desktopLang.value = e.target.value;
+            });
+        }
+
+        window.addEventListener('scroll', () => {
+            const currentScroll = window.pageYOffset;
+            
+            if (currentScroll > 100) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+            
+            lastScroll = currentScroll;
+            
+            // Back to top visibility
+            const backToTop = document.getElementById('back-to-top');
+            if (currentScroll > 500) {
+                backToTop.classList.add('visible');
+            } else {
+                backToTop.classList.remove('visible');
+            }
+            
+            // Update scroll progress
+            updateScrollProgress();
+        });
+        
+        // Scroll progress indicator
+        function updateScrollProgress() {
+            const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+            const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+            const scrolled = (winScroll / height) * 100;
+            const circle = document.querySelector('.progress-ring-circle');
+            const circumference = 2 * Math.PI * 22;
+            const offset = circumference - (scrolled / 100) * circumference;
+            circle.style.strokeDasharray = circumference;
+            circle.style.strokeDashoffset = offset;
+        }
+        
+         // Cookie consent
+        function acceptCookies() {
+            localStorage.setItem('cookiesAccepted', 'true');
+            document.getElementById('cookie-banner').classList.remove('show');
+        }
+        
+        function rejectCookies() {
+            localStorage.setItem('cookiesAccepted', 'false');
+            document.getElementById('cookie-banner').classList.remove('show');
+            // Here you could disable non-essential cookies
+        }
+        
+        // Show cookie banner if not already set
+        if (!localStorage.getItem('cookiesAccepted')) {
+            setTimeout(() => {
+                document.getElementById('cookie-banner').classList.add('show');
+            }, 1000);
+        }
+
+        // Back to top
+        document.getElementById('back-to-top').addEventListener('click', () => {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+
+    });
+    </script> 
+</body>
+</html>

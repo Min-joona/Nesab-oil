@@ -1,0 +1,1053 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nesab - Premium Vehicle Oils & Lubricants | Addis Ababa</title>
+    <meta name="description" content="Nesab provides premium vehicle oils and lubricants in Addis Ababa. Engine oils, transmission fluids, hydraulic oils, and commercial lubricants with expert consultation.">
+    <link rel="shortcut icon" href="./resources/favicon.png" type="image/x-icon">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Animation Libraries -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/js/splide.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.7.0/p5.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/echarts@5.4.3/dist/echarts.min.js"></script>
+    
+    <!-- Splide CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/css/splide.min.css">
+    
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+    
+    <!-- Custom Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --primary-dark: #0a0a0a;
+            --copper: #d4a574;
+            --copper-dark: #b87333;
+            --steel-blue: #6b8db5;
+            --steel-blue-dark: #4a6fa5;
+            --light-gray: #f5f5f5;
+            --text-dark: #2d2d2d;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            background: var(--primary-dark);
+            color: white;
+            overflow-x: hidden;
+            scroll-behavior: smooth;
+        }
+        
+        .font-display {
+            font-family: 'Inter', sans-serif;
+            font-weight: 700;
+        }
+        
+        .font-mono {
+            font-family: 'JetBrains Mono', monospace;
+        }
+        
+        /* Hero Background */
+        .hero-bg {
+            background: linear-gradient(135deg, #1a1a1a 0%, #504f4f42 100%);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .hero-bg::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('./resources/facilities/warehouse-nesab.png') center/cover;
+            opacity: 0.3;
+            z-index: 1;
+        }
+        
+        .hero-content {
+            position: relative;
+            z-index: 2;
+        }
+
+        /* Cookie Banner */
+        .cookie-banner {
+            transform: translateY(100%);
+            transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        
+        .cookie-banner.show {
+            transform: translateY(0);
+        }
+        
+        /* Glass morphism */
+        .glass {
+            background: rgba(12, 11, 11, 0.199);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        
+        /* Copper accent */
+        .copper-accent {
+            color: var(--copper);
+        }
+        
+        .copper-bg {
+            background: var(--copper);
+        }
+        
+        /* Steel blue accent */
+        .steel-accent {
+            color: var(--steel-blue);
+        }
+        
+        /* Animated gradient text */
+        .gradient-text {
+            background: linear-gradient(45deg, var(--copper), var(--steel-blue));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: gradientShift 3s ease-in-out infinite;
+            background-size: 200% 200%;
+        }
+        
+        @keyframes gradientShift {
+            0%, 100% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+        }
+        
+        /* Hover effects */
+        .hover-lift {
+            transition: all 0.3s ease;
+        }
+        
+        .hover-lift:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+        }
+        
+        /* Oil finder form */
+        .oil-finder {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(184, 115, 51, 0.3);
+            border-radius: 12px;
+            padding: 2rem;
+            backdrop-filter: blur(10px);
+        }
+        
+        .form-step {
+            display: none;
+        }
+        
+        .form-step.active {
+            display: block;
+            animation: fadeInUp 0.5s ease;
+        }
+        
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        /* Product cards */
+        .product-card {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 12px;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+        
+        .product-card:hover {
+            border-color: var(--copper);
+            transform: translateY(-8px);
+            box-shadow: 0 20px 40px rgba(184, 115, 51, 0.2);
+        }
+        
+        /* Calculator widget */
+        .calculator-widget {
+            background: rgba(74, 111, 165, 0.1);
+            border: 1px solid rgba(74, 111, 165, 0.3);
+            border-radius: 12px;
+            padding: 1.5rem;
+        }
+        
+        /* Navigation */
+        .nav-link {
+            position: relative;
+            transition: all 0.3s ease;
+        }
+        
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--copper);
+            transition: width 0.3s ease;
+        }
+        
+        .nav-link:hover::after {
+            width: 100%;
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero-content h1 {
+                font-size: 2.5rem;
+            }
+            
+            .oil-finder {
+                padding: 1rem;
+            }
+        }
+
+        /* Back to Top Button */
+        .back-to-top {
+            opacity: 0;
+            transform: scale(0.8);
+            transition: all 0.3s ease;
+            pointer-events: none;
+        }
+        
+        .back-to-top.visible {
+            opacity: 1;
+            transform: scale(1);
+            pointer-events: all;
+        }
+        
+        /* Scroll animations */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.6s ease;
+        }
+        
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        /* Language Selector Styles */
+        .language-selector {
+            position: relative;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(212, 165, 116, 0.3);
+            border-radius: 8px;
+            padding: 0.5rem;
+            backdrop-filter: blur(10px);
+        }
+        
+        .language-selector select {
+            background: transparent;
+            border: none;
+            color: white;
+            outline: none;
+            cursor: pointer;
+        }
+        
+        .language-selector select option {
+            background: var(--primary-dark);
+            color: white;
+        }
+        
+        /* Vehicle Type Image Placeholders */
+        .vehicle-type-img {
+            width: 60px;
+            height: 60px;
+            object-fit: cover;
+            border-radius: 8px;
+            margin: 0 auto 8px;
+        }
+        
+        /* Product Image in Carousel */
+        .carousel-product-img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 8px;
+        }
+    </style>
+</head>
+<body>
+    <!-- Skip Link -->
+    <a href="#main-content" class="sr-only focus:not-sr-only focus:absolute focus:top-0 focus:left-0 bg-copper text-white p-2 z-50">Skip to main content</a>
+
+    <!-- Navigation -->
+    <nav id="navbar" class="fixed top-0 left-0 right-0 z-50 bg-gray-900/95 backdrop-blur-md border-b border-gray-700">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <a href="index.html" class="flex items-center gap-2 text-2xl font-bold copper-accent hover:scale-105 transition-transform">
+                    <img src="./resources/images/logo.png" alt="Nesab" class="h-10 w-auto">
+                    نّساب Nesab
+                </a>
+                
+                <!-- Desktop Menu -->
+                <div class="hidden md:flex items-center gap-6">
+                    <div class="flex items-center gap-8">
+                        <a href="index.html" class="nav-link text-copper font-semibold py-2">Home</a>
+                        <a href="./pages/shop.html" class="nav-link text-white hover:text-copper transition-colors duration-200 py-2">Shop</a>
+                        <a href="./pages/services.html" class="nav-link text-white hover:text-copper transition-colors duration-200 py-2">Services</a>
+                        <a href="./pages/about.html" class="nav-link text-white hover:text-copper transition-colors duration-200 py-2">About</a>
+                        <a href="./pages/contact.html" class="nav-link text-white hover:text-copper transition-colors duration-200 py-2">Contact</a>
+                    </div>
+                    
+                    <!-- Language Selector & Contact -->
+                    <div class="flex items-center gap-4 pl-6 border-l border-gray-700">
+                        <div class="language-selector flex items-center gap-2">
+                            <i data-lucide="globe" class="w-4 h-4 copper-accent"></i>
+                            <select id="language-selector" class="text-sm pr-2">
+                                <option value="en">English</option>
+                                <option value="am">አማርኛ</option>
+                                <option value="ar">العربية</option>
+                                <option value="so">Somali</option>
+                            </select>
+                        </div>
+                        <a href="tel:+251933680059" class="flex items-center gap-2 text-white hover:text-copper transition-colors">
+                            <i data-lucide="phone" class="w-4 h-4"></i>
+                            <span class="font-medium">Call Now!</span>
+                        </a>
+                    </div>
+                </div>
+                
+                <!-- Mobile Menu Button -->
+                <button id="mobile-menu-btn" class="md:hidden text-white hover:text-copper transition-colors" aria-label="Toggle mobile menu">
+                    <i data-lucide="menu" class="w-6 h-6"></i>
+                </button>
+            </div>
+        </div>
+        
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="md:hidden hidden fixed top-16 left-0 right-0 bg-gray-900 border-t border-gray-700 z-40">
+            <div class="px-6 py-4 space-y-4">
+                <a href="index.html" class="block text-copper font-semibold py-2">Home</a>
+                <a href="./pages/shop.html" class="block text-white hover:text-copper transition-colors py-2">Shop</a>
+                <a href="./pages/services.html" class="block text-white hover:text-copper transition-colors py-2">Services</a>
+                <a href="./pages/about.html" class="block text-white hover:text-copper transition-colors py-2">About</a>
+                <a href="./pages/contact.html" class="block text-white hover:text-copper transition-colors py-2">Contact</a>
+                <hr class="border-gray-700">
+                <div class="language-selector flex items-center gap-2">
+                    <i data-lucide="globe" class="w-4 h-4 copper-accent"></i>
+                    <select id="language-selector-mobile" class="w-full text-white bg-transparent">
+                        <option value="en">English</option>
+                        <option value="am">አማርኛ</option>
+                        <option value="ar">العربية</option>
+                        <option value="so">Somali</option>
+                    </select>
+                </div>
+                <a href="tel:+251933680059" class="flex items-center gap-2 text-white hover:text-copper transition-colors py-2">
+                    <i data-lucide="phone" class="w-4 h-4"></i>
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero-bg min-h-screen flex items-center pt-16">
+        <div class="hero-content max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                <div>
+                    <h1 class="text-5xl lg:text-6xl font-display mb-6 leading-tight" data-translate="hero-title">
+                        Premium Vehicle 
+                        <span class="gradient-text">Oils & Lubricants</span>
+                        in Addis Ababa
+                    </h1>
+                    <p class="text-xl text-gray-300 mb-8 leading-relaxed" data-translate="hero-subtitle">
+                        Expert solutions for all your vehicle lubrication needs. From engine oils to hydraulic fluids, 
+                        we provide premium quality products with professional consultation and reliable delivery.
+                    </p>
+                    <div class="flex flex-col sm:flex-row gap-4">
+                        <button onclick="scrollToOilFinder()" class="copper-bg text-white px-8 py-4 rounded-lg font-semibold hover-lift">
+                            Find Your Oil
+                        </button>
+                        <a href="./pages/shop.html" class="border border-copper-accent text-copper-accent px-8 py-4 rounded-lg font-semibold hover:bg-copper-accent hover:text-white transition-all">
+                            Browse Products
+                        </a>
+                    </div>
+                </div>
+                
+                <div class="oil-finder">
+                    <h3 class="text-2xl font-bold mb-6 copper-accent" data-translate="oil-finder-title">Oil Finder Tool</h3>
+                    <div id="oil-finder-form">
+                        <!-- Step 1: Vehicle Type -->
+                        <div class="form-step active" id="step-1">
+                            <h4 class="text-lg font-semibold mb-4" data-translate="step-1-title">What type of vehicle?</h4>
+                            <div class="grid grid-cols-2 gap-3">
+                                <button type="button" class="vehicle-type-btn p-4 border border-gray-600 rounded-lg hover:border-copper-accent transition-all" data-type="car">
+                                    <img src="./resources/placeholders/car.jpg" alt="Car" class="vehicle-type-img">
+                                    <div class="text-sm" data-translate="car">Car</div>
+                                </button>
+                                <button type="button" class="vehicle-type-btn p-4 border border-gray-600 rounded-lg hover:border-copper-accent transition-all" data-type="truck">
+                                    <img src="./resources/placeholders/truck.jpg" alt="Truck" class="vehicle-type-img">
+                                    <div class="text-sm" data-translate="truck">Truck</div>
+                                </button>
+                                <button type="button" class="vehicle-type-btn p-4 border border-gray-600 rounded-lg hover:border-copper-accent transition-all" data-type="bus">
+                                    <img src="./resources/placeholders/bus.jpg" alt="Bus" class="vehicle-type-img">
+                                    <div class="text-sm" data-translate="bus">Bus</div>
+                                </button>
+                                <button type="button" class="vehicle-type-btn p-4 border border-gray-600 rounded-lg hover:border-copper-accent transition-all" data-type="motorcycle">
+                                    <img src="./resources/placeholders/motorcycle.png" alt="Motorcycle" class="vehicle-type-img">
+                                    <div class="text-sm" data-translate="motorcycle">Motorcycle</div>
+                                </button>
+                            </div>
+                        </div>
+                        
+                        <!-- Step 2: Fuel Type -->
+                        <div class="form-step" id="step-2">
+                            <h4 class="text-lg font-semibold mb-4" data-translate="step-2-title">Fuel type?</h4>
+                            <div class="space-y-3">
+                                <button type="button" class="fuel-type-btn w-full p-4 border border-gray-600 rounded-lg hover:border-copper-accent transition-all text-left" data-fuel="gasoline">
+                                    <img src="./resources/placeholders/gasoline.jpg" alt="Gasoline" class="vehicle-type-img inline-block mr-3">
+                                    <span data-translate="gasoline">Gasoline Engine</span>
+                                </button>
+                                <button type="button" class="fuel-type-btn w-full p-4 border border-gray-600 rounded-lg hover:border-copper-accent transition-all text-left" data-fuel="diesel">
+                                    <img src="./resources/placeholders/diesel.jpg" alt="Diesel" class="vehicle-type-img inline-block mr-3">
+                                    <span data-translate="diesel">Diesel Engine</span>
+                                </button>
+                                <button type="button" class="fuel-type-btn w-full p-4 border border-gray-600 rounded-lg hover:border-copper-accent transition-all text-left" data-fuel="hybrid">
+                                    <img src="./resources/placeholders/hybrid.jpg" alt="Hybrid" class="vehicle-type-img inline-block mr-3">
+                                    <span data-translate="hybrid">Hybrid/Electric</span>
+                                </button>
+                            </div>
+                        </div>
+                        
+                        <!-- Step 3: Usage -->
+                        <div class="form-step" id="step-3">
+                            <h4 class="text-lg font-semibold mb-4" data-translate="step-3-title">Typical usage?</h4>
+                            <div class="space-y-3">
+                                <button type="button" class="usage-btn w-full p-4 border border-gray-600 rounded-lg hover:border-copper-accent transition-all text-left" data-usage="city">
+                                    <img src="./resources/placeholders/city.jpg" alt="City" class="vehicle-type-img inline-block mr-3">
+                                    <span data-translate="city">City Driving</span>
+                                </button>
+                                <button type="button" class="usage-btn w-full p-4 border border-gray-600 rounded-lg hover:border-copper-accent transition-all text-left" data-usage="highway">
+                                    <img src="./resources/placeholders/highway.jpg" alt="Highway" class="vehicle-type-img inline-block mr-3">
+                                    <span data-translate="highway">Highway/Freeway</span>
+                                </button>
+                                <button type="button" class="usage-btn w-full p-4 border border-gray-600 rounded-lg hover:border-copper-accent transition-all text-left" data-usage="heavy">
+                                    <img src="./resources/placeholders/heavy.jpg" alt="Heavy Load" class="vehicle-type-img inline-block mr-3">
+                                    <span data-translate="heavy">Heavy Load/Towing</span>
+                                </button>
+                                <button type="button" class="usage-btn w-full p-4 border border-gray-600 rounded-lg hover:border-copper-accent transition-all text-left" data-usage="mixed">
+                                    <img src="./resources/placeholders/mixed.jpg" alt="Mixed" class="vehicle-type-img inline-block mr-3">
+                                    <span data-translate="mixed">Mixed Conditions</span>
+                                </button>
+                            </div>
+                        </div>
+                        
+                        <!-- Results -->
+                        <div class="form-step" id="step-results">
+                            <h4 class="text-lg font-semibold mb-4 copper-accent" data-translate="results-title">Recommended Oil</h4>
+                            <div id="recommendation-result" class="space-y-4">
+                                <!-- Results will be populated by JavaScript -->
+                            </div>
+                            <button onclick="resetOilFinder()" class="w-full mt-4 border border-gray-600 text-gray-300 px-4 py-2 rounded-lg hover:border-copper-accent transition-all" data-translate="start-over">
+                                Start Over
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Featured Products -->
+    <section class="py-20 bg-gray-900">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-12 fade-in">
+                <h2 class="text-4xl font-display mb-4 gradient-text" data-translate="featured-products">Featured Products</h2>
+                <p class="text-xl text-gray-300" data-translate="tagline">Premium quality oils for every vehicle and application</p>
+            </div>
+            
+            <div class="splide" id="product-carousel">
+                <div class="splide__track">
+                    <ul class="splide__list" id="featured-products-list">
+                        <!-- Products will be populated by JavaScript -->
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Viscosity Calculator -->
+    <section class="py-20 bg-gray-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                <div class="fade-in">
+                    <h2 class="text-4xl font-display mb-6 gradient-text">Oil Viscosity Calculator</h2>
+                    <p class="text-xl text-gray-300 mb-8">
+                        Find the perfect viscosity grade for your operating conditions. 
+                        Our calculator considers temperature ranges and usage patterns.
+                    </p>
+                    <div class="space-y-4">
+                        <div class="flex items-center space-x-3">
+                            <div class="w-2 h-2 bg-copper rounded-full"></div>
+                            <span class="text-gray-300">Temperature range analysis</span>
+                        </div>
+                        <div class="flex items-center space-x-3">
+                            <div class="w-2 h-2 bg-steel-blue rounded-full"></div>
+                            <span class="text-gray-300">Usage pattern optimization</span>
+                        </div>
+                        <div class="flex items-center space-x-3">
+                            <div class="w-2 h-2 bg-copper rounded-full"></div>
+                            <span class="text-gray-300">Real-time recommendations</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="calculator-widget fade-in">
+                    <h3 class="text-xl font-bold mb-6">Viscosity Calculator</h3>
+                    <div class="space-y-4">
+                        <div>
+                            <label class="block text-sm font-medium mb-2">Operating Temperature Range</label>
+                            <div class="flex space-x-4">
+                                <div class="flex-1">
+                                    <label class="block text-xs text-gray-400 mb-1">Min °C</label>
+                                    <input type="number" id="temp-min" value="-10" class="w-full bg-gray-700 border border-gray-600 rounded-lg px-3 py-2 text-white">
+                                </div>
+                                <div class="flex-1">
+                                    <label class="block text-xs text-gray-400 mb-1">Max °C</label>
+                                    <input type="number" id="temp-max" value="40" class="w-full bg-gray-700 border border-gray-600 rounded-lg px-3 py-2 text-white">
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div>
+                            <label class="block text-sm font-medium mb-2">Vehicle Usage</label>
+                            <select id="usage-type" class="w-full bg-gray-700 border border-gray-600 rounded-lg px-3 py-2 text-white">
+                                <option value="city">City Driving</option>
+                                <option value="highway">Highway/Freeway</option>
+                                <option value="heavy">Heavy Load/Towing</option>
+                                <option value="mixed">Mixed Conditions</option>
+                            </select>
+                        </div>
+                        
+                        <button onclick="calculateViscosity()" class="w-full bg-copper text-white px-4 py-3 rounded-lg font-semibold hover:bg-opacity-80 transition-all">
+                            Calculate Recommendation
+                        </button>
+                        
+                        <div id="viscosity-result" class="mt-4 p-4 bg-gray-700 rounded-lg hidden">
+                            <h4 class="font-semibold copper-accent mb-2">Recommended Viscosity</h4>
+                            <div id="viscosity-grade" class="text-2xl font-bold mb-2"></div>
+                            <div id="viscosity-explanation" class="text-sm text-gray-300"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="py-20 bg-gray-900">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center fade-in">
+            <h2 class="text-4xl font-display mb-6 gradient-text">Ready to Order?</h2>
+            <p class="text-xl text-gray-300 mb-8">
+                Get expert consultation, competitive pricing, and reliable delivery across Addis Ababa. 
+                Contact us for bulk orders and fleet solutions.
+            </p>
+            <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                <a href="./pages/shop.html" class="bg-copper text-white px-8 py-4 rounded-lg font-semibold hover-lift">
+                    Get Quote
+                </a>
+                <a href="tel:+251933680059" class="border border-copper-accent text-copper-accent px-8 py-4 rounded-lg font-semibold hover:bg-copper-accent hover:text-white transition-all flex items-center gap-2">
+                    <i data-lucide="phone-call" class="w-5 h-5"></i>
+                    Call Now: +251 933 680 059
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Back to Top Button -->
+    <button id="back-to-top" class="back-to-top fixed bottom-8 right-8 bg-copper-dark hover:bg-copper text-white p-3 rounded-full shadow-lg z-40 no-print" aria-label="Back to top">
+        <i data-lucide="arrow-up" class="w-5 h-5"></i>
+        <svg class="progress-ring" width="48" height="48" style="position: absolute; top: -4px; left: -4px;">
+            <circle class="progress-ring-circle" stroke="var(--copper)" stroke-width="2" fill="transparent" r="22" cx="24" cy="24"/>
+        </svg>
+    </button>
+
+    <!-- Cookie Consent Banner -->
+    <div id="cookie-banner" class="cookie-banner fixed bottom-0 left-0 right-0 bg-gray-900 border-t border-gray-700 p-6 z-50 no-print">
+        <div class="max-w-4xl mx-auto flex flex-col md:flex-row items-center justify-between gap-4">
+            <div class="flex items-start gap-3">
+                <i data-lucide="cookie" class="w-6 h-6 steel-accent mt-1"></i>
+                <div>
+                    <h4 class="font-semibold text-white mb-1">We use cookies</h4>
+                    <p class="text-sm text-gray-300">We use cookies to enhance your experience. By continuing, you agree to our Privacy Policy.</p>
+                </div>
+            </div>
+            <div class="flex gap-3">
+                <button onclick="rejectCookies()" class="px-4 py-2 text-gray-300 hover:text-white transition-colors">Reject</button>
+                <button onclick="acceptCookies()" class="bg-copper hover:bg-copper-dark px-4 py-2 rounded-lg font-medium transition-colors">Accept</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 border-t border-gray-700 no-print">
+        <div class="max-w-7xl mx-auto py-12 px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-2 md:grid-cols-5 gap-8">
+                <div>
+                    <h3 class="text-lg font-semibold copper-accent mb-4" data-translate="footer-company">Company</h3>
+                    <ul class="space-y-3 text-sm text-gray-400">
+                        <li><a href="./pages/about.html" class="hover:text-copper transition-colors" data-translate="footer-about">About Us</a></li>
+                        <li><a href="./pages/services.html" class="hover:text-copper transition-colors" data-translate="footer-services">Our Services</a></li>
+                        <li><a href="#" class="hover:text-copper transition-colors" data-translate="footer-careers">Careers</a></li>
+                        <li><a href="#" class="hover:text-copper transition-colors" data-translate="footer-partners">Partnerships</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="text-lg font-semibold copper-accent mb-4" data-translate="footer-support">Support</h3>
+                    <ul class="space-y-3 text-sm text-gray-400">
+                        <li><a href="./pages/contact.html" class="hover:text-copper transition-colors" data-translate="footer-contact">Contact Us</a></li>
+                        <li><a href="#" class="hover:text-copper transition-colors" data-translate="footer-faq">FAQ</a></li>
+                        <li><a href="#" class="hover:text-copper transition-colors" data-translate="footer-shipping">Shipping Info</a></li>
+                        <li><a href="#" class="hover:text-copper transition-colors" data-translate="footer-returns">Returns Policy</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="text-lg font-semibold copper-accent mb-4" data-translate="footer-legal">Legal</h3>
+                    <ul class="space-y-3 text-sm text-gray-400">
+                        <li><a href="#" class="hover:text-copper transition-colors" data-translate="footer-terms">Terms of Service</a></li>
+                        <li><a href="#" class="hover:text-copper transition-colors" data-translate="footer-privacy">Privacy Policy</a></li>
+                        <li><a href="#" class="hover:text-copper transition-colors" data-translate="footer-disclaimer">Disclaimer</a></li>
+                        <li><a href="#" class="hover:text-copper transition-colors" data-translate="footer-sitemap">Sitemap</a></li>
+                    </ul>
+                </div>
+                <div class="col-span-2 md:col-span-2">
+                    <h3 class="text-lg font-semibold copper-accent mb-4" data-translate="footer-newsletter">Join Our Newsletter</h3>
+                    <p class="text-sm text-gray-400 mb-4" data-translate="footer-newsletter-desc">Get updates on new products and promotions.</p>
+                    <form class="flex">
+                        <input type="email" placeholder="Your email address" class="w-full px-4 py-2 bg-gray-800 border border-gray-700 rounded-l-lg text-white placeholder-gray-500 focus:border-copper focus:outline-none" data-translate="footer-email-placeholder">
+                        <button type="submit" class="bg-copper hover:bg-copper-dark px-6 py-2 rounded-r-lg font-medium transition-colors" data-translate="footer-subscribe">Subscribe</button>
+                    </form>
+                </div>
+            </div>
+            
+            <div class="mt-12 border-t border-gray-800 pt-8 flex flex-col md:flex-row items-center justify-between">
+                <p class="text-sm text-gray-500 order-2 md:order-1 mt-4 md:mt-0" data-translate="footer-copyright">
+                    &copy; <span id="current-year">2025</span> Nesab Vehicle Oils. All rights reserved.
+                </p>
+                <div class="flex space-x-6 order-1 md:order-2">
+                    <a href="#" class="text-gray-400 hover:text-copper transition-colors" aria-label="Facebook">
+                        <i data-lucide="facebook" class="w-5 h-5"></i>
+                    </a>
+                    <a href="#" class="text-gray-400 hover:text-copper transition-colors" aria-label="Telegram">
+                        <i data-lucide="send" class="w-5 h-5"></i>
+                    </a>
+                    <a href="#" class="text-gray-400 hover:text-copper transition-colors" aria-label="Instagram">
+                        <i data-lucide="instagram" class="w-5 h-5"></i>
+                    </a>
+                    <a href="#" class="text-gray-400 hover:text-copper transition-colors" aria-label="LinkedIn">
+                        <i data-lucide="linkedin" class="w-5 h-5"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </footer>
+    
+    <!-- Language Support -->
+    <script src="./scripts/language.js"></script>
+    <script src="./scripts/main.js"></script>
+    <script>
+        // Global cart for cross-page persistence (same key as shop.html)
+        let cart = JSON.parse(localStorage.getItem('nesab-cart')) || [];
+        
+        // Product database for oil finder and featured products
+        const finderProducts = [
+            {
+                id: 'total-quartz-9000-5w40-4l',
+                name: 'Total Quartz 9000 5W-40',
+                brand: 'TotalEnergies',
+                specs: { type: 'Full Synthetic', capacity: '4 Liters' },
+                price: 3800.00,
+                image: './resources/products/total-quartz-9000.png',
+                compatibility: { types: ['car'], fuel: ['gasoline', 'diesel'], usage: ['city', 'highway'] }
+            },
+            {
+                id: 'total-rubia-tir-7400-15w40-20l',
+                name: 'Total Rubia TIR 7400 15W-40',
+                brand: 'TotalEnergies',
+                specs: { type: 'Mineral/Semi-Synthetic', capacity: '20 Liters' },
+                price: 18500.00,
+                image: './resources/products/total-rubia-tir.png',
+                compatibility: { types: ['truck', 'bus'], fuel: ['diesel'], usage: ['heavy', 'mixed'] }
+            },
+            {
+                id: 'shell-helix-ultra-5w30-1l',
+                name: 'Shell Helix Ultra 5W-30',
+                brand: 'Shell',
+                specs: { type: 'Full Synthetic (PurePlus)', capacity: '1 Liter' },
+                price: 1050.00,
+                image: './resources/products/shell-helix-ultra.png',
+                compatibility: { types: ['car', 'motorcycle'], fuel: ['gasoline', 'hybrid'], usage: ['city', 'highway'] }
+            },
+            {
+                id: 'shell-rimula-r4-15w40-5l',
+                name: 'Shell Rimula R4 X 15W-40',
+                brand: 'Shell',
+                specs: { type: 'Mineral', capacity: '5 Liters' },
+                price: 4500.00,
+                image: './resources/products/shell-rimula-r4.png',
+                compatibility: { types: ['truck', 'bus'], fuel: ['diesel'], usage: ['mixed', 'heavy'] }
+            },
+            {
+                id: 'castrol-ep-80w90-4l',
+                name: 'Castrol Axle GL-5 80W-90',
+                brand: 'Castrol',
+                specs: { type: 'Mineral EP', capacity: '4 Liters' },
+                price: 2900.00,
+                image: './resources/products/castrol-gl5.png',
+                compatibility: { types: ['truck', 'bus'], fuel: ['diesel'], usage: ['heavy'] }
+            },
+            {
+                id: 'mobil1-esp-5w30-4l',
+                name: 'Mobil 1 ESP Formula 5W-30',
+                brand: 'Mobil 1',
+                specs: { type: 'Full Synthetic (Low Ash)', capacity: '4 Liters' },
+                price: 4500.00,
+                image: './resources/products/mobil1-esp.png',
+                compatibility: { types: ['car'], fuel: ['gasoline', 'diesel', 'hybrid'], usage: ['city', 'highway'] }
+            },
+            {
+                id: 'total-glacelf-supra-1l',
+                name: 'Total Glacelf Supra (Red)',
+                brand: 'TotalEnergies',
+                specs: { type: 'OAT Concentrate', capacity: '1 Liter' },
+                price: 950.00,
+                image: './resources/products/total-glacelf.png',
+                compatibility: { types: ['car', 'truck', 'bus', 'motorcycle'], fuel: ['gasoline', 'diesel', 'hybrid'], usage: ['city', 'highway', 'mixed', 'heavy'] }
+            }
+        ];
+
+        // Initialize Lucide icons
+        lucide.createIcons();
+        
+        // Mobile menu toggle
+        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        
+        mobileMenuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        // Navbar scroll effect
+        const navbar = document.getElementById('navbar');
+        let lastScroll = 0;
+        
+        window.addEventListener('scroll', () => {
+            const currentScroll = window.pageYOffset;
+            
+            if (currentScroll > 100) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+            
+            lastScroll = currentScroll;
+            
+            // Back to top visibility
+            const backToTop = document.getElementById('back-to-top');
+            if (currentScroll > 500) {
+                backToTop.classList.add('visible');
+            } else {
+                backToTop.classList.remove('visible');
+            }
+            
+            // Update scroll progress
+            updateScrollProgress();
+        });
+        
+        // Scroll progress indicator
+        function updateScrollProgress() {
+            const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+            const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+            const scrolled = (winScroll / height) * 100;
+            const circle = document.querySelector('.progress-ring-circle');
+            const circumference = 2 * Math.PI * 22;
+            const offset = circumference - (scrolled / 100) * circumference;
+            circle.style.strokeDasharray = circumference;
+            circle.style.strokeDashoffset = offset;
+        }
+        
+        // Cookie consent
+        function acceptCookies() {
+            localStorage.setItem('cookiesAccepted', 'true');
+            document.getElementById('cookie-banner').classList.remove('show');
+        }
+        
+        function rejectCookies() {
+            localStorage.setItem('cookiesAccepted', 'false');
+            document.getElementById('cookie-banner').classList.remove('show');
+        }
+        
+        // Show cookie banner if not already set
+        if (!localStorage.getItem('cookiesAccepted')) {
+            setTimeout(() => {
+                document.getElementById('cookie-banner').classList.add('show');
+            }, 1000);
+        }
+
+        // Back to top
+        document.getElementById('back-to-top').addEventListener('click', () => {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+        
+        // Sync language selectors
+        const desktopLang = document.getElementById('language-selector');
+        const mobileLang = document.getElementById('language-selector-mobile');
+        
+        desktopLang.addEventListener('change', (e) => {
+            mobileLang.value = e.target.value;
+        });
+        
+        mobileLang.addEventListener('change', (e) => {
+            desktopLang.value = e.target.value;
+        });
+        
+        // Oil Finder Logic
+        let finderState = {};
+        
+        // Vehicle type selection
+        document.querySelectorAll('.vehicle-type-btn').forEach(btn => {
+            btn.addEventListener('click', () => {
+                finderState.vehicleType = btn.dataset.type;
+                showStep(2);
+            });
+        });
+        
+        // Fuel type selection
+        document.querySelectorAll('.fuel-type-btn').forEach(btn => {
+            btn.addEventListener('click', () => {
+                finderState.fuelType = btn.dataset.fuel;
+                showStep(3);
+            });
+        });
+        
+        // Usage selection
+        document.querySelectorAll('.usage-btn').forEach(btn => {
+            btn.addEventListener('click', () => {
+                finderState.usage = btn.dataset.usage;
+                showRecommendation();
+            });
+        });
+        
+        function showStep(stepNumber) {
+            document.querySelectorAll('.form-step').forEach(step => {
+                step.classList.remove('active');
+            });
+            document.getElementById(`step-${stepNumber}`).classList.add('active');
+        }
+        
+        function showRecommendation() {
+            // Find matching products
+            const matches = finderProducts.filter(product => {
+                return product.compatibility.types.includes(finderState.vehicleType) &&
+                       product.compatibility.fuel.includes(finderState.fuelType) &&
+                       product.compatibility.usage.includes(finderState.usage);
+            });
+            
+            // Show results step
+            document.querySelectorAll('.form-step').forEach(step => {
+                step.classList.remove('active');
+            });
+            document.getElementById('step-results').classList.add('active');
+            
+            // Display results
+            const resultDiv = document.getElementById('recommendation-result');
+            if (matches.length > 0) {
+                const product = matches[0]; // Show best match
+                resultDiv.innerHTML = `
+                    <div class="bg-gray-800 p-4 rounded-lg border border-gray-700">
+                        <div class="flex items-center gap-4 mb-4">
+                            <img src="${product.image}" alt="${product.name}" class="w-16 h-16 object-cover rounded">
+                            <div>
+                                <h5 class="font-bold copper-accent">${product.brand} - ${product.name}</h5>
+                                <p class="text-sm text-gray-400">${product.specs.type} • ${product.specs.capacity}</p>
+                                <p class="text-lg font-bold text-white">ETB ${product.price.toFixed(2)}</p>
+                            </div>
+                        </div>
+                        <button onclick="addToCartFromFinder('${product.id}')" class="w-full bg-copper hover:bg-copper-dark py-2 rounded-lg font-medium transition-colors flex items-center justify-center gap-2">
+                            <i data-lucide="shopping-cart" class="w-4 h-4"></i> Add to Cart
+                        </button>
+                    </div>
+                `;
+                lucide.createIcons();
+            } else {
+                resultDiv.innerHTML = `
+                    <div class="text-center text-gray-400 py-4">
+                        <i data-lucide="alert-circle" class="w-12 h-12 mx-auto mb-2"></i>
+                        <p>No exact match found. Visit our <a href="./pages/shop.html" class="copper-accent">shop</a> for more options.</p>
+                    </div>
+                `;
+                lucide.createIcons();
+            }
+        }
+        
+        function resetOilFinder() {
+            finderState = {};
+            showStep(1);
+        }
+        
+        // Add to cart from oil finder
+        function addToCartFromFinder(productId) {
+            const product = finderProducts.find(p => p.id === productId);
+            if (!product) return;
+            
+            const existingItem = cart.find(item => item.id === productId);
+            
+            if (existingItem) {
+                existingItem.quantity += 1;
+            } else {
+                cart.push({ id: productId, quantity: 1, name: product.name, price: product.price });
+            }
+            
+            localStorage.setItem('nesab-cart', JSON.stringify(cart));
+            alert(`${product.name} added to cart!`);
+        }
+        
+        // Viscosity Calculator
+        function calculateViscosity() {
+            const tempMin = parseInt(document.getElementById('temp-min').value);
+            const tempMax = parseInt(document.getElementById('temp-max').value);
+            const usage = document.getElementById('usage-type').value;
+            
+            let recommendation = '';
+            let explanation = '';
+            
+            // Real viscosity logic based on temperature and usage
+            if (tempMin < -5) {
+                // Cold climates
+                if (usage === 'heavy') {
+                    recommendation = '0W-40 or 5W-40';
+                    explanation = 'Low winter rating for cold starts, high viscosity for heavy loads.';
+                } else {
+                    recommendation = '0W-20 or 5W-30';
+                    explanation = 'Low winter rating for cold starts, fuel-efficient grades for moderate use.';
+                }
+            } else if (tempMax > 35) {
+                // Hot climates
+                if (usage === 'heavy') {
+                    recommendation = '20W-50 or 15W-40';
+                    explanation = 'High viscosity for extreme heat and heavy-duty applications.';
+                } else {
+                    recommendation = '10W-40 or 15W-40';
+                    explanation = 'Stable viscosity for high temperatures with good protection.';
+                }
+            } else {
+                // Moderate climates
+                if (usage === 'city') {
+                    recommendation = '5W-30';
+                    explanation = 'Excellent for stop-and-go traffic, good fuel economy.';
+                } else if (usage === 'highway') {
+                    recommendation = '5W-30 or 10W-30';
+                    explanation = 'Stable at cruising speeds, good all-around protection.';
+                } else if (usage === 'heavy') {
+                    recommendation = '15W-40 or 20W-50';
+                    explanation = 'Higher viscosity for towing and heavy loads.';
+                } else {
+                    recommendation = '10W-40';
+                    explanation = 'Versatile grade for mixed driving conditions.';
+                }
+            }
+            
+            // Show result
+            document.getElementById('viscosity-grade').textContent = recommendation;
+            document.getElementById('viscosity-explanation').textContent = explanation;
+            document.getElementById('viscosity-result').classList.remove('hidden');
+        }
+        
+        // Populate featured products carousel
+        function loadFeaturedProducts() {
+            const carouselList = document.getElementById('featured-products-list');
+            
+            // Select 4 featured products
+            const featured = finderProducts.slice(0, 4);
+            
+            carouselList.innerHTML = featured.map(product => `
+                <li class="splide__slide">
+                    <div class="product-card p-6 hover-lift bg-gray-800">
+                        <div class="mb-4">
+                            <img src="${product.image}" alt="${product.name}" class="carousel-product-img">
+                        </div>
+                        <h3 class="text-xl font-bold mb-2">${product.name}</h3>
+                        <p class="text-gray-400 mb-4">${product.specs.type} for ${product.compatibility.types.join(', ')}</p>
+                        <div class="flex justify-between items-center mb-4">
+                            <span class="text-copper-accent font-bold">ETB ${product.price.toFixed(2)}</span>
+                            <span class="text-sm text-gray-400">${product.specs.capacity}</span>
+                        </div>
+                        <button onclick="addToCartFromFinder('${product.id}')" class="w-full bg-copper text-white px-4 py-2 rounded-lg hover:bg-opacity-80 transition-all">
+                            Add to Cart
+                        </button>
+                    </div>
+                </li>
+            `).join('');
+            
+            // Initialize Splide carousel
+            new Splide('#product-carousel', {
+                type: 'loop',
+                perPage: 4,
+                perMove: 1,
+                gap: '1rem',
+                autoplay: true,
+                interval: 3000,
+                pauseOnHover: true,
+                breakpoints: {
+                    1024: { perPage: 3 },
+                    768: { perPage: 2 },
+                    480: { perPage: 1 }
+                }
+            }).mount();
+            
+            lucide.createIcons();
+        }
+        
+        // Scroll to oil finder
+        function scrollToOilFinder() {
+            document.getElementById('step-1').scrollIntoView({ behavior: 'smooth', block: 'center' });
+        }
+        
+        // Initialize page
+        document.addEventListener('DOMContentLoaded', () => {
+            loadFeaturedProducts();
+            
+            // Fade in animations on scroll
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                    }
+                });
+            });
+            
+            document.querySelectorAll('.fade-in').forEach(el => {
+                observer.observe(el);
+            });
+        });
+    </script>
+</body>
+</html>

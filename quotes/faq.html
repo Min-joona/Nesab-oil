@@ -1,0 +1,1087 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FAQ - Nesab Vehicle Oils</title>
+    <link rel="shortcut icon" href="../resources/favicon.png" type="image/x-icon">
+    <meta name="description" content="Frequently asked questions about Nesab Vehicle Oils products, ordering, delivery, and services. Find answers quickly.">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Custom Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+    
+    <style>
+        :root {
+            --primary-dark: #0a0a0a;
+            --copper: #d4a574;
+            --copper-dark: #b87333;
+            --steel-blue: #6b8db5;
+            --steel-blue-dark: #4a6fa5;
+            --light-gray: #f5f5f5;
+            --text-dark: #2d2d2d;
+            --text-light: #a0aec0;
+        }
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            background: var(--primary-dark);
+            color: white;
+            scroll-behavior: smooth;
+        }
+        
+        .copper-accent { color: var(--copper); }
+        .steel-accent { color: var(--steel-blue); }
+        
+        /* Search Input Glow */
+        .search-glow:focus {
+            box-shadow: 0 0 0 3px rgba(212, 165, 116, 0.3);
+        }
+        
+        /* Accordion */
+        .accordion-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        
+        .accordion-content.open {
+            max-height: 500px;
+        }
+        
+        .accordion-icon {
+            transition: transform 0.3s ease;
+        }
+        
+        .accordion-icon.rotated {
+            transform: rotate(180deg);
+        }
+        
+        /* Category Tabs */
+        .category-tab {
+            transition: all 0.3s ease;
+            border-bottom: 2px solid transparent;
+        }
+        
+        .category-tab.active {
+            color: var(--copper);
+            border-bottom-color: var(--copper);
+            background: rgba(212, 165, 116, 0.1);
+        }
+        
+        /* Sticky Navigation */
+        .nav-sticky {
+            transform: translateY(-100%);
+            transition: transform 0.3s ease;
+        }
+        
+        .nav-sticky.scrolled {
+            transform: translateY(0);
+        }
+        
+        /* Back to Top Button */
+        .back-to-top {
+            opacity: 0;
+            transform: scale(0.8);
+            transition: all 0.3s ease;
+            pointer-events: none;
+        }
+        
+        .back-to-top.visible {
+            opacity: 1;
+            transform: scale(1);
+            pointer-events: all;
+        }
+        
+        /* Cookie Banner */
+        .cookie-banner {
+            transform: translateY(100%);
+            transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        
+        .cookie-banner.show {
+            transform: translateY(0);
+        }
+
+        /* Mobile Menu */
+        .mobile-menu {
+            transform: translateX(100%);
+            transition: transform 0.3s ease;
+        }
+        
+        .mobile-menu.open {
+            transform: translateX(0);
+        }
+        
+        /* No Results */
+        .no-results {
+            display: none;
+        }
+        
+        .no-results.show {
+            display: block;
+        }
+        
+        /* Focus Styles */
+        *:focus-visible {
+            outline: 2px solid var(--copper);
+            outline-offset: 2px;
+        }
+        
+        /* Print Styles */
+        @media print {
+            .no-print { display: none !important; }
+            body { background: white; color: black; }
+            .accordion-content { max-height: none !important; }
+        }
+    </style>
+</head>
+<body>
+    <!-- Skip to main content -->
+    <a href="#main-content" class="sr-only focus:not-sr-only focus:absolute focus:top-0 focus:left-0 bg-copper text-white p-2 z-50">Skip to main content</a>
+
+    <!-- Navigation -->
+    <nav id="navbar" class="fixed top-0 left-0 right-0 z-50 bg-gray-900/95 backdrop-blur-md border-b border-gray-700 nav-sticky">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <a href="../index.html" class="text-2xl font-bold copper-accent hover:scale-105 transition-transform">
+                    <img src="../resources/images/logo.png" alt="Nesab Vehicle Oils" class="h-10 w-auto inline-block mr-2">نّساب Nesab
+                </a>
+                
+                <!-- Desktop Menu -->
+                <div class="hidden md:block">
+                    <div class="ml-10 flex items-center space-x-8">
+                        <a href="../index.html" class="text-white hover:text-copper transition-colors duration-200 py-2">Home</a>
+                        <a href="../pages/shop.html" class="text-copper font-semibold">Shop</a>
+                        <a href="../pages/services.html" class="text-white hover:text-copper transition-colors duration-200 py-2">Services</a>
+                        <a href="../pages/about.html" class="text-white hover:text-copper transition-colors duration-200 py-2">About</a>
+                        <a href="../pages/contact.html" class="text-white hover:text-copper transition-colors duration-200 py-2">Contact</a>
+                    </div>
+                </div>
+                
+                <!-- Mobile Menu Button -->
+                <button id="mobile-menu-btn" class="md:hidden text-white hover:text-copper transition-colors no-print" aria-label="Toggle mobile menu">
+                    <i data-lucide="menu" class="w-6 h-6"></i>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Mobile Menu -->
+    <div id="mobile-menu" class="mobile-menu fixed right-0 top-16 h-full w-64 bg-gray-900 border-l border-gray-700 md:hidden no-print">
+        <div class="p-6 space-y-4">
+            <a href="../index.html" class="block text-white hover:text-copper transition-colors py-2">Home</a>
+            <a href="../pages/products.html" class="block text-white hover:text-copper transition-colors py-2">Products</a>
+            <a href="../pages/services.html" class="block text-white hover:text-copper transition-colors py-2">Services</a>
+            <a href="../pages/about.html" class="block text-white hover:text-copper transition-colors py-2">About</a>
+            <a href="faq.html" class="block copper-accent py-2">FAQ</a>
+            <a href="../pages/contact.html" class="block text-white hover:text-copper transition-colors py-2">Contact</a>
+        </div>
+    </div>
+
+    <!-- Header Section -->
+    <section class="pt-24 pb-16 bg-gray-900 relative overflow-hidden">
+        <div class="absolute inset-0 bg-gradient-to-br from-copper/10 to-steel-blue/10"></div>
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
+            <img src="../resources/hero-shop.png" alt="FAQ" class="w-24 h-24 mx-auto rounded-full mb-6 border-2 border-copper/30">
+            <h1 class="text-4xl lg:text-6xl font-bold mb-4 copper-accent tracking-tight">Frequently Asked Questions</h1>
+            <p class="text-gray-300 text-lg mb-8">Find quick answers to common questions about our products, services, and policies</p>
+            
+            <!-- Search Bar -->
+            <div class="max-w-2xl mx-auto relative no-print">
+                <div class="relative">
+                    <i data-lucide="search" class="absolute left-4 top-1/2 transform -translate-y-1/2 w-5 h-5 text-gray-400"></i>
+                    <input 
+                        type="text" 
+                        id="faq-search" 
+                        placeholder="Search our FAQ..." 
+                        class="w-full pl-12 pr-4 py-4 bg-gray-800 border border-gray-700 rounded-lg text-white placeholder-gray-400 search-glow focus:border-copper focus:outline-none"
+                    >
+                </div>
+                <p class="text-sm text-gray-400 mt-2">Press <kbd class="px-2 py-1 bg-gray-700 rounded">Ctrl</kbd> + <kbd class="px-2 py-1 bg-gray-700 rounded">K</kbd> to search</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Category Tabs -->
+    <section class="py-8 bg-gray-800 border-b border-gray-700 no-print">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-wrap justify-center gap-2" id="category-tabs">
+                <button class="category-tab active px-4 py-2 rounded-lg" data-category="all">
+                    <i data-lucide="grid" class="w-4 h-4 inline mr-2"></i>
+                    All Questions
+                </button>
+                <button class="category-tab px-4 py-2 rounded-lg" data-category="products">
+                    <i data-lucide="package" class="w-4 h-4 inline mr-2"></i>
+                    Products
+                </button>
+                <button class="category-tab px-4 py-2 rounded-lg" data-category="ordering">
+                    <i data-lucide="shopping-cart" class="w-4 h-4 inline mr-2"></i>
+                    Ordering
+                </button>
+                <button class="category-tab px-4 py-2 rounded-lg" data-category="delivery">
+                    <i data-lucide="truck" class="w-4 h-4 inline mr-2"></i>
+                    Delivery
+                </button>
+                <button class="category-tab px-4 py-2 rounded-lg" data-category="technical">
+                    <i data-lucide="settings" class="w-4 h-4 inline mr-2"></i>
+                    Technical
+                </button>
+                <button class="category-tab px-4 py-2 rounded-lg" data-category="returns">
+                    <i data-lucide="refresh-cw" class="w-4 h-4 inline mr-2"></i>
+                    Returns
+                </button>
+                <button class="category-tab px-4 py-2 rounded-lg" data-category="account">
+                    <i data-lucide="user" class="w-4 h-4 inline mr-2"></i>
+                    Account
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Content -->
+    <main id="main-content" class="py-12 bg-gray-800">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+            
+            <!-- No Results Message -->
+            <div id="no-results" class="no-results text-center py-12">
+                <i data-lucide="search-x" class="w-16 h-16 steel-accent mx-auto mb-4"></i>
+                <h3 class="text-xl font-semibold mb-2">No results found</h3>
+                <p class="text-gray-400 mb-6">We couldn't find answers matching your search.</p>
+                <a href="../pages/contact.html" class="inline-flex items-center gap-2 bg-copper hover:bg-copper-dark px-6 py-3 rounded-lg font-medium transition-colors">
+                    <i data-lucide="message-circle" class="w-5 h-5"></i>
+                    Contact Support
+                </a>
+            </div>
+
+            <!-- FAQ Sections -->
+            <div id="faq-container">
+                
+                <!-- Product Questions Section -->
+                <section class="faq-section mb-12" data-category="products">
+                    <div class="flex items-center gap-3 mb-6">
+                        <i data-lucide="package" class="w-4 h-4 inline mr-2"></i>
+                        <h2 class="text-2xl font-bold copper-accent">Product Questions</h2>
+                    </div>
+                    
+                    <div class="space-y-4">
+                        <div class="faq-item bg-gray-900 rounded-lg border border-gray-700 overflow-hidden">
+                            <button class="faq-question w-full text-left p-6 flex justify-between items-center hover:bg-gray-800 transition-colors" aria-expanded="false">
+                                <span class="font-semibold text-white">What viscosity grade should I use for my vehicle?</span>
+                                <i data-lucide="chevron-down" class="accordion-icon w-5 h-5 copper-accent"></i>
+                            </button>
+                            <div class="accordion-content">
+                                <div class="px-6 pb-6 text-gray-300">
+                                    <p class="mb-4">The correct viscosity depends on your vehicle's make, model, year, and operating conditions:</p>
+                                    <ul class="list-disc pl-6 space-y-2 mb-4">
+                                        <li><strong>Modern petrol engines (2010+):</strong> Typically 5W-30 or 0W-20 for fuel efficiency</li>
+                                        <li><strong>Diesel engines:</strong> Commonly 15W-40 or 10W-40, especially for commercial vehicles</li>
+                                        <li><strong>Heavy-duty trucks:</strong> Usually 20W-50 or 15W-40 for high-temperature protection</li>
+                                        <li><strong>High-performance vehicles:</strong> Synthetic 5W-40 or 10W-60</li>
+                                    </ul>
+                                    <p>Always check your owner's manual first. For personalized recommendations, use our <a href="../index.html" class="copper-accent hover:underline">Oil Selector Tool</a> or call our technical hotline at +251 93 368 0059.</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="faq-item bg-gray-900 rounded-lg border border-gray-700 overflow-hidden">
+                            <button class="faq-question w-full text-left p-6 flex justify-between items-center hover:bg-gray-800 transition-colors" aria-expanded="false">
+                                <span class="font-semibold text-white">Are your oils compatible with all vehicle brands?</span>
+                                <i data-lucide="chevron-down" class="accordion-icon w-5 h-5 copper-accent"></i>
+                            </button>
+                            <div class="accordion-content">
+                                <div class="px-6 pb-6 text-gray-300">
+                                    <p class="mb-4">Our lubricants meet or exceed major OEM specifications:</p>
+                                    <ul class="list-disc pl-6 space-y-2 mb-4">
+                                        <li><strong>Toyota/Lexus:</strong> Approved for Toyota TGMO requirements</li>
+                                        <li><strong>Mercedes-Benz:</strong> MB-Approval 229.5/229.3 compliant</li>
+                                        <li><strong>BMW:</strong> LL-01/LL-04 specifications</li>
+                                        <li><strong>Volkswagen:</strong> 502.00/505.00 and 508.00/509.00 standards</li>
+                                        <li><strong>Ford:</strong> WSS-M2C913-C/D and WSS-M2C948-B</li>
+                                    </ul>
+                                    <p>Each product page includes a detailed compatibility matrix. For older vehicles or specific models, contact our technical team with your VIN number for exact recommendations.</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="faq-item bg-gray-900 rounded-lg border border-gray-700 overflow-hidden">
+                            <button class="faq-question w-full text-left p-6 flex justify-between items-center hover:bg-gray-800 transition-colors" aria-expanded="false">
+                                <span class="font-semibold text-white">What is the shelf life of your lubricants?</span>
+                                <i data-lucide="chevron-down" class="accordion-icon w-5 h-5 copper-accent"></i>
+                            </button>
+                            <div class="accordion-content">
+                                <div class="px-6 pb-6 text-gray-300">
+                                    <p class="mb-4">When stored properly (indoors, 15-25°C, sealed containers):</p>
+                                    <ul class="list-disc pl-6 space-y-2 mb-4">
+                                        <li><strong>Engine oils (unopened):</strong> 3-5 years from manufacture date</li>
+                                        <li><strong>Transmission fluids:</strong> 5 years</li>
+                                        <li><strong>Gear oils:</strong> 5-7 years</li>
+                                        <li><strong>Grease:</strong> 2-3 years (check for oil separation)</li>
+                                        <li><strong>Coolants:</strong> 3 years (sealed), 1 year (opened)</li>
+                                    </ul>
+                                    <p>Check the batch code on the container - format: DDMMYY-XXXX. We guarantee minimum 18 months remaining shelf life for all products sold. Proper storage extends shelf life significantly. Avoid direct sunlight and temperature extremes.</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="faq-item bg-gray-900 rounded-lg border border-gray-700 overflow-hidden">
+                            <button class="faq-question w-full text-left p-6 flex justify-between items-center hover:bg-gray-800 transition-colors" aria-expanded="false">
+                                <span class="font-semibold text-white">Do you provide Safety Data Sheets (SDS) and Technical Data Sheets (TDS)?</span>
+                                <i data-lucide="chevron-down" class="accordion-icon w-5 h-5 copper-accent"></i>
+                            </button>
+                            <div class="accordion-content">
+                                <div class="px-6 pb-6 text-gray-300">
+                                    <p class="mb-4">Yes, absolutely. All documentation is available in multiple formats:</p>
+                                    <ul class="list-disc pl-6 space-y-2 mb-4">
+                                        <li><strong>Online:</strong> Download directly from each product page (PDF)</li>
+                                        <li><strong>Account portal:</strong> Access all documents from your order history</li>
+                                        <li><strong>Email:</strong> Automatically sent with order confirmation</li>
+                                        <li><strong>Physical copies:</strong> Included with delivery upon request</li>
+                                    </ul>
+                                    <p>Documents are available in English and Amharic. SDS sheets include handling, storage, disposal, and first aid information. TDS sheets provide detailed performance specifications, test results, and OEM approvals.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Ordering Section -->
+                <section class="faq-section mb-12" data-category="ordering">
+                    <div class="flex items-center gap-3 mb-6">
+                        <i data-lucide="shopping-cart" class="w-4 h-4 inline mr-2"></i>
+                        <h2 class="text-2xl font-bold copper-accent">Ordering</h2>
+                    </div>
+                    
+                    <div class="space-y-4">
+                        <div class="faq-item bg-gray-900 rounded-lg border border-gray-700 overflow-hidden">
+                            <button class="faq-question w-full text-left p-6 flex justify-between items-center hover:bg-gray-800 transition-colors" aria-expanded="false">
+                                <span class="font-semibold text-white">What is the minimum order quantity or value?</span>
+                                <i data-lucide="chevron-down" class="accordion-icon w-5 h-5 copper-accent"></i>
+                            </button>
+                            <div class="accordion-content">
+                                <div class="px-6 pb-6 text-gray-300">
+                                    <p class="mb-4">No minimum order value for retail customers within Addis Ababa. However:</p>
+                                    <ul class="list-disc pl-6 space-y-2 mb-4">
+                                        <li><strong>Orders under ETB 1,000:</strong> ETB 50 small order fee applies</li>
+                                        <li><strong>B2B customers:</strong> No minimum, but NET 30 credit requires monthly purchases >ETB 25,000</li>
+                                        <li><strong>Bulk orders:</strong> 200L+ qualifies for wholesale pricing (5-15% discount)</li>
+                                        <li><strong>Outskirts delivery:</strong> Minimum 50L or ETB 3,000 order value</li>
+                                    </ul>
+                                    <p>Create an account to unlock volume pricing tiers automatically. For custom quotes on 1000L+ orders, contact our sales team.</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="faq-item bg-gray-900 rounded-lg border border-gray-700 overflow-hidden">
+                            <button class="faq-question w-full text-left p-6 flex justify-between items-center hover:bg-gray-800 transition-colors" aria-expanded="false">
+                                <span class="font-semibold text-white">What payment methods do you accept?</span>
+                                <i data-lucide="chevron-down" class="accordion-icon w-5 h-5 copper-accent"></i>
+                            </button>
+                            <div class="accordion-content">
+                                <div class="px-6 pb-6 text-gray-300">
+                                    <p class="mb-4">Multiple secure payment options available:</p>
+                                    <ul class="list-disc pl-6 space-y-2 mb-4">
+                                        <li><strong>M-Pesa:</strong> Pay to business number +251 93 368 0059 (instant confirmation)</li>
+                                        <li><strong>Bank Transfer:</strong> Commercial Bank of Ethiopia - Account: 1000234567890 (SWIFT: CBETETAA)</li>
+                                        <li><strong>Cash on Delivery:</strong> Available for orders under ETB 5,000 in Addis Ababa only</li>
+                                        <li><strong>Telebirr:</strong> Scan QR code at checkout (no fees)</li>
+                                        <li><strong>Credit Card:</strong> Visa/Mastercard via HelloCash POS at delivery</li>
+                                        <li><strong>NET 30:</strong> Approved B2B customers with credit application</li>
+                                    </ul>
+                                    <p>All online payments use 256-bit SSL encryption. B2B customers can apply for credit terms with bank references and trade history. International customers: USD/EUR wire transfers accepted with proforma invoice.</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="faq-item bg-gray-900 rounded-lg border border-gray-700 overflow-hidden">
+                            <button class="faq-question w-full text-left p-6 flex justify-between items-center hover:bg-gray-800 transition-colors" aria-expanded="false">
+                                <span class="font-semibold text-white">Do you offer bulk discounts or wholesale pricing?</span>
+                                <i data-lucide="chevron-down" class="accordion-icon w-5 h-5 copper-accent"></i>
+                            </button>
+                            <div class="accordion-content">
+                                <div class="px-6 pb-6 text-gray-300">
+                                    <p class="mb-4">Yes, tiered pricing structure for volume purchases:</p>
+                                    <ul class="list-disc pl-6 space-y-2 mb-4">
+                                        <li><strong>200-499L:</strong> 5% discount + free delivery</li>
+                                        <li><strong>500-999L:</strong> 8% discount + dedicated account manager</li>
+                                        <li><strong>1000-2499L:</strong> 12% discount + 30-day payment terms</li>
+                                        <li><strong>2500L+:</strong> 15% discount + custom blending + priority support</li>
+                                    </ul>
+                                    <p>Fleet customers, workshops, and retailers welcome. We offer drop-shipping for resellers. Contact sales@nesab-oil.com for custom pricing agreements. Minimum 3-month contract for maximum discounts.</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="faq-item bg-gray-900 rounded-lg border border-gray-700 overflow-hidden">
+                            <button class="faq-question w-full text-left p-6 flex justify-between items-center hover:bg-gray-800 transition-colors" aria-expanded="false">
+                                <span class="font-semibold text-white">Can I modify or cancel my order after placing it?</span>
+                                <i data-lucide="chevron-down" class="accordion-icon w-5 h-5 copper-accent"></i>
+                            </button>
+                            <div class="accordion-content">
+                                <div class="px-6 pb-6 text-gray-300">
+                                    <p class="mb-4">Order modifications are possible depending on status:</p>
+                                    <ul class="list-disc pl-6 space-y-2 mb-4">
+                                        <li><strong>Within 1 hour:</strong> Free modification/cancellation via phone or email</li>
+                                        <li><strong>1-4 hours:</strong> May incur ETB 100 processing fee if already packed</li>
+                                        <li><strong>After dispatch:</strong> Cannot modify, but can refuse delivery (return shipping applies)</li>
+                                        <li><strong>Custom blends:</strong> Cannot be cancelled once blending begins (2-hour window)</li>
+                                    </ul>
+                                    <p>Call +251 93 368 0059 immediately for changes. Email requests may take up to 2 hours to process. Bulk orders (500L+) require 24-hour notice for cancellation.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Delivery Section -->
+                <section class="faq-section mb-12" data-category="delivery">
+                    <div class="flex items-center gap-3 mb-6">
+                        <i data-lucide="truck" class="w-4 h-4 inline mr-2"></i>
+                        <h2 class="text-2xl font-bold copper-accent">Delivery</h2>
+                    </div>
+                    
+                    <div class="space-y-4">
+                        <div class="faq-item bg-gray-900 rounded-lg border border-gray-700 overflow-hidden">
+                            <button class="faq-question w-full text-left p-6 flex justify-between items-center hover:bg-gray-800 transition-colors" aria-expanded="false">
+                                <span class="font-semibold text-white">What areas do you deliver to?</span>
+                                <i data-lucide="chevron-down" class="accordion-icon w-5 h-5 copper-accent"></i>
+                            </button>
+                            <div class="accordion-content">
+                                <div class="px-6 pb-6 text-gray-300">
+                                    <p class="mb-4">Comprehensive coverage across Ethiopia with multiple delivery zones:</p>
+                                    <ul class="list-disc pl-6 space-y-2 mb-4">
+                                        <li><strong>Zone 1 (Addis Ababa):</strong> All sub-cities, 2-4 hour delivery</li>
+                                        <li><strong>Zone 2 (Outskirts):</strong> Burayu, Legetafo, Dukem, 4-8 hours</li>
+                                        <li><strong>Zone 3 (Oromia region):</strong> Adama, Bishoftu, Modjo, same day</li>
+                                        <li><strong>Zone 4 (Major cities):</strong> Dire Dawa, Hawassa, Bahir Dar, 1-2 days</li>
+                                        <li><strong>Zone 5 (Remote):</strong> All other towns, 2-3 days via partner network</li>
+                                    </ul>
+                                    <p>Real-time delivery checker available at checkout. Enter your address to see exact delivery options and costs. For areas not listed, call for custom logistics solutions.</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="faq-item bg-gray-900 rounded-lg border border-gray-700 overflow-hidden">
+                            <button class="faq-question w-full text-left p-6 flex justify-between items-center hover:bg-gray-800 transition-colors" aria-expanded="false">
+                                <span class="font-semibold text-white">How long does delivery take?</span>
+                                <i data-lucide="chevron-down" class="accordion-icon w-5 h-5 copper-accent"></i>
+                            </button>
+                            <div class="accordion-content">
+                                <div class="px-6 pb-6 text-gray-300">
+                                    <p class="mb-4">Multiple delivery options to suit your needs:</p>
+                                    <ul class="list-disc pl-6 space-y-2 mb-4">
+                                        <li><strong>Express (2-4 hours):</strong> ETB 150 surcharge, available in Addis Ababa only</li>
+                                        <li><strong>Standard Same-Day:</strong> Order before 2 PM, delivered by 6 PM</li>
+                                        <li><strong>Next Day:</strong> Order before 6 PM, delivered following day</li>
+                                        <li><strong>Scheduled:</strong> Choose 2-hour delivery window (no extra charge)</li>
+                                        <li><strong>Emergency 24/7:</strong> Fleet customers only, ETB 300 surcharge</li>
+                                    </ul>
+                                    <p>Delivery times shown are estimates. Weather, traffic, and order volume may affect timing. You'll receive SMS updates with driver contact and live tracking link after dispatch.</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="faq-item bg-gray-900 rounded-lg border border-gray-700 overflow-hidden">
+                            <button class="faq-question w-full text-left p-6 flex justify-between items-center hover:bg-gray-800 transition-colors" aria-expanded="false">
+                                <span class="font-semibold text-white">Can I track my delivery in real-time?</span>
+                                <i data-lucide="chevron-down" class="accordion-icon w-5 h-5 copper-accent"></i>
+                            </button>
+                            <div class="accordion-content">
+                                <div class="px-6 pb-6 text-gray-300">
+                                    <p class="mb-4">Yes, comprehensive tracking system for complete visibility:</p>
+                                    <ul class="list-disc pl-6 space-y-2 mb-4">
+                                        <li><strong>Order confirmation:</strong> Email/SMS with order ID and ETA</li>
+                                        <li><strong>Dispatched:</strong> SMS with driver name, phone, and vehicle plate</li>
+                                        <li><strong>Live tracking:</strong> GPS link shows real-time location on map</li>
+                                        <li><strong>Photo proof:</strong> Delivery confirmation photo sent via SMS</li>
+                                        <li><strong>Digital signature:</strong> Sign on driver's mobile device</li>
+                                    </ul>
+                                    <p>Track via our website (track.nesab-oil.com) or call +251 93 368 0059. For B2B customers, dedicated fleet management portal shows all deliveries on single dashboard.</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="faq-item bg-gray-900 rounded-lg border border-gray-700 overflow-hidden">
+                            <button class="faq-question w-full text-left p-6 flex justify-between items-center hover:bg-gray-800 transition-colors" aria-expanded="false">
+                                <span class="font-semibold text-white">What are the delivery costs?</span>
+                                <i data-lucide="chevron-down" class="accordion-icon w-5 h-5 copper-accent"></i>
+                            </button>
+                            <div class="accordion-content">
+                                <div class="px-6 pb-6 text-gray-300">
+                                    <p class="mb-4">Transparent pricing based on location and urgency:</p>
+                                    <ul class="list-disc pl-6 space-y-2 mb-4">
+                                        <li><strong>Addis Ababa (Standard):</strong> Free for orders >ETB 2,000, otherwise ETB 75</li>
+                                        <li><strong>Outskirts (0-30km):</strong> ETB 150-300 depending on distance</li>
+                                        <li><strong>Inter-city:</strong> Calculated per km, average ETB 1.50/km from Addis</li>
+                                        <li><strong>Express surcharge:</strong> Additional ETB 150 on base rate</li>
+                                        <li><strong>Emergency delivery:</strong> ETB 300 flat fee (24/7 service)</li>
+                                    </ul>
+                                    <p>Free delivery on all orders >ETB 5,000 for B2B customers. Bulk orders (500L+) include free delivery nationwide. Final delivery cost calculated at checkout before payment.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Technical Section -->
+                <section class="faq-section mb-12" data-category="technical">
+                    <div class="flex items-center gap-3 mb-6">
+                        <i data-lucide="settings" class="w-4 h-4 inline mr-2"></i>
+                        <h2 class="text-2xl font-bold copper-accent">Technical Support</h2>
+                    </div>
+                    
+                    <div class="space-y-4">
+                        <div class="faq-item bg-gray-900 rounded-lg border border-gray-700 overflow-hidden">
+                            <button class="faq-question w-full text-left p-6 flex justify-between items-center hover:bg-gray-800 transition-colors" aria-expanded="false">
+                                <span class="font-semibold text-white">Do you offer oil analysis services?</span>
+                                <i data-lucide="chevron-down" class="accordion-icon w-5 h-5 copper-accent"></i>
+                            </button>
+                            <div class="accordion-content">
+                                <div class="px-6 pb-6 text-gray-300">
+                                    <p class="mb-4">Comprehensive oil analysis laboratory services available:</p>
+                                    <ul class="list-disc pl-6 space-y-2 mb-4">
+                                        <li><strong>Basic analysis (ETB 500):</strong> Viscosity, contamination, wear metals</li>
+                                        <li><strong>Standard analysis (ETB 1,200):</strong> Full physical/chemical properties + additive levels</li>
+                                        <li><strong>Premium analysis (ETB 2,500):</strong> Comprehensive + ferrography + expert report</li>
+                                        <li><strong>Fleet packages:</strong> 10+ samples at 20% discount per sample</li>
+                                    </ul>
+                                    <p>Sample kits available at our office or via courier. Results emailed within 5 business days. Used oil analysis helps optimize drain intervals, detect engine problems early, and reduce costs. Ideal for fleet managers and heavy equipment operators.</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="faq-item bg-gray-900 rounded-lg border border-gray-700 overflow-hidden">
+                            <button class="faq-question w-full text-left p-6 flex justify-between items-center hover:bg-gray-800 transition-colors" aria-expanded="false">
+                                <span class="font-semibold text-white">Is technical consultation available for selecting the right oil?</span>
+                                <i data-lucide="chevron-down" class="accordion-icon w-5 h-5 copper-accent"></i>
+                            </button>
+                            <div class="accordion-content">
+                                <div class="px-6 pb-6 text-gray-300">
+                                    <p class="mb-4">Free expert consultation from certified lubrication specialists:</p>
+                                    <ul class="list-disc pl-6 space-y-2 mb-4">
+                                        <li><strong>Phone support:</strong> +251 93 368 0059 (Mon-Sat, 7 AM - 8 PM)</li>
+                                        <li><strong>On-site visits:</strong> For orders >200L within Addis Ababa (free)</li>
+                                        <li><strong>WhatsApp chat:</strong> Send VIN or equipment details for instant recommendations</li>
+                                        <li><strong>Email consultation:</strong> technical@nesab-oil.com with 24-hour response</li>
+                                    </ul>
+                                    <p>Our team includes certified STLE (Society of Tribologists and Lubrication Engineers) specialists. We provide drain interval optimization, cost-per-km analysis, and equipment-specific recommendations. Free training available for fleet mechanics.</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="faq-item bg-gray-900 rounded-lg border border-gray-700 overflow-hidden">
+                            <button class="faq-question w-full text-left p-6 flex justify-between items-center hover:bg-gray-800 transition-colors" aria-expanded="false">
+                                <span class="font-semibold text-white">What is your emergency support policy?</span>
+                                <i data-lucide="chevron-down" class="accordion-icon w-5 h-5 copper-accent"></i>
+                            </button>
+                            <div class="accordion-content">
+                                <div class="px-6 pb-6 text-gray-300">
+                                    <p class="mb-4">24/7 emergency support for critical situations:</p>
+                                    <ul class="list-disc pl-6 space-y-2 mb-4">
+                                        <li><strong>Emergency hotline:</strong> +251 93 368 0059 (24/7, fleet customers only)</li>
+                                        <li><strong>After-hours delivery:</strong> Available 24/7 within Addis Ababa (ETB 300 surcharge)</li>
+                                        <li><strong>Breakdown assistance:</strong> Incorrect oil delivery replaced free within 2 hours</li>
+                                        <li><strong>Crisis consultation:</strong> Oil-related equipment failures, contamination issues</li>
+                                    </ul>
+                                    <p>Must be registered fleet customer with account. On-call technician available for phone consultation nights/weekends. Emergency oil analysis rush service (24-hour turnaround) available for ETB 1,000 premium. Non-customer emergency delivery available at ETB 500 surcharge.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Returns Section -->
+                <section class="faq-section mb-12" data-category="returns">
+                    <div class="flex items-center gap-3 mb-6">
+                        <i data-lucide="refresh-cw" class="w-4 h-4 inline mr-2"></i>
+                        <h2 class="text-2xl font-bold copper-accent">Returns & Refunds</h2>
+                    </div>
+                    
+                    <div class="space-y-4">
+                        <div class="faq-item bg-gray-900 rounded-lg border border-gray-700 overflow-hidden">
+                            <button class="faq-question w-full text-left p-6 flex justify-between items-center hover:bg-gray-800 transition-colors" aria-expanded="false">
+                                <span class="font-semibold text-white">What if my product arrives damaged?</span>
+                                <i data-lucide="chevron-down" class="accordion-icon w-5 h-5 copper-accent"></i>
+                            </button>
+                            <div class="accordion-content">
+                                <div class="px-6 pb-6 text-gray-300">
+                                    <p class="mb-4">Zero-risk policy for damaged goods:</p>
+                                    <ul class="list-disc pl-6 space-y-2 mb-4">
+                                        <li><strong>Report immediately:</strong> Note damage on delivery note and photograph</li>
+                                        <li><strong>Call within 1 hour:</strong> Hotline +251 93 368 0059 for instant replacement</li>
+                                        <li><strong>Free replacement:</strong> New product dispatched same day at no cost</li>
+                                        <li><strong>Refund option:</strong> Full refund including delivery charges if preferred</li>
+                                    </ul>
+                                    <p>Do not accept clearly damaged packages. If damage is internal/not visible, report within 24 hours. Keep all packaging for inspection. We file claim with insurance carrier - customer is never responsible for shipping damage.</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="faq-item bg-gray-900 rounded-lg border border-gray-700 overflow-hidden">
+                            <button class="faq-question w-full text-left p-6 flex justify-between items-center hover:bg-gray-800 transition-colors" aria-expanded="false">
+                                <span class="font-semibold text-white">Can I return products if I ordered the wrong item?</span>
+                                <i data-lucide="chevron-down" class="accordion-icon w-5 h-5 copper-accent"></i>
+                            </button>
+                            <div class="accordion-content">
+                                <div class="px-6 pb-6 text-gray-300">
+                                    <p class="mb-4">Yes, with conditions:</p>
+                                    <ul class="list-disc pl-6 space-y-2 mb-4">
+                                        <li><strong>Time limit:</strong> Within 7 days of delivery</li>
+                                        <li><strong>Condition:</strong> Unopened, unused, original seals intact</li>
+                                        <li><strong>Packaging:</strong> Original undamaged packaging with all labels</li>
+                                        <li><strong>Approval:</strong> Must obtain RMA number before returning</li>
+                                    </ul>
+                                    <p>Return shipping costs ETB 75-150 depending on location. Refund processed within 10 business days of receipt. Can exchange for correct product with price difference adjustment. Custom-blended products cannot be returned.</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="faq-item bg-gray-900 rounded-lg border border-gray-700 overflow-hidden">
+                            <button class="faq-question w-full text-left p-6 flex justify-between items-center hover:bg-gray-800 transition-colors" aria-expanded="false">
+                                <span class="font-semibold text-white">How long do refunds take to process?</span>
+                                <i data-lucide="chevron-down" class="accordion-icon w-5 h-5 copper-accent"></i>
+                            </button>
+                            <div class="accordion-content">
+                                <div class="px-6 pb-6 text-gray-300">
+                                    <p class="mb-4">Fast refund processing timeline:</p>
+                                    <ul class="list-disc pl-6 space-y-2 mb-4">
+                                        <li><strong>Approved returns:</strong> Refund initiated within 2 business days of receiving product</li>
+                                        <li><strong>Payment method:</strong> Same as original payment (M-Pesa, bank transfer, etc.)</li>
+                                        <li><strong>Processing time:</strong> 3-5 business days for bank transfers, instant for M-Pesa</li>
+                                        <li><strong>Full amount:</strong> Product cost + original delivery charges (if we made error)</li>
+                                    </ul>
+                                    <p>You'll receive email confirmation when refund is processed. For bank transfers, provide correct account details to avoid delays. If refund not received within 10 business days, contact accounts@nesab-oil.com with order number.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Account Section -->
+                <section class="faq-section mb-12" data-category="account">
+                    <div class="flex items-center gap-3 mb-6">
+                        <i data-lucide="user" class="w-4 h-4 inline mr-2"></i>
+                        <h2 class="text-2xl font-bold copper-accent">Account Management</h2>
+                    </div>
+                    
+                    <div class="space-y-4">
+                        <div class="faq-item bg-gray-900 rounded-lg border border-gray-700 overflow-hidden">
+                            <button class="faq-question w-full text-left p-6 flex justify-between items-center hover:bg-gray-800 transition-colors" aria-expanded="false">
+                                <span class="font-semibold text-white">How do I register for a B2B account?</span>
+                                <i data-lucide="chevron-down" class="accordion-icon w-5 h-5 copper-accent"></i>
+                            </button>
+                            <div class="accordion-content">
+                                <div class="px-6 pb-6 text-gray-300">
+                                    <p class="mb-4">Simple registration process for business customers:</p>
+                                    <ul class="list-disc pl-6 space-y-2 mb-4">
+                                        <li><strong>Online form:</strong> Upload business license, TIN certificate, and trade references</li>
+                                        <li><strong>Verification:</strong> Approved within 4 business hours during weekdays</li>
+                                        <li><strong>Credit application:</strong> Optional NET 30 terms with bank reference letter</li>
+                                        <li><strong>Benefits:</strong> Volume pricing, dedicated account manager, monthly invoicing</li>
+                                    </ul>
+                                    <p>Minimum requirements: Valid business registration, physical address, and TIN. For NET 30 terms: 6+ months trade history and bank reference. Apply at nesab-oil.com/business-apply or visit our Lafto Square office with documents.</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="faq-item bg-gray-900 rounded-lg border border-gray-700 overflow-hidden">
+                            <button class="faq-question w-full text-left p-6 flex justify-between items-center hover:bg-gray-800 transition-colors" aria-expanded="false">
+                                <span class="font-semibold text-white">Can I view my order history and reorder easily?</span>
+                                <i data-lucide="chevron-down" class="accordion-icon w-5 h-5 copper-accent"></i>
+                            </button>
+                            <div class="accordion-content">
+                                <div class="px-6 pb-6 text-gray-300">
+                                    <p class="mb-4">Complete order management through customer portal:</p>
+                                    <ul class="list-disc pl-6 space-y-2 mb-4">
+                                        <li><strong>Order history:</strong> All orders with dates, products, quantities, and status</li>
+                                        <li><strong>One-click reorder:</strong> Reorder previous purchases instantly</li>
+                                        <li><strong>Scheduled orders:</strong> Set up automatic recurring deliveries</li>
+                                        <li><strong>Invoices:</strong> Download all invoices and delivery notes as PDF</li>
+                                        <li><strong>Analytics:</strong> Spending reports, most ordered products, cost trends</li>
+                                    </ul>
+                                    <p>Portal accessible via web and mobile app. SMS notifications for order updates. Save favorite products and create custom shopping lists. For workshops, integrate with your inventory system via API.</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="faq-item bg-gray-900 rounded-lg border border-gray-700 overflow-hidden">
+                            <button class="faq-question w-full text-left p-6 flex justify-between items-center hover:bg-gray-800 transition-colors" aria-expanded="false">
+                                <span class="font-semibold text-white">How do I save and manage quotes?</span>
+                                <i data-lucide="chevron-down" class="accordion-icon w-5 h-5 copper-accent"></i>
+                            </button>
+                            <div class="accordion-content">
+                                <div class="px-6 pb-6 text-gray-300">
+                                    <p class="mb-4">Flexible quote management system:</p>
+                                    <ul class="list-disc pl-6 space-y-2 mb-4">
+                                        <li><strong>Create quotes:</strong> Add products to cart and select "Request Quote" instead of checkout</li>
+                                        <li><strong>Valid for 30 days:</strong> Prices locked for 30 days from quote date</li>
+                                        <li><strong>Convert to order:</strong> One-click conversion from quote to order</li>
+                                        <li><strong>Share quotes:</strong> Email PDF quote to approvers or managers</li>
+                                        <li><strong>Multiple quotes:</strong> Save unlimited quotes for different projects</li>
+                                    </ul>
+                                    <p>Perfect for tender submissions, budget approvals, or project planning. Sales team can adjust pricing on quotes for bulk orders. Get notified before quote expires. Compare multiple quotes side-by-side on dashboard.</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="faq-item bg-gray-900 rounded-lg border border-gray-700 overflow-hidden">
+                            <button class="faq-question w-full text-left p-6 flex justify-between items-center hover:bg-gray-800 transition-colors" aria-expanded="false">
+                                <span class="font-semibold text-white">How do I manage multiple delivery addresses?</span>
+                                <i data-lucide="chevron-down" class="accordion-icon w-5 h-5 copper-accent"></i>
+                            </button>
+                            <div class="accordion-content">
+                                <div class="px-6 pb-6 text-gray-300">
+                                    <p class="mb-4">Unlimited address book for flexible delivery:</p>
+                                    <ul class="list-disc pl-6 space-y-2 mb-4">
+                                        <li><strong>Save addresses:</strong> Home, workshop, client sites, branch locations</li>
+                                        <li><strong>Labels:</strong> Assign names like "Main Workshop," "Branch 1," "Client Site"</li>
+                                        <li><strong>Default address:</strong> Set primary delivery address for faster checkout</li>
+                                        <li><strong>Address verification:</strong> Our system validates addresses for delivery coverage</li>
+                                        <li><strong>Multiple recipients:</strong> Different contact person per address</li>
+                                    </ul>
+                                    <p>Ideal for businesses with multiple locations or service vehicles. Addresses synced across web and mobile. One-click selection during checkout. Can restrict certain addresses to specific product categories for safety compliance.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+
+            <!-- Still Need Help Banner -->
+            <div class="mt-16 bg-gradient-to-r from-copper-dark to-steel-blue-dark rounded-lg p-8 text-center">
+                <i data-lucide="help-circle" class="w-12 h-12 text-white mx-auto mb-4"></i>
+                <h3 class="text-2xl font-bold mb-2">Still Have Questions?</h3>
+                <p class="text-gray-200 mb-6">Can't find what you're looking for? Our expert team is ready to help.</p>
+                <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                    <a href="../pages/contact.html" class="inline-flex items-center gap-2 bg-white text-gray-900 px-6 py-3 rounded-lg font-medium hover:bg-gray-100 transition-colors">
+                        <i data-lucide="message-square" class="w-5 h-5"></i>
+                        Contact Support
+                    </a>
+                    <a href="tel:+251 93 368 0059" class="inline-flex items-center gap-2 border-2 border-white text-white px-6 py-3 rounded-lg font-medium hover:bg-white hover:text-gray-900 transition-colors">
+                        <i data-lucide="phone" class="w-5 h-5"></i>
+                        Call +251 93 368 0059
+                    </a>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Back to Top Button -->
+    <button id="back-to-top" class="back-to-top fixed bottom-8 right-8 bg-copper-dark hover:bg-copper text-white p-3 rounded-full shadow-lg z-40 no-print" aria-label="Back to top">
+        <i data-lucide="arrow-up" class="w-5 h-5"></i>
+        <svg class="progress-ring" width="48" height="48" style="position: absolute; top: -4px; left: -4px;">
+            <circle class="progress-ring-circle" stroke="var(--copper)" stroke-width="2" fill="transparent" r="22" cx="24" cy="24"/>
+        </svg>
+    </button>
+
+    <!-- Cookie Consent Banner -->
+    <div id="cookie-banner" class="cookie-banner fixed bottom-0 left-0 right-0 bg-gray-900 border-t border-gray-700 p-6 z-50 no-print">
+        <div class="max-w-4xl mx-auto flex flex-col md:flex-row items-center justify-between gap-4">
+            <div class="flex items-start gap-3">
+                <i data-lucide="cookie" class="w-6 h-6 steel-accent mt-1"></i>
+                <div>
+                    <h4 class="font-semibold text-white mb-1">We use cookies</h4>
+                    <p class="text-sm text-gray-300">We use cookies to enhance your experience. By continuing, you agree to our Privacy Policy.</p>
+                </div>
+            </div>
+            <div class="flex gap-3">
+                <button onclick="rejectCookies()" class="px-4 py-2 text-gray-300 hover:text-white transition-colors">Reject</button>
+                <button onclick="acceptCookies()" class="bg-copper hover:bg-copper-dark px-4 py-2 rounded-lg font-medium transition-colors">Accept</button>
+            </div>
+        </div>
+    </div>
+
+     <!-- Footer -->
+     <footer class="bg-gray-900 border-t border-gray-700 no-print">
+        <div class="max-w-7xl mx-auto py-12 px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-2 md:grid-cols-5 gap-8">
+                <div>
+                    <h3 class="text-lg font-semibold copper-accent mb-4" data-translate="footer-company">Company</h3>
+                    <ul class="space-y-3 text-sm text-gray-400">
+                        <li><a href="../pages/about.html" class="hover:text-copper transition-colors" data-translate="footer-about">About Us</a></li>
+                        <li><a href="../pages/services.html" class="hover:text-copper transition-colors" data-translate="footer-services">Our Services</a></li>
+                        <li><a href="#" class="hover:text-copper transition-colors" data-translate="footer-careers">Careers</a></li>
+                        <li><a href="#" class="hover:text-copper transition-colors" data-translate="footer-partners">Partnerships</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="text-lg font-semibold copper-accent mb-4" data-translate="footer-support">Support</h3>
+                    <ul class="space-y-3 text-sm text-gray-400">
+                        <li><a href="../pages/contact.html" class="hover:text-copper transition-colors" data-translate="footer-contact">Contact Us</a></li>
+                        <li><a href="faq.html" class="hover:text-copper transition-colors" data-translate="footer-faq">FAQ</a></li>
+                        <li><a href="#" class="hover:text-copper transition-colors" data-translate="footer-shipping">Shipping Info</a></li>
+                        <li><a href="#" class="hover:text-copper transition-colors" data-translate="footer-returns">Returns Policy</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="text-lg font-semibold copper-accent mb-4" data-translate="footer-legal">Legal</h3>
+                    <ul class="space-y-3 text-sm text-gray-400">
+                        <li><a href="terms-of-service.html" class="hover:text-copper transition-colors" data-translate="footer-terms">Terms of Service</a></li>
+                        <li><a href="privacy-policy.html" class="hover:text-copper transition-colors" data-translate="footer-privacy">Privacy Policy</a></li>
+                        <li><a href="#" class="hover:text-copper transition-colors" data-translate="footer-disclaimer">Disclaimer</a></li>
+                        <li><a href="#" class="hover:text-copper transition-colors" data-translate="footer-sitemap">Sitemap</a></li>
+                    </ul>
+                </div>
+                <div class="col-span-2 md:col-span-2">
+                    <h3 class="text-lg font-semibold copper-accent mb-4" data-translate="footer-newsletter">Join Our Newsletter</h3>
+                    <p class="text-sm text-gray-400 mb-4" data-translate="footer-newsletter-desc">Get updates on new products and promotions.</p>
+                    <form class="flex">
+                        <input type="email" placeholder="Your email address" class="w-full px-4 py-2 bg-gray-800 border border-gray-700 rounded-l-lg text-white placeholder-gray-500 focus:border-copper focus:outline-none" data-translate="footer-email-placeholder">
+                        <button type="submit" class="bg-copper hover:bg-copper-dark px-6 py-2 rounded-r-lg font-medium transition-colors" data-translate="footer-subscribe">Subscribe</button>
+                    </form>
+                </div>
+            </div>
+            
+            <div class="mt-12 border-t border-gray-800 pt-8 flex flex-col md:flex-row items-center justify-between">
+                <p class="text-sm text-gray-500 order-2 md:order-1 mt-4 md:mt-0" data-translate="footer-copyright">
+                    &copy; <span id="current-year">2025</span> Nesab Vehicle Oils. All rights reserved.
+                </p>
+                <div class="flex space-x-6 order-1 md:order-2">
+                    <a href="#" class="text-gray-400 hover:text-copper transition-colors" aria-label="Facebook">
+                        <i data-lucide="facebook" class="w-5 h-5"></i>
+                    </a>
+                    <a href="#" class="text-gray-400 hover:text-copper transition-colors" aria-label="Telegram">
+                        <i data-lucide="send" class="w-5 h-5"></i>
+                    </a>
+                    <a href="#" class="text-gray-400 hover:text-copper transition-colors" aria-label="Instagram">
+                        <i data-lucide="instagram" class="w-5 h-5"></i>
+                    </a>
+                    <a href="#" class="text-gray-400 hover:text-copper transition-colors" aria-label="LinkedIn">
+                        <i data-lucide="linkedin" class="w-5 h-5"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Initialize Lucide icons
+        lucide.createIcons();
+        
+        // Mobile menu toggle
+        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        let menuOpen = false;
+        
+        mobileMenuBtn.addEventListener('click', () => {
+            menuOpen = !menuOpen;
+            mobileMenu.classList.toggle('open');
+            const icon = mobileMenuBtn.querySelector('i');
+            icon.setAttribute('data-lucide', menuOpen ? 'x' : 'menu');
+            lucide.createIcons();
+        });
+        
+        // Close mobile menu on link click
+        mobileMenu.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.remove('open');
+                menuOpen = false;
+                mobileMenuBtn.querySelector('i').setAttribute('data-lucide', 'menu');
+                lucide.createIcons();
+            });
+        });
+        
+        // Sticky nav on scroll
+        let lastScroll = 0;
+        const navbar = document.getElementById('navbar');
+        
+        window.addEventListener('scroll', () => {
+            const currentScroll = window.pageYOffset;
+            
+            if (currentScroll > 100) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+            
+            lastScroll = currentScroll;
+            
+            // Back to top visibility
+            const backToTop = document.getElementById('back-to-top');
+            if (currentScroll > 500) {
+                backToTop.classList.add('visible');
+            } else {
+                backToTop.classList.remove('visible');
+            }
+            
+            // Update scroll progress
+            updateScrollProgress();
+        });
+
+         // Cookie consent
+        function acceptCookies() {
+            localStorage.setItem('cookiesAccepted', 'true');
+            document.getElementById('cookie-banner').classList.remove('show');
+        }
+        
+        function rejectCookies() {
+            localStorage.setItem('cookiesAccepted', 'false');
+            document.getElementById('cookie-banner').classList.remove('show');
+            // Here you could disable non-essential cookies
+        }
+        
+        // Show cookie banner if not already set
+        if (!localStorage.getItem('cookiesAccepted')) {
+            setTimeout(() => {
+                document.getElementById('cookie-banner').classList.add('show');
+            }, 1000);
+        }
+        
+        // Scroll progress indicator
+        function updateScrollProgress() {
+            const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+            const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+            const scrolled = (winScroll / height) * 100;
+            const circle = document.querySelector('.progress-ring-circle');
+            const circumference = 2 * Math.PI * 22;
+            const offset = circumference - (scrolled / 100) * circumference;
+            circle.style.strokeDasharray = circumference;
+            circle.style.strokeDashoffset = offset;
+        }
+        
+        // Back to top
+        document.getElementById('back-to-top').addEventListener('click', () => {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+        
+        // FAQ Accordion functionality
+        const faqQuestions = document.querySelectorAll('.faq-question');
+        
+        faqQuestions.forEach(question => {
+            question.addEventListener('click', () => {
+                const content = question.nextElementSibling;
+                const icon = question.querySelector('.accordion-icon');
+                const isOpen = content.classList.contains('open');
+                
+                // Close all other accordion items
+                document.querySelectorAll('.accordion-content').forEach(c => c.classList.remove('open'));
+                document.querySelectorAll('.accordion-icon').forEach(i => i.classList.remove('rotated'));
+                document.querySelectorAll('.faq-question').forEach(q => q.setAttribute('aria-expanded', 'false'));
+                
+                // Open clicked item if it wasn't already open
+                if (!isOpen) {
+                    content.classList.add('open');
+                    icon.classList.add('rotated');
+                    question.setAttribute('aria-expanded', 'true');
+                }
+            });
+        });
+        
+        // Category filtering
+        const categoryTabs = document.querySelectorAll('.category-tab');
+        const faqSections = document.querySelectorAll('.faq-section');
+        const noResults = document.getElementById('no-results');
+        
+        categoryTabs.forEach(tab => {
+            tab.addEventListener('click', () => {
+                const category = tab.dataset.category;
+                
+                // Update active tab
+                categoryTabs.forEach(t => t.classList.remove('active'));
+                tab.classList.add('active');
+                
+                // Show/hide sections
+                let visibleSections = 0;
+                faqSections.forEach(section => {
+                    if (category === 'all' || section.dataset.category === category) {
+                        section.style.display = 'block';
+                        visibleSections++;
+                    } else {
+                        section.style.display = 'none';
+                    }
+                });
+                
+                // Show/hide no results message
+                if (visibleSections === 0) {
+                    noResults.classList.add('show');
+                } else {
+                    noResults.classList.remove('show');
+                }
+                
+                // Reset accordion states
+                document.querySelectorAll('.accordion-content').forEach(c => c.classList.remove('open'));
+                document.querySelectorAll('.accordion-icon').forEach(i => i.classList.remove('rotated'));
+                document.querySelectorAll('.faq-question').forEach(q => q.setAttribute('aria-expanded', 'false'));
+            });
+        });
+        
+        // Search functionality
+        const searchInput = document.getElementById('faq-search');
+        
+        searchInput.addEventListener('input', (e) => {
+            const searchTerm = e.target.value.toLowerCase();
+            const faqItems = document.querySelectorAll('.faq-item');
+            const sections = document.querySelectorAll('.faq-section');
+            
+            let totalMatches = 0;
+            
+            sections.forEach(section => {
+                let sectionMatches = 0;
+                const items = section.querySelectorAll('.faq-item');
+                
+                items.forEach(item => {
+                    const question = item.querySelector('.faq-question span').textContent.toLowerCase();
+                    const answer = item.querySelector('.accordion-content').textContent.toLowerCase();
+                    
+                    if (question.includes(searchTerm) || answer.includes(searchTerm)) {
+                        item.style.display = 'block';
+                        sectionMatches++;
+                        totalMatches++;
+                    } else {
+                        item.style.display = 'none';
+                    }
+                });
+                
+                // Show/hide section based on matches
+                if (sectionMatches > 0 || searchTerm === '') {
+                    section.style.display = 'block';
+                } else {
+                    section.style.display = 'none';
+                }
+            });
+            
+            // Show no results message if needed
+            if (totalMatches === 0 && searchTerm !== '') {
+                noResults.classList.add('show');
+            } else {
+                noResults.classList.remove('show');
+            }
+            
+            // Reset category tabs
+            if (searchTerm !== '') {
+                categoryTabs.forEach(t => t.classList.remove('active'));
+                document.querySelector('[data-category="all"]').classList.add('active');
+            }
+        });
+        
+        // Keyboard shortcut (Ctrl/Cmd + K)
+        document.addEventListener('keydown', (e) => {
+            if ((e.ctrlKey || e.metaKey) && e.key === 'k') {
+                e.preventDefault();
+                searchInput.focus();
+            }
+        });
+        
+        // Clear search on category change
+        categoryTabs.forEach(tab => {
+            tab.addEventListener('click', () => {
+                searchInput.value = '';
+                document.querySelectorAll('.faq-item').forEach(item => {
+                    item.style.display = 'block';
+                });
+                noResults.classList.remove('show');
+            });
+        });
+    </script>
+</body>
+</html>

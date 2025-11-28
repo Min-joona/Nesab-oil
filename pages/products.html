@@ -1,0 +1,962 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Products - Nesab Vehicle Oils | Premium Lubricants</title>
+    <meta name="description" content="Browse our complete catalog of premium vehicle oils and lubricants. Engine oils, transmission fluids, hydraulic oils, and more with detailed specifications.">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Animation Libraries -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/echarts@5.4.3/dist/echarts.min.js"></script>
+    
+    <!-- Language Support -->
+    <script src="language.js"></script>
+    
+    <!-- Custom Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --primary-dark: #1a1a1a;
+            --copper: #b87333;
+            --steel-blue: #4a6fa5;
+            --light-gray: #f5f5f5;
+            --text-dark: #2d2d2d;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            background: var(--primary-dark);
+            color: white;
+            overflow-x: hidden;
+        }
+        
+        .font-display {
+            font-family: 'Inter', sans-serif;
+            font-weight: 700;
+        }
+        
+        .font-mono {
+            font-family: 'JetBrains Mono', monospace;
+        }
+        
+        /* Glass morphism */
+        .glass {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        
+        /* Copper accent */
+        .copper-accent {
+            color: var(--copper);
+        }
+        
+        .copper-bg {
+            background: var(--copper);
+        }
+        
+        /* Steel blue accent */
+        .steel-accent {
+            color: var(--steel-blue);
+        }
+        
+        /* Product cards */
+        .product-card {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 12px;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+        
+        .product-card:hover {
+            border-color: var(--copper);
+            transform: translateY(-4px);
+            box-shadow: 0 20px 40px rgba(184, 115, 51, 0.2);
+        }
+        
+        .product-card.selected {
+            border-color: var(--copper);
+            background: rgba(184, 115, 51, 0.1);
+        }
+        
+        /* Filter sidebar */
+        .filter-sidebar {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 12px;
+            padding: 1.5rem;
+        }
+        
+        /* Comparison panel */
+        .comparison-panel {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: rgba(26, 26, 26, 0.95);
+            backdrop-filter: blur(10px);
+            border-top: 2px solid var(--copper);
+            transform: translateY(100%);
+            transition: transform 0.3s ease;
+            z-index: 1000;
+            max-height: 70vh;
+            overflow-y: auto;
+        }
+        
+        .comparison-panel.active {
+            transform: translateY(0);
+        }
+        
+        /* Bulk calculator */
+        .bulk-calculator {
+            background: rgba(74, 111, 165, 0.1);
+            border: 1px solid rgba(74, 111, 165, 0.3);
+            border-radius: 12px;
+            padding: 1.5rem;
+        }
+        
+        /* Navigation */
+        .nav-link {
+            position: relative;
+            transition: all 0.3s ease;
+        }
+        
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--copper);
+            transition: width 0.3s ease;
+        }
+        
+        .nav-link:hover::after {
+            width: 100%;
+        }
+        
+        /* Filter checkboxes */
+        .filter-checkbox {
+            appearance: none;
+            width: 20px;
+            height: 20px;
+            border: 2px solid #4a6fa5;
+            border-radius: 4px;
+            position: relative;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .filter-checkbox:checked {
+            background: var(--copper);
+            border-color: var(--copper);
+        }
+        
+        .filter-checkbox:checked::after {
+            content: '✓';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            color: white;
+            font-size: 12px;
+            font-weight: bold;
+        }
+        
+        /* Product grid */
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+        
+        /* Scroll animations */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.6s ease;
+        }
+        
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            .product-grid {
+                grid-template-columns: 1fr;
+                gap: 1rem;
+            }
+            
+            .comparison-panel {
+                max-height: 80vh;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="fixed top-0 left-0 right-0 z-50 glass">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <div class="flex items-center">
+                    <a href="index.html" class="text-xl font-bold copper-accent" data-translate="company-name">نّساب Nesab</a>
+                </div>
+                
+                <!-- Language Selector -->
+                <div class="hidden md:block">
+                    <select id="language-selector" class="bg-gray-700 border border-gray-600 rounded-lg px-3 py-2 text-white text-sm">
+                        <option value="en">English</option>
+                        <option value="am">አማርኛ</option>
+                        <option value="ar">العربية</option>
+                        <option value="so">Somali</option>
+                    </select>
+                </div>
+                
+                <div class="hidden md:block">
+                    <div class="ml-10 flex items-center space-x-8">
+                        <a href="index.html" class="text-white hover:text-copper transition-colors duration-200 py-2">Home</a>
+                        <a href="shop.html" class="text-copper font-semibold">Shop</a>
+                        <a href="services.html" class="text-white hover:text-copper transition-colors duration-200 py-2">Services</a>
+                        <a href="about.html" class="text-white hover:text-copper transition-colors duration-200 py-2">About</a>
+                        <a href="contact.html" class="text-white hover:text-copper transition-colors duration-200 py-2">Contact</a>
+                    </div>
+                </div>
+                
+                <div class="md:hidden">
+                    <button id="mobile-menu-btn" class="text-white hover:text-copper-accent">
+                        <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Header -->
+    <section class="pt-24 pb-12 bg-gray-900">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center fade-in">
+                <h1 class="text-4xl lg:text-5xl font-display mb-4 gradient-text">Premium Vehicle Oils</h1>
+                <p class="text-xl text-gray-300 max-w-3xl mx-auto">
+                    Complete catalog of engine oils, transmission fluids, hydraulic oils, and specialty lubricants. 
+                    Find the perfect product for your vehicle and application.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Main Content -->
+    <section class="py-12 bg-gray-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 lg:grid-cols-4 gap-8">
+                <!-- Filter Sidebar -->
+                <div class="lg:col-span-1">
+                    <div class="filter-sidebar sticky top-24">
+                        <h3 class="text-xl font-bold mb-6 copper-accent">Filter Products</h3>
+                        
+                        <!-- Product Type Filter -->
+                        <div class="mb-6">
+                            <h4 class="font-semibold mb-3">Product Type</h4>
+                            <div class="space-y-2">
+                                <label class="flex items-center space-x-3 cursor-pointer">
+                                    <input type="checkbox" class="filter-checkbox" data-filter="type" value="engine-oil">
+                                    <span>Engine Oils</span>
+                                </label>
+                                <label class="flex items-center space-x-3 cursor-pointer">
+                                    <input type="checkbox" class="filter-checkbox" data-filter="type" value="transmission">
+                                    <span>Transmission Fluids</span>
+                                </label>
+                                <label class="flex items-center space-x-3 cursor-pointer">
+                                    <input type="checkbox" class="filter-checkbox" data-filter="type" value="hydraulic">
+                                    <span>Hydraulic Oils</span>
+                                </label>
+                                <label class="flex items-center space-x-3 cursor-pointer">
+                                    <input type="checkbox" class="filter-checkbox" data-filter="type" value="grease">
+                                    <span>Greases</span>
+                                </label>
+                            </div>
+                        </div>
+                        
+                        <!-- Viscosity Grade Filter -->
+                        <div class="mb-6">
+                            <h4 class="font-semibold mb-3">Viscosity Grade</h4>
+                            <div class="space-y-2">
+                                <label class="flex items-center space-x-3 cursor-pointer">
+                                    <input type="checkbox" class="filter-checkbox" data-filter="viscosity" value="5w-30">
+                                    <span>5W-30</span>
+                                </label>
+                                <label class="flex items-center space-x-3 cursor-pointer">
+                                    <input type="checkbox" class="filter-checkbox" data-filter="viscosity" value="10w-40">
+                                    <span>10W-40</span>
+                                </label>
+                                <label class="flex items-center space-x-3 cursor-pointer">
+                                    <input type="checkbox" class="filter-checkbox" data-filter="viscosity" value="15w-40">
+                                    <span>15W-40</span>
+                                </label>
+                                <label class="flex items-center space-x-3 cursor-pointer">
+                                    <input type="checkbox" class="filter-checkbox" data-filter="viscosity" value="20w-50">
+                                    <span>20W-50</span>
+                                </label>
+                            </div>
+                        </div>
+                        
+                        <!-- Base Oil Type Filter -->
+                        <div class="mb-6">
+                            <h4 class="font-semibold mb-3">Base Oil Type</h4>
+                            <div class="space-y-2">
+                                <label class="flex items-center space-x-3 cursor-pointer">
+                                    <input type="checkbox" class="filter-checkbox" data-filter="base" value="synthetic">
+                                    <span>Full Synthetic</span>
+                                </label>
+                                <label class="flex items-center space-x-3 cursor-pointer">
+                                    <input type="checkbox" class="filter-checkbox" data-filter="base" value="semi-synthetic">
+                                    <span>Semi-Synthetic</span>
+                                </label>
+                                <label class="flex items-center space-x-3 cursor-pointer">
+                                    <input type="checkbox" class="filter-checkbox" data-filter="base" value="mineral">
+                                    <span>Mineral</span>
+                                </label>
+                            </div>
+                        </div>
+                        
+                        <!-- Price Range Filter -->
+                        <div class="mb-6">
+                            <h4 class="font-semibold mb-3">Price Range (ETB)</h4>
+                            <div class="space-y-2">
+                                <label class="flex items-center space-x-3 cursor-pointer">
+                                    <input type="checkbox" class="filter-checkbox" data-filter="price" value="0-300">
+                                    <span>Under 300</span>
+                                </label>
+                                <label class="flex items-center space-x-3 cursor-pointer">
+                                    <input type="checkbox" class="filter-checkbox" data-filter="price" value="300-450">
+                                    <span>300 - 450</span>
+                                </label>
+                                <label class="flex items-center space-x-3 cursor-pointer">
+                                    <input type="checkbox" class="filter-checkbox" data-filter="price" value="450-600">
+                                    <span>450 - 600</span>
+                                </label>
+                                <label class="flex items-center space-x-3 cursor-pointer">
+                                    <input type="checkbox" class="filter-checkbox" data-filter="price" value="600+">
+                                    <span>Above 600</span>
+                                </label>
+                            </div>
+                        </div>
+                        
+                        <button onclick="clearFilters()" class="w-full border border-gray-600 text-gray-300 px-4 py-2 rounded-lg hover:border-copper-accent transition-all">
+                            Clear Filters
+                        </button>
+                    </div>
+                </div>
+                
+                <!-- Product Grid -->
+                <div class="lg:col-span-3">
+                    <!-- Sort and View Options -->
+                    <div class="flex justify-between items-center mb-6">
+                        <div class="flex items-center space-x-4">
+                            <span class="text-gray-300">Sort by:</span>
+                            <select id="sort-select" class="bg-gray-700 border border-gray-600 rounded-lg px-3 py-2 text-white">
+                                <option value="name">Name</option>
+                                <option value="price-low">Price: Low to High</option>
+                                <option value="price-high">Price: High to Low</option>
+                                <option value="viscosity">Viscosity Grade</option>
+                            </select>
+                        </div>
+                        
+                        <div class="flex items-center space-x-2">
+                            <span id="product-count" class="text-gray-400">24 products</span>
+                            <button id="compare-btn" onclick="toggleComparison()" class="bg-copper text-white px-4 py-2 rounded-lg hover:bg-opacity-80 transition-all disabled:opacity-50 disabled:cursor-not-allowed" disabled>
+                                Compare (<span id="compare-count">0</span>)
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <!-- Products Grid -->
+                    <div id="products-grid" class="product-grid">
+                        <!-- Products will be populated by JavaScript -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Bulk Order Calculator -->
+    <section class="py-16 bg-gray-900">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="bulk-calculator fade-in">
+                <h2 class="text-3xl font-display mb-6 text-center gradient-text">Bulk Order Calculator</h2>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                    <div>
+                        <h3 class="text-xl font-semibold mb-4 copper-accent">Calculate Your Savings</h3>
+                        <div class="space-y-4">
+                            <div>
+                                <label class="block text-sm font-medium mb-2">Product</label>
+                                <select id="bulk-product" class="w-full bg-gray-700 border border-gray-600 rounded-lg px-3 py-2 text-white">
+                                    <option value="">Select a product</option>
+                                </select>
+                            </div>
+                            <div>
+                                <label class="block text-sm font-medium mb-2">Quantity (Liters)</label>
+                                <input type="number" id="bulk-quantity" min="20" value="100" class="w-full bg-gray-700 border border-gray-600 rounded-lg px-3 py-2 text-white">
+                                <p class="text-xs text-gray-400 mt-1">Minimum order: 20 liters</p>
+                            </div>
+                            <div>
+                                <label class="block text-sm font-medium mb-2">Delivery Area</label>
+                                <select id="delivery-area" class="w-full bg-gray-700 border border-gray-600 rounded-lg px-3 py-2 text-white">
+                                    <option value="central">Central Addis Ababa</option>
+                                    <option value="north">North Addis Ababa</option>
+                                    <option value="south">South Addis Ababa</option>
+                                    <option value="east">East Addis Ababa</option>
+                                    <option value="west">West Addis Ababa</option>
+                                    <option value="outskirts">Addis Ababa Outskirts</option>
+                                </select>
+                            </div>
+                            <button onclick="calculateBulkPrice()" class="w-full bg-copper text-white px-4 py-3 rounded-lg font-semibold hover:bg-opacity-80 transition-all">
+                                Calculate Total
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <div id="bulk-results" class="hidden">
+                        <h3 class="text-xl font-semibold mb-4 steel-accent">Order Summary</h3>
+                        <div class="space-y-3">
+                            <div class="flex justify-between">
+                                <span>Base Price:</span>
+                                <span id="base-price">ETB 0</span>
+                            </div>
+                            <div class="flex justify-between text-green-400">
+                                <span>Bulk Discount:</span>
+                                <span id="bulk-discount">-ETB 0</span>
+                            </div>
+                            <div class="flex justify-between">
+                                <span>Delivery Cost:</span>
+                                <span id="delivery-cost">ETB 0</span>
+                            </div>
+                            <hr class="border-gray-600">
+                            <div class="flex justify-between text-lg font-bold">
+                                <span>Total:</span>
+                                <span id="total-price" class="copper-accent">ETB 0</span>
+                            </div>
+                            <div class="text-sm text-gray-400">
+                                <span id="savings-percent">Save 0%</span> compared to retail pricing
+                            </div>
+                        </div>
+                        <button onclick="requestQuote()" class="w-full mt-6 bg-steel-blue text-white px-4 py-3 rounded-lg font-semibold hover:bg-opacity-80 transition-all">
+                            Request Formal Quote
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Comparison Panel -->
+    <div id="comparison-panel" class="comparison-panel">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
+            <div class="flex justify-between items-center mb-6">
+                <h3 class="text-2xl font-bold copper-accent">Product Comparison</h3>
+                <button onclick="toggleComparison()" class="text-gray-400 hover:text-white">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+                    </svg>
+                </button>
+            </div>
+            
+            <div id="comparison-content" class="overflow-x-auto">
+                <!-- Comparison table will be populated by JavaScript -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-black py-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center">
+                <h3 class="text-2xl font-bold copper-accent mb-4">نّساب Nesab</h3>
+                <p class="text-gray-400 mb-6">Premium Vehicle Oils & Lubricants</p>
+                <div class="flex justify-center space-x-6 mb-6">
+                    <span class="text-sm text-gray-500">Addis Ababa, Ethiopia</span>
+                    <span class="text-sm text-gray-500">•</span>
+                    <span class="text-sm text-gray-500">+251 93 368 0059</span>
+                    <span class="text-sm text-gray-500">•</span>
+                    <span class="text-sm text-gray-500">info@nesab-oil.com</span>
+                </div>
+                <p class="text-xs text-gray-600">© 2025 Nesab Vehicle Oil Company. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="main.js"></script>
+    <script>
+        // Products page specific functionality
+        let allProducts = [];
+        let filteredProducts = [];
+        let comparisonProducts = [];
+        let currentFilters = {
+            type: [],
+            viscosity: [],
+            base: [],
+            price: []
+        };
+
+        // Initialize products page
+        document.addEventListener('DOMContentLoaded', function() {
+            initializeProductsPage();
+            initializeFilters();
+            initializeBulkCalculator();
+        });
+
+        function initializeProductsPage() {
+            // Generate product data
+            allProducts = generateProductData();
+            filteredProducts = [...allProducts];
+            
+            // Render products
+            renderProducts();
+            
+            // Initialize sort functionality
+            document.getElementById('sort-select').addEventListener('change', handleSort);
+        }
+
+        function generateProductData() {
+            const products = [
+                // Engine Oils - Synthetic
+                { id: '5w30-fs', name: '5W-30 Full Synthetic', type: 'engine-oil', viscosity: '5w-30', base: 'synthetic', price: 450, specs: 'API SP, ILSAC GF-6A', volume: '1L', applications: 'Gasoline engines', benefits: 'Fuel efficiency, Wear protection', temperature: '-35°C to 40°C' },
+                { id: '5w40-fs', name: '5W-40 Full Synthetic', type: 'engine-oil', viscosity: '5w-40', base: 'synthetic', price: 480, specs: 'API SP, ACEA A3/B4', volume: '1L', applications: 'Gasoline/Diesel', benefits: 'High performance, Extended drain', temperature: '-35°C to 45°C' },
+                { id: '0w30-fs', name: '0W-30 Full Synthetic', type: 'engine-oil', viscosity: '0w-30', base: 'synthetic', price: 520, specs: 'API SP, ILSAC GF-6A', volume: '1L', applications: 'Modern engines', benefits: 'Cold start, Fuel economy', temperature: '-40°C to 35°C' },
+                
+                // Engine Oils - Semi-Synthetic
+                { id: '10w40-ss', name: '10W-40 Semi-Synthetic', type: 'engine-oil', viscosity: '10w-40', base: 'semi-synthetic', price: 380, specs: 'API SN, ACEA A3/B4', volume: '1L', applications: 'Gasoline engines', benefits: 'Balanced performance', temperature: '-30°C to 40°C' },
+                { id: '15w40-ss', name: '15W-40 Semi-Synthetic', type: 'engine-oil', viscosity: '15w-40', base: 'semi-synthetic', price: 360, specs: 'API SN/CF, ACEA A3/B3', volume: '1L', applications: 'Gasoline/Diesel', benefits: 'Versatile use', temperature: '-25°C to 45°C' },
+                
+                // Engine Oils - Mineral
+                { id: '15w40-m', name: '15W-40 Mineral Oil', type: 'engine-oil', viscosity: '15w-40', base: 'mineral', price: 280, specs: 'API SL/CF, ACEA A3/B3', volume: '1L', applications: 'Older engines', benefits: 'Cost-effective', temperature: '-20°C to 40°C' },
+                { id: '20w50-m', name: '20W-50 Mineral Oil', type: 'engine-oil', viscosity: '20w-50', base: 'mineral', price: 290, specs: 'API SL/CF', volume: '1L', applications: 'High mileage engines', benefits: 'High temperature protection', temperature: '-15°C to 50°C' },
+                
+                // Diesel Engine Oils
+                { id: '15w40-diesel', name: '15W-40 Diesel Oil', type: 'engine-oil', viscosity: '15w-40', base: 'mineral', price: 320, specs: 'API CK-4, ACEA E7', volume: '1L', applications: 'Diesel engines', benefits: 'Heavy duty protection', temperature: '-20°C to 45°C' },
+                { id: '10w40-diesel-syn', name: '10W-40 Diesel Synthetic', type: 'engine-oil', viscosity: '10w-40', base: 'synthetic', price: 460, specs: 'API CK-4, ACEA E6', volume: '1L', applications: 'Modern diesel', benefits: 'Low SAPS, DPF compatible', temperature: '-30°C to 40°C' },
+                
+                // Transmission Fluids
+                { id: 'atf-dex3', name: 'ATF Dexron III', type: 'transmission', viscosity: 'atf', base: 'synthetic', price: 420, specs: 'Dexron III/Mercon', volume: '1L', applications: 'Automatic transmissions', benefits: 'Smooth shifting', temperature: '-40°C to 150°C' },
+                { id: 'atf-dex6', name: 'ATF Dexron VI', type: 'transmission', viscosity: 'atf', base: 'synthetic', price: 480, specs: 'Dexron VI/Mercon LV', volume: '1L', applications: 'Modern automatics', benefits: 'Improved fuel economy', temperature: '-40°C to 160°C' },
+                { id: 'mtf-75w90', name: 'MTF 75W-90', type: 'transmission', viscosity: '75w-90', base: 'synthetic', price: 450, specs: 'API GL-4, MT-1', volume: '1L', applications: 'Manual transmissions', benefits: 'Gear protection', temperature: '-40°C to 120°C' },
+                
+                // Hydraulic Oils
+                { id: 'hyd-32', name: 'Hydraulic Oil 32', type: 'hydraulic', viscosity: 'iso-32', base: 'mineral', price: 280, specs: 'ISO VG 32, AW', volume: '1L', applications: 'Hydraulic systems', benefits: 'Anti-wear protection', temperature: '-20°C to 80°C' },
+                { id: 'hyd-46', name: 'Hydraulic Oil 46', type: 'hydraulic', viscosity: 'iso-46', base: 'mineral', price: 290, specs: 'ISO VG 46, AW', volume: '1L', applications: 'Industrial hydraulics', benefits: 'Versatile use', temperature: '-15°C to 85°C' },
+                { id: 'hyd-68', name: 'Hydraulic Oil 68', type: 'hydraulic', viscosity: 'iso-68', base: 'mineral', price: 300, specs: 'ISO VG 68, AW', volume: '1L', applications: 'Heavy duty hydraulics', benefits: 'High pressure protection', temperature: '-10°C to 90°C' },
+                
+                // Specialty Oils
+                { id: 'psf-fluid', name: 'Power Steering Fluid', type: 'transmission', viscosity: 'psf', base: 'synthetic', price: 350, specs: 'Dexron II/III', volume: '1L', applications: 'Power steering', benefits: 'Seal protection', temperature: '-40°C to 120°C' },
+                { id: 'brake-fluid', name: 'Brake Fluid DOT 4', type: 'transmission', viscosity: 'brake', base: 'synthetic', price: 180, specs: 'DOT 4, FMVSS 116', volume: '500ml', applications: 'Brake systems', benefits: 'High boiling point', temperature: '-40°C to 205°C' },
+                
+                // Greases
+                { id: 'ep2-grease', name: 'EP2 Lithium Grease', type: 'grease', viscosity: 'nlgi-2', base: 'mineral', price: 220, specs: 'NLGI 2, EP', volume: '500g', applications: 'Bearings, joints', benefits: 'Extreme pressure', temperature: '-20°C to 120°C' },
+                { id: 'multi-grease', name: 'Multi-Purpose Grease', type: 'grease', viscosity: 'nlgi-2', base: 'mineral', price: 190, specs: 'NLGI 2, MP', volume: '500g', applications: 'General purpose', benefits: 'Water resistant', temperature: '-15°C to 100°C' }
+            ];
+            
+            return products;
+        }
+
+        function renderProducts() {
+            const grid = document.getElementById('products-grid');
+            const productCount = document.getElementById('product-count');
+            
+            // Update product count
+            productCount.textContent = `${filteredProducts.length} products`;
+            
+            // Clear grid
+            grid.innerHTML = '';
+            
+            // Render products
+            filteredProducts.forEach(product => {
+                const productCard = createProductCard(product);
+                grid.appendChild(productCard);
+            });
+            
+            // Trigger fade-in animations
+            setTimeout(() => {
+                document.querySelectorAll('.product-card').forEach((card, index) => {
+                    setTimeout(() => {
+                        card.style.opacity = '0';
+                        card.style.transform = 'translateY(20px)';
+                        card.style.transition = 'all 0.5s ease';
+                        
+                        setTimeout(() => {
+                            card.style.opacity = '1';
+                            card.style.transform = 'translateY(0)';
+                        }, 50);
+                    }, index * 100);
+                });
+            }, 100);
+        }
+
+        function createProductCard(product) {
+            const card = document.createElement('div');
+            card.className = 'product-card p-6';
+            card.dataset.productId = product.id;
+            
+            const isSelected = comparisonProducts.some(p => p.id === product.id);
+            if (isSelected) {
+                card.classList.add('selected');
+            }
+            
+            card.innerHTML = `
+                <div class="flex justify-between items-start mb-4">
+                    <div class="h-16 w-16 bg-gradient-to-br from-copper to-steel-blue rounded-lg flex items-center justify-center text-2xl">
+                        ${getProductIcon(product.type)}
+                    </div>
+                    <div class="flex items-center space-x-2">
+                        <button onclick="toggleProductComparison('${product.id}')" class="p-2 border border-gray-600 rounded-lg hover:border-copper-accent transition-all ${isSelected ? 'bg-copper text-white' : ''}" title="Add to comparison">
+                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"></path>
+                            </svg>
+                        </button>
+                    </div>
+                </div>
+                
+                <h3 class="text-xl font-bold mb-2">${product.name}</h3>
+                <p class="text-sm text-gray-400 mb-3">${product.applications}</p>
+                
+                <div class="space-y-2 mb-4 text-sm">
+                    <div class="flex justify-between">
+                        <span class="text-gray-400">Specifications:</span>
+                        <span>${product.specs}</span>
+                    </div>
+                    <div class="flex justify-between">
+                        <span class="text-gray-400">Volume:</span>
+                        <span>${product.volume}</span>
+                    </div>
+                    <div class="flex justify-between">
+                        <span class="text-gray-400">Temperature:</span>
+                        <span>${product.temperature}</span>
+                    </div>
+                </div>
+                
+                <p class="text-sm text-gray-300 mb-4">${product.benefits}</p>
+                
+                <div class="flex justify-between items-center">
+                    <span class="text-2xl font-bold copper-accent">ETB ${product.price}</span>
+                    <button onclick="addToQuote('${product.id}')" class="bg-copper text-white px-4 py-2 rounded-lg hover:bg-opacity-80 transition-all">
+                        Add to Quote
+                    </button>
+                </div>
+            `;
+            
+            return card;
+        }
+
+        function getProductIcon(type) {
+            const icons = {
+                'engine-oil': '🛢️',
+                'transmission': '⚙️',
+                'hydraulic': '🏭',
+                'grease': '🔧'
+            };
+            return icons[type] || '⚡';
+        }
+
+        function initializeFilters() {
+            document.querySelectorAll('.filter-checkbox').forEach(checkbox => {
+                checkbox.addEventListener('change', handleFilterChange);
+            });
+        }
+
+        function handleFilterChange() {
+            // Reset filters
+            currentFilters = {
+                type: [],
+                viscosity: [],
+                base: [],
+                price: []
+            };
+            
+            // Collect active filters
+            document.querySelectorAll('.filter-checkbox:checked').forEach(checkbox => {
+                const filterType = checkbox.dataset.filter;
+                const filterValue = checkbox.value;
+                currentFilters[filterType].push(filterValue);
+            });
+            
+            // Apply filters
+            applyFilters();
+        }
+
+        function applyFilters() {
+            filteredProducts = allProducts.filter(product => {
+                // Type filter
+                if (currentFilters.type.length > 0 && !currentFilters.type.includes(product.type)) {
+                    return false;
+                }
+                
+                // Viscosity filter
+                if (currentFilters.viscosity.length > 0 && !currentFilters.viscosity.includes(product.viscosity)) {
+                    return false;
+                }
+                
+                // Base oil filter
+                if (currentFilters.base.length > 0 && !currentFilters.base.includes(product.base)) {
+                    return false;
+                }
+                
+                // Price filter
+                if (currentFilters.price.length > 0) {
+                    const priceMatch = currentFilters.price.some(range => {
+                        const [min, max] = range.split('-').map(p => p === '+' ? Infinity : parseInt(p));
+                        return product.price >= min && (max === undefined || product.price <= max);
+                    });
+                    if (!priceMatch) return false;
+                }
+                
+                return true;
+            });
+            
+            renderProducts();
+        }
+
+        function clearFilters() {
+            document.querySelectorAll('.filter-checkbox').forEach(checkbox => {
+                checkbox.checked = false;
+            });
+            
+            currentFilters = {
+                type: [],
+                viscosity: [],
+                base: [],
+                price: []
+            };
+            
+            filteredProducts = [...allProducts];
+            renderProducts();
+        }
+
+        function handleSort() {
+            const sortValue = document.getElementById('sort-select').value;
+            
+            switch (sortValue) {
+                case 'name':
+                    filteredProducts.sort((a, b) => a.name.localeCompare(b.name));
+                    break;
+                case 'price-low':
+                    filteredProducts.sort((a, b) => a.price - b.price);
+                    break;
+                case 'price-high':
+                    filteredProducts.sort((a, b) => b.price - a.price);
+                    break;
+                case 'viscosity':
+                    filteredProducts.sort((a, b) => a.viscosity.localeCompare(b.viscosity));
+                    break;
+            }
+            
+            renderProducts();
+        }
+
+        function toggleProductComparison(productId) {
+            const product = allProducts.find(p => p.id === productId);
+            const existingIndex = comparisonProducts.findIndex(p => p.id === productId);
+            
+            if (existingIndex > -1) {
+                // Remove from comparison
+                comparisonProducts.splice(existingIndex, 1);
+            } else {
+                // Add to comparison (max 4 products)
+                if (comparisonProducts.length < 4) {
+                    comparisonProducts.push(product);
+                } else {
+                    NesabApp.showNotification('Maximum 4 products can be compared', 'info');
+                    return;
+                }
+            }
+            
+            updateComparisonUI();
+            renderProducts(); // Re-render to update selection states
+        }
+
+        function updateComparisonUI() {
+            const compareBtn = document.getElementById('compare-btn');
+            const compareCount = document.getElementById('compare-count');
+            
+            compareCount.textContent = comparisonProducts.length;
+            compareBtn.disabled = comparisonProducts.length === 0;
+            
+            if (comparisonProducts.length > 0) {
+                compareBtn.classList.remove('opacity-50', 'cursor-not-allowed');
+            } else {
+                compareBtn.classList.add('opacity-50', 'cursor-not-allowed');
+            }
+        }
+
+        function toggleComparison() {
+            const panel = document.getElementById('comparison-panel');
+            
+            if (comparisonProducts.length === 0) {
+                NesabApp.showNotification('Please select products to compare', 'info');
+                return;
+            }
+            
+            if (panel.classList.contains('active')) {
+                panel.classList.remove('active');
+            } else {
+                renderComparison();
+                panel.classList.add('active');
+            }
+        }
+
+        function renderComparison() {
+            const content = document.getElementById('comparison-content');
+            
+            if (comparisonProducts.length === 0) {
+                content.innerHTML = '<p class="text-center text-gray-400">No products selected for comparison</p>';
+                return;
+            }
+            
+            // Create comparison table
+            let table = `
+                <table class="w-full text-sm">
+                    <thead>
+                        <tr class="border-b border-gray-600">
+                            <th class="text-left py-3 px-4 font-semibold">Feature</th>
+            `;
+            
+            comparisonProducts.forEach(product => {
+                table += `<th class="text-left py-3 px-4 font-semibold">${product.name}</th>`;
+            });
+            
+            table += '</tr></thead><tbody>';
+            
+            // Comparison rows
+            const features = [
+                { key: 'price', label: 'Price', format: (val) => `ETB ${val}` },
+                { key: 'viscosity', label: 'Viscosity Grade' },
+                { key: 'base', label: 'Base Oil Type', format: (val) => val.charAt(0).toUpperCase() + val.slice(1) },
+                { key: 'specs', label: 'Specifications' },
+                { key: 'applications', label: 'Applications' },
+                { key: 'benefits', label: 'Key Benefits' },
+                { key: 'temperature', label: 'Temperature Range' }
+            ];
+            
+            features.forEach((feature, index) => {
+                table += `<tr class="${index % 2 === 0 ? 'bg-gray-800' : ''}"><td class="py-3 px-4 font-medium">${feature.label}</td>`;
+                
+                comparisonProducts.forEach(product => {
+                    const value = feature.format ? feature.format(product[feature.key]) : product[feature.key];
+                    table += `<td class="py-3 px-4">${value}</td>`;
+                });
+                
+                table += '</tr>';
+            });
+            
+            table += '</tbody></table>';
+            
+            content.innerHTML = table;
+        }
+
+        function initializeBulkCalculator() {
+            // Populate product dropdown
+            const select = document.getElementById('bulk-product');
+            allProducts.forEach(product => {
+                const option = document.createElement('option');
+                option.value = product.id;
+                option.textContent = `${product.name} (ETB ${product.price}/L)`;
+                select.appendChild(option);
+            });
+        }
+
+        function calculateBulkPrice() {
+            const productId = document.getElementById('bulk-product').value;
+            const quantity = parseInt(document.getElementById('bulk-quantity').value);
+            const deliveryArea = document.getElementById('delivery-area').value;
+            
+            if (!productId || !quantity) {
+                NesabApp.showNotification('Please select a product and quantity', 'error');
+                return;
+            }
+            
+            if (quantity < 20) {
+                NesabApp.showNotification('Minimum order quantity is 20 liters', 'error');
+                return;
+            }
+            
+            const product = allProducts.find(p => p.id === productId);
+            const basePrice = product.price * quantity;
+            
+            // Calculate bulk discount
+            let discountPercent = 0;
+            if (quantity >= 200) discountPercent = 15;
+            else if (quantity >= 100) discountPercent = 12;
+            else if (quantity >= 50) discountPercent = 8;
+            else if (quantity >= 20) discountPercent = 5;
+            
+            const discountAmount = basePrice * (discountPercent / 100);
+            
+            // Calculate delivery cost
+            const deliveryCosts = {
+                'central': 50,
+                'north': 80,
+                'south': 80,
+                'east': 70,
+                'west': 70,
+                'outskirts': 120
+            };
+            
+            const deliveryCost = deliveryCosts[deliveryArea] || 50;
+            const totalPrice = basePrice - discountAmount + deliveryCost;
+            const savingsPercent = discountPercent;
+            
+            // Display results
+            document.getElementById('base-price').textContent = `ETB ${basePrice.toLocaleString()}`;
+            document.getElementById('bulk-discount').textContent = `-ETB ${discountAmount.toLocaleString()}`;
+            document.getElementById('delivery-cost').textContent = `ETB ${deliveryCost}`;
+            document.getElementById('total-price').textContent = `ETB ${totalPrice.toLocaleString()}`;
+            document.getElementById('savings-percent').textContent = `Save ${savingsPercent}%`;
+            
+            document.getElementById('bulk-results').classList.remove('hidden');
+            
+            // Animate results
+            anime({
+                targets: '#bulk-results',
+                opacity: [0, 1],
+                translateY: [20, 0],
+                duration: 500,
+                easing: 'easeOutQuad'
+            });
+        }
+
+        function requestQuote() {
+            const productId = document.getElementById('bulk-product').value;
+            const quantity = document.getElementById('bulk-quantity').value;
+            
+            // Store quote data
+            const quoteData = {
+                productId,
+                quantity,
+                timestamp: Date.now()
+            };
+            
+            localStorage.setItem('bulkQuote', JSON.stringify(quoteData));
+            
+            // Redirect to contact page
+            window.location.href = 'contact.html?quote=true';
+        }
+    </script>
+</body>
+</html>
