@@ -115,6 +115,13 @@
         .steel-accent {
             color: var(--steel-blue);
         }
+        /* Progress Ring */
+        .progress-ring-circle {
+            transition: stroke-dashoffset 0.35s;
+            transform: rotate(-90deg);
+            transform-origin: 50% 50%;
+        }
+
         
         /* Animated gradient text */
         .gradient-text {
@@ -409,7 +416,7 @@
                                     <div class="text-sm" data-translate="bus">Bus</div>
                                 </button>
                                 <button type="button" class="vehicle-type-btn p-4 border border-gray-600 rounded-lg hover:border-copper-accent transition-all" data-type="motorcycle">
-                                    <img src="./resources/placeholders/motorcycle.png" alt="Motorcycle" class="vehicle-type-img">
+                                    <img src="./resources/placeholders/motorcycle.jpg" alt="Motorcycle" class="vehicle-type-img">
                                     <div class="text-sm" data-translate="motorcycle">Motorcycle</div>
                                 </button>
                             </div>
@@ -614,14 +621,14 @@
                         <li><a href="./pages/about.html" class="hover:text-copper transition-colors" data-translate="footer-about">About Us</a></li>
                         <li><a href="./pages/services.html" class="hover:text-copper transition-colors" data-translate="footer-services">Our Services</a></li>
                         <li><a href="#" class="hover:text-copper transition-colors" data-translate="footer-careers">Careers</a></li>
-                        <li><a href="#" class="hover:text-copper transition-colors" data-translate="footer-partners">Partnerships</a></li>
+                        <li><a href="./pages/contact.html#contact-form" class="hover:text-copper transition-colors" data-translate="footer-partners">Partnerships</a></li>
                     </ul>
                 </div>
                 <div>
                     <h3 class="text-lg font-semibold copper-accent mb-4" data-translate="footer-support">Support</h3>
                     <ul class="space-y-3 text-sm text-gray-400">
                         <li><a href="./pages/contact.html" class="hover:text-copper transition-colors" data-translate="footer-contact">Contact Us</a></li>
-                        <li><a href="#" class="hover:text-copper transition-colors" data-translate="footer-faq">FAQ</a></li>
+                        <li><a href="./quotes/faq.html" class="hover:text-copper transition-colors" data-translate="footer-faq">FAQ</a></li>
                         <li><a href="#" class="hover:text-copper transition-colors" data-translate="footer-shipping">Shipping Info</a></li>
                         <li><a href="#" class="hover:text-copper transition-colors" data-translate="footer-returns">Returns Policy</a></li>
                     </ul>
@@ -629,8 +636,8 @@
                 <div>
                     <h3 class="text-lg font-semibold copper-accent mb-4" data-translate="footer-legal">Legal</h3>
                     <ul class="space-y-3 text-sm text-gray-400">
-                        <li><a href="#" class="hover:text-copper transition-colors" data-translate="footer-terms">Terms of Service</a></li>
-                        <li><a href="#" class="hover:text-copper transition-colors" data-translate="footer-privacy">Privacy Policy</a></li>
+                        <li><a href="./quotes/terms-of-service.html" class="hover:text-copper transition-colors" data-translate="footer-terms">Terms of Service</a></li>
+                        <li><a href="./quotes/privacy-policy.html" class="hover:text-copper transition-colors" data-translate="footer-privacy">Privacy Policy</a></li>
                         <li><a href="#" class="hover:text-copper transition-colors" data-translate="footer-disclaimer">Disclaimer</a></li>
                         <li><a href="#" class="hover:text-copper transition-colors" data-translate="footer-sitemap">Sitemap</a></li>
                     </ul>
@@ -749,7 +756,7 @@
         const mobileMenu = document.getElementById('mobile-menu');
         
         mobileMenuBtn.addEventListener('click', () => {
-            mobileMenu.classList.toggle('hidden');
+            mobileMenu.classList.toggle('block');
         });
 
         // Navbar scroll effect

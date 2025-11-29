@@ -171,7 +171,7 @@
             </div>
         </div>
         
-        <div id="mobile-menu" class="fixed right-0 top-16 h-full w-64 bg-gray-900 border-l border-gray-700 transform translate-x-full transition-transform md:hidden z-40">
+        <div id="mobile-menu" class="md:hidden hidden fixed top-16 left-0 right-0 bg-gray-900 border-t border-gray-700 z-40">
             <div class="p-6 space-y-4">
                 <a href="../index.html" class="block text-white hover:text-copper transition-colors py-2">Home</a>
                 <a href="shop.html" class="block text-white hover:text-copper transition-colors py-2">Shop</a>
@@ -322,12 +322,11 @@
                     <div>
                         <h2 class="text-3xl font-display mb-6 steel-accent" data-translate="find-us">Find Us</h2>
                         <div class="bg-gray-900 rounded-lg border border-gray-700 overflow-hidden mb-6">
-                            <!-- Embedded map placeholder - replace with actual Google Maps embed -->
                             <div class="w-full h-96 bg-gray-800 flex items-center justify-center">
                                 <div class="text-center">
                                     <i data-lucide="map" class="w-16 h-16 steel-accent mx-auto mb-4"></i>
                                     <p class="text-gray-400" data-translate="map-view">Interactive Map View</p>
-                                    <p class="text-sm text-gray-500 mt-2">Kazanchis, Near Meskel Square</p>
+                                    <p class="text-sm text-gray-500 mt-2">Lafto, Near Meskel Square</p>
                                     <p class="text-sm text-gray-500">Addis Ababa, Ethiopia</p>
                                 </div>
                             </div>
@@ -440,7 +439,7 @@
         </section>
     </main>
 
-    <!-- Footer (Copied from shop.html) -->
+    <!-- Footer -->
     <footer class="bg-gray-900 border-t border-gray-700">
         <div class="max-w-7xl mx-auto py-12 px-4 sm:px-6 lg:px-8">
             <div class="grid grid-cols-2 md:grid-cols-5 gap-8">
@@ -450,14 +449,14 @@
                         <li><a href="about.html" class="hover:text-copper transition-colors" data-translate="footer-about">About Us</a></li>
                         <li><a href="services.html" class="hover:text-copper transition-colors" data-translate="footer-services">Our Services</a></li>
                         <li><a href="#" class="hover:text-copper transition-colors" data-translate="footer-careers">Careers</a></li>
-                        <li><a href="#" class="hover:text-copper transition-colors" data-translate="footer-partners">Partnerships</a></li>
+                        <li><a href="contact.html#contact-form" class="hover:text-copper transition-colors" data-translate="footer-partners">Partnerships</a></li>
                     </ul>
                 </div>
                 <div>
                     <h3 class="text-lg font-semibold copper-accent mb-4" data-translate="footer-support">Support</h3>
                     <ul class="space-y-3 text-sm text-gray-400">
                         <li><a href="contact.html" class="hover:text-copper transition-colors" data-translate="footer-contact">Contact Us</a></li>
-                        <li><a href="#" class="hover:text-copper transition-colors" data-translate="footer-faq">FAQ</a></li>
+                        <li><a href="../quotes/faq.html" class="hover:text-copper transition-colors" data-translate="footer-faq">FAQ</a></li>
                         <li><a href="#" class="hover:text-copper transition-colors" data-translate="footer-shipping">Shipping Info</a></li>
                         <li><a href="#" class="hover:text-copper transition-colors" data-translate="footer-returns">Returns Policy</a></li>
                     </ul>
@@ -465,8 +464,8 @@
                 <div>
                     <h3 class="text-lg font-semibold copper-accent mb-4" data-translate="footer-legal">Legal</h3>
                     <ul class="space-y-3 text-sm text-gray-400">
-                        <li><a href="#" class="hover:text-copper transition-colors" data-translate="footer-terms">Terms of Service</a></li>
-                        <li><a href="#" class="hover:text-copper transition-colors" data-translate="footer-privacy">Privacy Policy</a></li>
+                        <li><a href="../quotes/terms-of-service.html" class="hover:text-copper transition-colors" data-translate="footer-terms">Terms of Service</a></li>
+                        <li><a href="../quotes/privacy-policy.html" class="hover:text-copper transition-colors" data-translate="footer-privacy">Privacy Policy</a></li>
                         <li><a href="#" class="hover:text-copper transition-colors" data-translate="footer-disclaimer">Disclaimer</a></li>
                         <li><a href="#" class="hover:text-copper transition-colors" data-translate="footer-sitemap">Sitemap</a></li>
                     </ul>
@@ -597,7 +596,7 @@
         const mobileMenu = document.getElementById('mobile-menu');
         
         mobileMenuBtn.addEventListener('click', () => {
-            mobileMenu.classList.toggle('open');
+            mobileMenu.classList.toggle('block');
         });
         
         // Cart and Account modal toggles
