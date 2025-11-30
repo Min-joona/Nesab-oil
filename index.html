@@ -7,22 +7,14 @@
     <meta name="description" content="Nesab provides premium vehicle oils and lubricants in Addis Ababa. Engine oils, transmission fluids, hydraulic oils, and commercial lubricants with expert consultation.">
     <link rel="shortcut icon" href="./resources/favicon.png" type="image/x-icon">
     
-    <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
-    
-    <!-- Animation Libraries -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/js/splide.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.7.0/p5.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/echarts@5.4.3/dist/echarts.min.js"></script>
-    
-    <!-- Splide CSS -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/css/splide.min.css">
-    
-    <!-- Lucide Icons -->
     <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
     
-    <!-- Custom Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
@@ -38,11 +30,7 @@
             --text-dark: #2d2d2d;
         }
         
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
         
         body {
             font-family: 'Inter', sans-serif;
@@ -52,16 +40,9 @@
             scroll-behavior: smooth;
         }
         
-        .font-display {
-            font-family: 'Inter', sans-serif;
-            font-weight: 700;
-        }
+        .font-display { font-family: 'Inter', sans-serif; font-weight: 700; }
+        .font-mono { font-family: 'JetBrains Mono', monospace; }
         
-        .font-mono {
-            font-family: 'JetBrains Mono', monospace;
-        }
-        
-        /* Hero Background */
         .hero-bg {
             background: linear-gradient(135deg, #1a1a1a 0%, #504f4f42 100%);
             position: relative;
@@ -71,59 +52,40 @@
         .hero-bg::before {
             content: '';
             position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: url('./resources/facilities/warehouse-nesab.png') center/cover;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: url('./resources/facilities/warehouse-nesab.jpg');
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
             opacity: 0.3;
             z-index: 1;
         }
         
-        .hero-content {
-            position: relative;
-            z-index: 2;
-        }
+        .hero-content { position: relative; z-index: 2; }
 
-        /* Cookie Banner */
         .cookie-banner {
             transform: translateY(100%);
             transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
         }
         
-        .cookie-banner.show {
-            transform: translateY(0);
-        }
+        .cookie-banner.show { transform: translateY(0); }
         
-        /* Glass morphism */
         .glass {
             background: rgba(12, 11, 11, 0.199);
             backdrop-filter: blur(10px);
             border: 1px solid rgba(255, 255, 255, 0.2);
         }
         
-        /* Copper accent */
-        .copper-accent {
-            color: var(--copper);
-        }
+        .copper-accent { color: var(--copper); }
+        .copper-bg { background: var(--copper); }
+        .steel-accent { color: var(--steel-blue); }
         
-        .copper-bg {
-            background: var(--copper);
-        }
-        
-        /* Steel blue accent */
-        .steel-accent {
-            color: var(--steel-blue);
-        }
-        /* Progress Ring */
         .progress-ring-circle {
             transition: stroke-dashoffset 0.35s;
             transform: rotate(-90deg);
             transform-origin: 50% 50%;
         }
-
         
-        /* Animated gradient text */
         .gradient-text {
             background: linear-gradient(45deg, var(--copper), var(--steel-blue));
             -webkit-background-clip: text;
@@ -138,7 +100,6 @@
             50% { background-position: 100% 50%; }
         }
         
-        /* Hover effects */
         .hover-lift {
             transition: all 0.3s ease;
         }
@@ -148,7 +109,6 @@
             box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
         }
         
-        /* Oil finder form */
         .oil-finder {
             background: rgba(255, 255, 255, 0.05);
             border: 1px solid rgba(184, 115, 51, 0.3);
@@ -157,27 +117,17 @@
             backdrop-filter: blur(10px);
         }
         
-        .form-step {
-            display: none;
-        }
-        
+        .form-step { display: none; }
         .form-step.active {
             display: block;
             animation: fadeInUp 0.5s ease;
         }
         
         @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(20px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
         }
         
-        /* Product cards */
         .product-card {
             background: rgba(255, 255, 255, 0.05);
             border: 1px solid rgba(255, 255, 255, 0.1);
@@ -192,7 +142,6 @@
             box-shadow: 0 20px 40px rgba(184, 115, 51, 0.2);
         }
         
-        /* Calculator widget */
         .calculator-widget {
             background: rgba(74, 111, 165, 0.1);
             border: 1px solid rgba(74, 111, 165, 0.3);
@@ -200,7 +149,6 @@
             padding: 1.5rem;
         }
         
-        /* Navigation */
         .nav-link {
             position: relative;
             transition: all 0.3s ease;
@@ -209,30 +157,19 @@
         .nav-link::after {
             content: '';
             position: absolute;
-            bottom: -4px;
-            left: 0;
-            width: 0;
-            height: 2px;
+            bottom: -4px; left: 0;
+            width: 0; height: 2px;
             background: var(--copper);
             transition: width 0.3s ease;
         }
         
-        .nav-link:hover::after {
-            width: 100%;
-        }
+        .nav-link:hover::after { width: 100%; }
         
-        /* Responsive */
         @media (max-width: 768px) {
-            .hero-content h1 {
-                font-size: 2.5rem;
-            }
-            
-            .oil-finder {
-                padding: 1rem;
-            }
+            .hero-content h1 { font-size: 2.5rem; }
+            .oil-finder { padding: 1rem; }
         }
 
-        /* Back to Top Button */
         .back-to-top {
             opacity: 0;
             transform: scale(0.8);
@@ -246,7 +183,6 @@
             pointer-events: all;
         }
         
-        /* Scroll animations */
         .fade-in {
             opacity: 0;
             transform: translateY(20px);
@@ -258,7 +194,6 @@
             transform: translateY(0);
         }
         
-        /* Language Selector Styles */
         .language-selector {
             position: relative;
             background: rgba(255, 255, 255, 0.05);
@@ -281,7 +216,6 @@
             color: white;
         }
         
-        /* Vehicle Type Image Placeholders */
         .vehicle-type-img {
             width: 60px;
             height: 60px;
@@ -290,7 +224,6 @@
             margin: 0 auto 8px;
         }
         
-        /* Product Image in Carousel */
         .carousel-product-img {
             width: 100%;
             height: 200px;
@@ -377,12 +310,12 @@
         <div class="hero-content max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
             <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
                 <div>
-                    <h1 class="text-5xl lg:text-6xl font-display mb-6 leading-tight" data-translate="hero-title">
+                    <h1 class="text-5xl lg:text-6xl font-display mb-6 leading-tight">
                         Premium Vehicle 
                         <span class="gradient-text">Oils & Lubricants</span>
                         in Addis Ababa
                     </h1>
-                    <p class="text-xl text-gray-300 mb-8 leading-relaxed" data-translate="hero-subtitle">
+                    <p class="text-xl text-gray-300 mb-8 leading-relaxed">
                         Expert solutions for all your vehicle lubrication needs. From engine oils to hydraulic fluids, 
                         we provide premium quality products with professional consultation and reliable delivery.
                     </p>
@@ -396,84 +329,120 @@
                     </div>
                 </div>
                 
+                <!-- Oil Finder -->
                 <div class="oil-finder">
-                    <h3 class="text-2xl font-bold mb-6 copper-accent" data-translate="oil-finder-title">Oil Finder Tool</h3>
+                    <h3 class="text-2xl font-bold mb-6 copper-accent">Oil Finder Tool</h3>
                     <div id="oil-finder-form">
-                        <!-- Step 1: Vehicle Type -->
+                        
+                        <!-- Step 1: Vehicle Year -->
                         <div class="form-step active" id="step-1">
-                            <h4 class="text-lg font-semibold mb-4" data-translate="step-1-title">What type of vehicle?</h4>
-                            <div class="grid grid-cols-2 gap-3">
-                                <button type="button" class="vehicle-type-btn p-4 border border-gray-600 rounded-lg hover:border-copper-accent transition-all" data-type="car">
-                                    <img src="./resources/placeholders/car.jpg" alt="Car" class="vehicle-type-img">
-                                    <div class="text-sm" data-translate="car">Car</div>
-                                </button>
-                                <button type="button" class="vehicle-type-btn p-4 border border-gray-600 rounded-lg hover:border-copper-accent transition-all" data-type="truck">
-                                    <img src="./resources/placeholders/truck.jpg" alt="Truck" class="vehicle-type-img">
-                                    <div class="text-sm" data-translate="truck">Truck</div>
-                                </button>
-                                <button type="button" class="vehicle-type-btn p-4 border border-gray-600 rounded-lg hover:border-copper-accent transition-all" data-type="bus">
-                                    <img src="./resources/placeholders/bus.jpg" alt="Bus" class="vehicle-type-img">
-                                    <div class="text-sm" data-translate="bus">Bus</div>
-                                </button>
-                                <button type="button" class="vehicle-type-btn p-4 border border-gray-600 rounded-lg hover:border-copper-accent transition-all" data-type="motorcycle">
-                                    <img src="./resources/placeholders/motorcycle.jpg" alt="Motorcycle" class="vehicle-type-img">
-                                    <div class="text-sm" data-translate="motorcycle">Motorcycle</div>
-                                </button>
+                            <h4 class="text-lg font-semibold mb-4">Vehicle Year</h4>
+                            <div class="space-y-3">
+                                <select id="year-select" class="w-full bg-gray-700 border border-gray-600 rounded-lg px-3 py-2 text-white focus:border-copper focus:outline-none">
+                                    <option value="">Select Year</option>
+                                </select>
+                                <div id="year-loading" class="hidden text-sm text-gray-400 flex items-center gap-2">
+                                    <i data-lucide="loader-2" class="w-4 h-4 animate-spin"></i>
+                                    Loading...
+                                </div>
+                                <div id="year-error" class="hidden text-sm text-red-400"></div>
                             </div>
                         </div>
                         
-                        <!-- Step 2: Fuel Type -->
+                        <!-- Step 2: Vehicle Make -->
                         <div class="form-step" id="step-2">
-                            <h4 class="text-lg font-semibold mb-4" data-translate="step-2-title">Fuel type?</h4>
+                            <h4 class="text-lg font-semibold mb-4">Vehicle Make</h4>
+                            <div class="space-y-3">
+                                <select id="make-select" class="w-full bg-gray-700 border border-gray-600 rounded-lg px-3 py-2 text-white focus:border-copper focus:outline-none" disabled>
+                                    <option value="">Select Year First</option>
+                                </select>
+                                <div id="make-loading" class="hidden text-sm text-gray-400 flex items-center gap-2">
+                                    <i data-lucide="loader-2" class="w-4 h-4 animate-spin"></i>
+                                    Loading makes...
+                                </div>
+                                <div id="make-error" class="hidden text-sm text-red-400"></div>
+                            </div>
+                        </div>
+                        
+                        <!-- Step 3: Vehicle Model -->
+                        <div class="form-step" id="step-3">
+                            <h4 class="text-lg font-semibold mb-4">Vehicle Model</h4>
+                            <div class="space-y-3">
+                                <select id="model-select" class="w-full bg-gray-700 border border-gray-600 rounded-lg px-3 py-2 text-white focus:border-copper focus:outline-none" disabled>
+                                    <option value="">Select Make First</option>
+                                </select>
+                                <div id="model-loading" class="hidden text-sm text-gray-400 flex items-center gap-2">
+                                    <i data-lucide="loader-2" class="w-4 h-4 animate-spin"></i>
+                                    Loading models...
+                                </div>
+                                <div id="model-error" class="hidden text-sm text-red-400"></div>
+                            </div>
+                        </div>
+                        
+                        <!-- Step 4: Vehicle Type (Auto-detected) -->
+                        <div class="form-step" id="step-4">
+                            <h4 class="text-lg font-semibold mb-4">Vehicle Type</h4>
+                            <div id="vehicle-type-display" class="bg-gray-800 p-4 rounded-lg border border-gray-700 text-center">
+                                <p class="text-gray-400">Vehicle type will be detected from your selection</p>
+                            </div>
+                            <button onclick="showStep(5)" class="w-full mt-4 bg-copper text-white px-4 py-2 rounded-lg hover:bg-opacity-80 transition-all">
+                                Continue
+                            </button>
+                        </div>
+
+                        <!-- Step 5: Fuel Type -->
+                        <div class="form-step" id="step-5">
+                            <h4 class="text-lg font-semibold mb-4">Fuel type?</h4>
                             <div class="space-y-3">
                                 <button type="button" class="fuel-type-btn w-full p-4 border border-gray-600 rounded-lg hover:border-copper-accent transition-all text-left" data-fuel="gasoline">
                                     <img src="./resources/placeholders/gasoline.jpg" alt="Gasoline" class="vehicle-type-img inline-block mr-3">
-                                    <span data-translate="gasoline">Gasoline Engine</span>
+                                    <span>Gasoline Engine</span>
                                 </button>
                                 <button type="button" class="fuel-type-btn w-full p-4 border border-gray-600 rounded-lg hover:border-copper-accent transition-all text-left" data-fuel="diesel">
                                     <img src="./resources/placeholders/diesel.jpg" alt="Diesel" class="vehicle-type-img inline-block mr-3">
-                                    <span data-translate="diesel">Diesel Engine</span>
+                                    <span>Diesel Engine</span>
                                 </button>
                                 <button type="button" class="fuel-type-btn w-full p-4 border border-gray-600 rounded-lg hover:border-copper-accent transition-all text-left" data-fuel="hybrid">
                                     <img src="./resources/placeholders/hybrid.jpg" alt="Hybrid" class="vehicle-type-img inline-block mr-3">
-                                    <span data-translate="hybrid">Hybrid/Electric</span>
+                                    <span>Hybrid/Electric</span>
                                 </button>
                             </div>
                         </div>
                         
-                        <!-- Step 3: Usage -->
-                        <div class="form-step" id="step-3">
-                            <h4 class="text-lg font-semibold mb-4" data-translate="step-3-title">Typical usage?</h4>
+                        <!-- Step 6: Usage -->
+                        <div class="form-step" id="step-6">
+                            <h4 class="text-lg font-semibold mb-4">Typical usage?</h4>
                             <div class="space-y-3">
                                 <button type="button" class="usage-btn w-full p-4 border border-gray-600 rounded-lg hover:border-copper-accent transition-all text-left" data-usage="city">
                                     <img src="./resources/placeholders/city.jpg" alt="City" class="vehicle-type-img inline-block mr-3">
-                                    <span data-translate="city">City Driving</span>
+                                    <span>City Driving</span>
                                 </button>
                                 <button type="button" class="usage-btn w-full p-4 border border-gray-600 rounded-lg hover:border-copper-accent transition-all text-left" data-usage="highway">
                                     <img src="./resources/placeholders/highway.jpg" alt="Highway" class="vehicle-type-img inline-block mr-3">
-                                    <span data-translate="highway">Highway/Freeway</span>
+                                    <span>Highway/Freeway</span>
                                 </button>
                                 <button type="button" class="usage-btn w-full p-4 border border-gray-600 rounded-lg hover:border-copper-accent transition-all text-left" data-usage="heavy">
                                     <img src="./resources/placeholders/heavy.jpg" alt="Heavy Load" class="vehicle-type-img inline-block mr-3">
-                                    <span data-translate="heavy">Heavy Load/Towing</span>
+                                    <span>Heavy Load/Towing</span>
                                 </button>
                                 <button type="button" class="usage-btn w-full p-4 border border-gray-600 rounded-lg hover:border-copper-accent transition-all text-left" data-usage="mixed">
                                     <img src="./resources/placeholders/mixed.jpg" alt="Mixed" class="vehicle-type-img inline-block mr-3">
-                                    <span data-translate="mixed">Mixed Conditions</span>
+                                    <span>Mixed Conditions</span>
                                 </button>
                             </div>
                         </div>
                         
                         <!-- Results -->
                         <div class="form-step" id="step-results">
-                            <h4 class="text-lg font-semibold mb-4 copper-accent" data-translate="results-title">Recommended Oil</h4>
+                            <h4 class="text-lg font-semibold mb-4 copper-accent">Recommended Oil</h4>
                             <div id="recommendation-result" class="space-y-4">
                                 <!-- Results will be populated by JavaScript -->
                             </div>
-                            <button onclick="resetOilFinder()" class="w-full mt-4 border border-gray-600 text-gray-300 px-4 py-2 rounded-lg hover:border-copper-accent transition-all" data-translate="start-over">
+                            <button onclick="resetOilFinder()" class="w-full mt-4 border border-gray-600 text-gray-300 px-4 py-2 rounded-lg hover:border-copper-accent transition-all">
                                 Start Over
                             </button>
                         </div>
+                        
                     </div>
                 </div>
             </div>
@@ -484,8 +453,8 @@
     <section class="py-20 bg-gray-900">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center mb-12 fade-in">
-                <h2 class="text-4xl font-display mb-4 gradient-text" data-translate="featured-products">Featured Products</h2>
-                <p class="text-xl text-gray-300" data-translate="tagline">Premium quality oils for every vehicle and application</p>
+                <h2 class="text-4xl font-display mb-4 gradient-text">Featured Products</h2>
+                <p class="text-xl text-gray-300">Premium quality oils for every vehicle and application</p>
             </div>
             
             <div class="splide" id="product-carousel">
@@ -616,44 +585,44 @@
         <div class="max-w-7xl mx-auto py-12 px-4 sm:px-6 lg:px-8">
             <div class="grid grid-cols-2 md:grid-cols-5 gap-8">
                 <div>
-                    <h3 class="text-lg font-semibold copper-accent mb-4" data-translate="footer-company">Company</h3>
+                    <h3 class="text-lg font-semibold copper-accent mb-4">Company</h3>
                     <ul class="space-y-3 text-sm text-gray-400">
-                        <li><a href="./pages/about.html" class="hover:text-copper transition-colors" data-translate="footer-about">About Us</a></li>
-                        <li><a href="./pages/services.html" class="hover:text-copper transition-colors" data-translate="footer-services">Our Services</a></li>
-                        <li><a href="#" class="hover:text-copper transition-colors" data-translate="footer-careers">Careers</a></li>
-                        <li><a href="./pages/contact.html#contact-form" class="hover:text-copper transition-colors" data-translate="footer-partners">Partnerships</a></li>
+                        <li><a href="./pages/about.html" class="hover:text-copper transition-colors">About Us</a></li>
+                        <li><a href="./pages/services.html" class="hover:text-copper transition-colors">Our Services</a></li>
+                        <li><a href="#" class="hover:text-copper transition-colors">Careers</a></li>
+                        <li><a href="./pages/contact.html#contact-form" class="hover:text-copper transition-colors">Partnerships</a></li>
                     </ul>
                 </div>
                 <div>
-                    <h3 class="text-lg font-semibold copper-accent mb-4" data-translate="footer-support">Support</h3>
+                    <h3 class="text-lg font-semibold copper-accent mb-4">Support</h3>
                     <ul class="space-y-3 text-sm text-gray-400">
-                        <li><a href="./pages/contact.html" class="hover:text-copper transition-colors" data-translate="footer-contact">Contact Us</a></li>
-                        <li><a href="./quotes/faq.html" class="hover:text-copper transition-colors" data-translate="footer-faq">FAQ</a></li>
-                        <li><a href="#" class="hover:text-copper transition-colors" data-translate="footer-shipping">Shipping Info</a></li>
-                        <li><a href="#" class="hover:text-copper transition-colors" data-translate="footer-returns">Returns Policy</a></li>
+                        <li><a href="./pages/contact.html" class="hover:text-copper transition-colors">Contact Us</a></li>
+                        <li><a href="./quotes/faq.html" class="hover:text-copper transition-colors">FAQ</a></li>
+                        <li><a href="#" class="hover:text-copper transition-colors">Shipping Info</a></li>
+                        <li><a href="#" class="hover:text-copper transition-colors">Returns Policy</a></li>
                     </ul>
                 </div>
                 <div>
-                    <h3 class="text-lg font-semibold copper-accent mb-4" data-translate="footer-legal">Legal</h3>
+                    <h3 class="text-lg font-semibold copper-accent mb-4">Legal</h3>
                     <ul class="space-y-3 text-sm text-gray-400">
-                        <li><a href="./quotes/terms-of-service.html" class="hover:text-copper transition-colors" data-translate="footer-terms">Terms of Service</a></li>
-                        <li><a href="./quotes/privacy-policy.html" class="hover:text-copper transition-colors" data-translate="footer-privacy">Privacy Policy</a></li>
-                        <li><a href="#" class="hover:text-copper transition-colors" data-translate="footer-disclaimer">Disclaimer</a></li>
-                        <li><a href="#" class="hover:text-copper transition-colors" data-translate="footer-sitemap">Sitemap</a></li>
+                        <li><a href="./quotes/terms-of-service.html" class="hover:text-copper transition-colors">Terms of Service</a></li>
+                        <li><a href="./quotes/privacy-policy.html" class="hover:text-copper transition-colors">Privacy Policy</a></li>
+                        <li><a href="#" class="hover:text-copper transition-colors">Disclaimer</a></li>
+                        <li><a href="#" class="hover:text-copper transition-colors">Sitemap</a></li>
                     </ul>
                 </div>
                 <div class="col-span-2 md:col-span-2">
-                    <h3 class="text-lg font-semibold copper-accent mb-4" data-translate="footer-newsletter">Join Our Newsletter</h3>
-                    <p class="text-sm text-gray-400 mb-4" data-translate="footer-newsletter-desc">Get updates on new products and promotions.</p>
+                    <h3 class="text-lg font-semibold copper-accent mb-4">Join Our Newsletter</h3>
+                    <p class="text-sm text-gray-400 mb-4">Get updates on new products and promotions.</p>
                     <form class="flex">
-                        <input type="email" placeholder="Your email address" class="w-full px-4 py-2 bg-gray-800 border border-gray-700 rounded-l-lg text-white placeholder-gray-500 focus:border-copper focus:outline-none" data-translate="footer-email-placeholder">
-                        <button type="submit" class="bg-copper hover:bg-copper-dark px-6 py-2 rounded-r-lg font-medium transition-colors" data-translate="footer-subscribe">Subscribe</button>
+                        <input type="email" placeholder="Your email address" class="w-full px-4 py-2 bg-gray-800 border border-gray-700 rounded-l-lg text-white placeholder-gray-500 focus:border-copper focus:outline-none">
+                        <button type="submit" class="bg-copper hover:bg-copper-dark px-6 py-2 rounded-r-lg font-medium transition-colors">Subscribe</button>
                     </form>
                 </div>
             </div>
             
             <div class="mt-12 border-t border-gray-800 pt-8 flex flex-col md:flex-row items-center justify-between">
-                <p class="text-sm text-gray-500 order-2 md:order-1 mt-4 md:mt-0" data-translate="footer-copyright">
+                <p class="text-sm text-gray-500 order-2 md:order-1 mt-4 md:mt-0">
                     &copy; <span id="current-year">2025</span> Nesab Vehicle Oils. All rights reserved.
                 </p>
                 <div class="flex space-x-6 order-1 md:order-2">
@@ -673,15 +642,176 @@
             </div>
         </div>
     </footer>
-    
-    <!-- Language Support -->
-    <script src="./scripts/language.js"></script>
-    <script src="./scripts/main.js"></script>
+
     <script>
-        // Global cart for cross-page persistence (same key as shop.html)
+        // === LOCAL VEHICLE DATABASE (East Africa Focus) ===
+        const LOCAL_VEHICLE_DB = {
+            "lastUpdated": "2025-01-15",
+            "region": "East Africa",
+            "makes": [
+                {
+                    "id": 1,
+                    "name": "Toyota",
+                    "type": "car",
+                    "modelsByYear": {
+                        "2024": ["Corolla", "Camry", "RAV4", "Land Cruiser Prado", "Hiace", "Hilux", "Fortuner", "Yaris"],
+                        "2023": ["Corolla", "Camry", "RAV4", "Land Cruiser Prado", "Hiace", "Hilux", "Fortuner"],
+                        "2022": ["Corolla", "Camry", "RAV4", "Land Cruiser Prado", "Hiace", "Hilux"],
+                        "2021": ["Corolla", "Camry", "RAV4", "Land Cruiser Prado", "Hiace", "Hilux"],
+                        "2020": ["Corolla", "Camry", "RAV4", "Land Cruiser Prado", "Hiace", "Hilux"],
+                        "2019": ["Corolla", "Camry", "RAV4", "Land Cruiser Prado", "Hiace", "Hilux"],
+                        "2018": ["Corolla", "Camry", "RAV4", "Land Cruiser Prado", "Hiace", "Hilux"],
+                        "2017": ["Corolla", "Camry", "RAV4", "Land Cruiser Prado", "Hiace", "Hilux"],
+                        "2016": ["Corolla", "Camry", "RAV4", "Land Cruiser Prado", "Hiace", "Hilux"],
+                        "2015": ["Corolla", "Camry", "RAV4", "Land Cruiser Prado", "Hiace", "Hilux"],
+                        "2014": ["Corolla", "Camry", "RAV4", "Land Cruiser Prado", "Hiace", "Hilux"],
+                        "2013": ["Corolla", "Camry", "RAV4", "Land Cruiser Prado", "Hiace", "Hilux"],
+                        "2012": ["Corolla", "Camry", "RAV4", "Land Cruiser Prado", "Hiace", "Hilux"],
+                        "2011": ["Corolla", "Camry", "RAV4", "Land Cruiser Prado", "Hiace", "Hilux"],
+                        "2010": ["Corolla", "Camry", "RAV4", "Land Cruiser Prado", "Hiace", "Hilux"]
+                    }
+                },
+                {
+                    "id": 2,
+                    "name": "Nissan",
+                    "type": "car",
+                    "modelsByYear": {
+                        "2024": ["Patrol", "X-Trail", "Navara", "Sunny", "Altima", "Maxima"],
+                        "2023": ["Patrol", "X-Trail", "Navara", "Sunny", "Altima"],
+                        "2022": ["Patrol", "X-Trail", "Navara", "Sunny", "Altima"],
+                        "2021": ["Patrol", "X-Trail", "Navara", "Sunny"],
+                        "2020": ["Patrol", "X-Trail", "Navara", "Sunny"],
+                        "2019": ["Patrol", "X-Trail", "Navara", "Sunny"],
+                        "2018": ["Patrol", "X-Trail", "Navara", "Sunny"],
+                        "2017": ["Patrol", "X-Trail", "Navara", "Sunny"],
+                        "2016": ["Patrol", "X-Trail", "Navara", "Sunny"],
+                        "2015": ["Patrol", "X-Trail", "Navara", "Sunny"],
+                        "2014": ["Patrol", "X-Trail", "Navara", "Sunny"],
+                        "2013": ["Patrol", "X-Trail", "Navara", "Sunny"],
+                        "2012": ["Patrol", "X-Trail", "Navara", "Sunny"],
+                        "2011": ["Patrol", "X-Trail", "Navara", "Sunny"],
+                        "2010": ["Patrol", "X-Trail", "Navara", "Sunny"]
+                    }
+                },
+                {
+                    "id": 3,
+                    "name": "Hyundai",
+                    "type": "car",
+                    "modelsByYear": {
+                        "2024": ["Tucson", "Santa Fe", "Elantra", "Accent", "i20", "i10"],
+                        "2023": ["Tucson", "Santa Fe", "Elantra", "Accent", "i20"],
+                        "2022": ["Tucson", "Santa Fe", "Elantra", "Accent", "i20"],
+                        "2021": ["Tucson", "Santa Fe", "Elantra", "Accent"],
+                        "2020": ["Tucson", "Santa Fe", "Elantra", "Accent"],
+                        "2019": ["Tucson", "Santa Fe", "Elantra", "Accent"],
+                        "2018": ["Tucson", "Santa Fe", "Elantra", "Accent"],
+                        "2017": ["Tucson", "Santa Fe", "Elantra", "Accent"],
+                        "2016": ["Tucson", "Santa Fe", "Elantra", "Accent"],
+                        "2015": ["Tucson", "Santa Fe", "Elantra", "Accent"],
+                        "2014": ["Tucson", "Santa Fe", "Elantra", "Accent"],
+                        "2013": ["Tucson", "Santa Fe", "Elantra", "Accent"],
+                        "2012": ["Tucson", "Santa Fe", "Elantra", "Accent"],
+                        "2011": ["Tucson", "Santa Fe", "Elantra", "Accent"],
+                        "2010": ["Tucson", "Santa Fe", "Elantra", "Accent"]
+                    }
+                },
+                {
+                    "id": 4,
+                    "name": "Isuzu",
+                    "type": "truck",
+                    "modelsByYear": {
+                        "2024": ["N-Series", "F-Series", "D-Max"],
+                        "2023": ["N-Series", "F-Series", "D-Max"],
+                        "2022": ["N-Series", "F-Series", "D-Max"],
+                        "2021": ["N-Series", "F-Series", "D-Max"],
+                        "2020": ["N-Series", "F-Series", "D-Max"],
+                        "2019": ["N-Series", "F-Series", "D-Max"],
+                        "2018": ["N-Series", "F-Series", "D-Max"],
+                        "2017": ["N-Series", "F-Series", "D-Max"],
+                        "2016": ["N-Series", "F-Series", "D-Max"],
+                        "2015": ["N-Series", "F-Series", "D-Max"],
+                        "2014": ["N-Series", "F-Series", "D-Max"],
+                        "2013": ["N-Series", "F-Series", "D-Max"],
+                        "2012": ["N-Series", "F-Series", "D-Max"],
+                        "2011": ["N-Series", "F-Series", "D-Max"],
+                        "2010": ["N-Series", "F-Series", "D-Max"]
+                    }
+                },
+                {
+                    "id": 5,
+                    "name": "Mitsubishi",
+                    "type": "car",
+                    "modelsByYear": {
+                        "2024": ["Pajero", "L200", "Attrage", "ASX"],
+                        "2023": ["Pajero", "L200", "Attrage", "ASX"],
+                        "2022": ["Pajero", "L200", "Attrage"],
+                        "2021": ["Pajero", "L200", "Attrage"],
+                        "2020": ["Pajero", "L200", "Attrage"],
+                        "2019": ["Pajero", "L200", "Attrage"],
+                        "2018": ["Pajero", "L200", "Attrage"],
+                        "2017": ["Pajero", "L200", "Attrage"],
+                        "2016": ["Pajero", "L200", "Attrage"],
+                        "2015": ["Pajero", "L200", "Attrage"],
+                        "2014": ["Pajero", "L200", "Attrage"],
+                        "2013": ["Pajero", "L200", "Attrage"],
+                        "2012": ["Pajero", "L200", "Attrage"],
+                        "2011": ["Pajero", "L200", "Attrage"],
+                        "2010": ["Pajero", "L200", "Attrage"]
+                    }
+                },
+                {
+                    "id": 6,
+                    "name": "Mercedes-Benz",
+                    "type": "car",
+                    "modelsByYear": {
+                        "2024": ["C-Class", "E-Class", "S-Class", "GLE", "GLC"],
+                        "2023": ["C-Class", "E-Class", "S-Class", "GLE", "GLC"],
+                        "2022": ["C-Class", "E-Class", "S-Class", "GLE"],
+                        "2021": ["C-Class", "E-Class", "S-Class", "GLE"],
+                        "2020": ["C-Class", "E-Class", "S-Class", "GLE"],
+                        "2019": ["C-Class", "E-Class", "S-Class"],
+                        "2018": ["C-Class", "E-Class", "S-Class"],
+                        "2017": ["C-Class", "E-Class", "S-Class"],
+                        "2016": ["C-Class", "E-Class", "S-Class"],
+                        "2015": ["C-Class", "E-Class", "S-Class"],
+                        "2014": ["C-Class", "E-Class", "S-Class"],
+                        "2013": ["C-Class", "E-Class", "S-Class"],
+                        "2012": ["C-Class", "E-Class", "S-Class"],
+                        "2011": ["C-Class", "E-Class", "S-Class"],
+                        "2010": ["C-Class", "E-Class", "S-Class"]
+                    }
+                },
+                {
+                    "id": 7,
+                    "name": "Hino",
+                    "type": "truck",
+                    "modelsByYear": {
+                        "2024": ["300 Series", "500 Series", "700 Series"],
+                        "2023": ["300 Series", "500 Series", "700 Series"],
+                        "2022": ["300 Series", "500 Series", "700 Series"],
+                        "2021": ["300 Series", "500 Series", "700 Series"],
+                        "2020": ["300 Series", "500 Series", "700 Series"],
+                        "2019": ["300 Series", "500 Series", "700 Series"],
+                        "2018": ["300 Series", "500 Series", "700 Series"],
+                        "2017": ["300 Series", "500 Series", "700 Series"],
+                        "2016": ["300 Series", "500 Series", "700 Series"],
+                        "2015": ["300 Series", "500 Series", "700 Series"],
+                        "2014": ["300 Series", "500 Series", "700 Series"],
+                        "2013": ["300 Series", "500 Series", "700 Series"],
+                        "2012": ["300 Series", "500 Series", "700 Series"],
+                        "2011": ["300 Series", "500 Series", "700 Series"],
+                        "2010": ["300 Series", "500 Series", "700 Series"]
+                    }
+                }
+            ]
+        };
+
+        // === GLOBAL STATE & PRODUCTS ===
         let cart = JSON.parse(localStorage.getItem('nesab-cart')) || [];
-        
-        // Product database for oil finder and featured products
+        let finderState = {
+            year: '', make: '', model: '', vehicleType: '', fuelType: '', usage: ''
+        };
+
         const finderProducts = [
             {
                 id: 'total-quartz-9000-5w40-4l',
@@ -748,148 +878,292 @@
             }
         ];
 
-        // Initialize Lucide icons
-        lucide.createIcons();
-        
+        // === INITIALIZATION ===
+        document.addEventListener('DOMContentLoaded', async () => {
+            lucide.createIcons();
+            loadYears();
+            setupEventListeners();
+            loadFeaturedProducts();
+            initializeAnimations();
+            document.getElementById('current-year').textContent = new Date().getFullYear();
+        });
+
         // Mobile menu toggle
         const mobileMenuBtn = document.getElementById('mobile-menu-btn');
         const mobileMenu = document.getElementById('mobile-menu');
-        
-        mobileMenuBtn.addEventListener('click', () => {
-            mobileMenu.classList.toggle('block');
+        mobileMenuBtn?.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
         });
 
-        // Navbar scroll effect
-        const navbar = document.getElementById('navbar');
-        let lastScroll = 0;
-        
-        window.addEventListener('scroll', () => {
-            const currentScroll = window.pageYOffset;
-            
-            if (currentScroll > 100) {
-                navbar.classList.add('scrolled');
-            } else {
-                navbar.classList.remove('scrolled');
-            }
-            
-            lastScroll = currentScroll;
-            
-            // Back to top visibility
-            const backToTop = document.getElementById('back-to-top');
-            if (currentScroll > 500) {
-                backToTop.classList.add('visible');
-            } else {
-                backToTop.classList.remove('visible');
-            }
-            
-            // Update scroll progress
-            updateScrollProgress();
-        });
-        
-        // Scroll progress indicator
-        function updateScrollProgress() {
-            const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
-            const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
-            const scrolled = (winScroll / height) * 100;
-            const circle = document.querySelector('.progress-ring-circle');
-            const circumference = 2 * Math.PI * 22;
-            const offset = circumference - (scrolled / 100) * circumference;
-            circle.style.strokeDasharray = circumference;
-            circle.style.strokeDashoffset = offset;
-        }
-        
-        // Cookie consent
-        function acceptCookies() {
-            localStorage.setItem('cookiesAccepted', 'true');
-            document.getElementById('cookie-banner').classList.remove('show');
-        }
-        
-        function rejectCookies() {
-            localStorage.setItem('cookiesAccepted', 'false');
-            document.getElementById('cookie-banner').classList.remove('show');
-        }
-        
-        // Show cookie banner if not already set
-        if (!localStorage.getItem('cookiesAccepted')) {
-            setTimeout(() => {
-                document.getElementById('cookie-banner').classList.add('show');
-            }, 1000);
-        }
-
-        // Back to top
-        document.getElementById('back-to-top').addEventListener('click', () => {
-            window.scrollTo({
-                top: 0,
-                behavior: 'smooth'
-            });
-        });
-        
-        // Sync language selectors
-        const desktopLang = document.getElementById('language-selector');
-        const mobileLang = document.getElementById('language-selector-mobile');
-        
-        desktopLang.addEventListener('change', (e) => {
-            mobileLang.value = e.target.value;
-        });
-        
-        mobileLang.addEventListener('change', (e) => {
-            desktopLang.value = e.target.value;
-        });
-        
-        // Oil Finder Logic
-        let finderState = {};
-        
-        // Vehicle type selection
-        document.querySelectorAll('.vehicle-type-btn').forEach(btn => {
-            btn.addEventListener('click', () => {
-                finderState.vehicleType = btn.dataset.type;
+        // === EVENT LISTENERS ===
+        function setupEventListeners() {
+            document.getElementById('year-select').addEventListener('change', async (e) => {
+                finderState.year = e.target.value;
+                await loadMakes(finderState.year);
                 showStep(2);
             });
-        });
-        
-        // Fuel type selection
-        document.querySelectorAll('.fuel-type-btn').forEach(btn => {
-            btn.addEventListener('click', () => {
-                finderState.fuelType = btn.dataset.fuel;
+
+            document.getElementById('make-select').addEventListener('change', async (e) => {
+                finderState.make = e.target.value;
+                await loadModels(finderState.year, finderState.make);
                 showStep(3);
             });
-        });
-        
-        // Usage selection
-        document.querySelectorAll('.usage-btn').forEach(btn => {
-            btn.addEventListener('click', () => {
-                finderState.usage = btn.dataset.usage;
-                showRecommendation();
+
+            document.getElementById('model-select').addEventListener('change', async (e) => {
+                finderState.model = e.target.value;
+                await detectVehicleType(finderState.make);
+                showStep(4);
             });
-        });
-        
+
+            document.querySelectorAll('.fuel-type-btn').forEach(btn => {
+                btn.addEventListener('click', () => {
+                    finderState.fuelType = btn.dataset.fuel;
+                    showStep(6);
+                });
+            });
+
+            document.querySelectorAll('.usage-btn').forEach(btn => {
+                btn.addEventListener('click', () => {
+                    finderState.usage = btn.dataset.usage;
+                    showRecommendation();
+                });
+            });
+            
+            // Sync language selectors
+            const desktopLang = document.getElementById('language-selector');
+            const mobileLang = document.getElementById('language-selector-mobile');
+            
+            desktopLang?.addEventListener('change', (e) => {
+                if (mobileLang) mobileLang.value = e.target.value;
+            });
+            
+            mobileLang?.addEventListener('change', (e) => {
+                if (desktopLang) desktopLang.value = e.target.value;
+            });
+        }
+
+        // === VEHICLE DATA LOADING (SELF-HOSTED) ===
+        function loadYears() {
+            const yearSelect = document.getElementById('year-select');
+            const loading = document.getElementById('year-loading');
+            const error = document.getElementById('year-error');
+            
+            loading?.classList.remove('hidden');
+            error?.classList.add('hidden');
+            
+            try {
+                const currentYear = new Date().getFullYear();
+                const startYear = 2010; // Focus on recent models
+                
+                yearSelect.innerHTML = '<option value="">Select Year</option>';
+                
+                for (let year = currentYear; year >= startYear; year--) {
+                    const option = document.createElement('option');
+                    option.value = year;
+                    option.textContent = year;
+                    yearSelect.appendChild(option);
+                }
+                
+                yearSelect.disabled = false;
+                loading?.classList.add('hidden');
+            } catch (err) {
+                console.error('Failed to load years:', err);
+                loading?.classList.add('hidden');
+                error.textContent = 'Failed to load years. Please refresh.';
+                error?.classList.remove('hidden');
+            }
+        }
+
+        async function loadMakes(year) {
+            const makeSelect = document.getElementById('make-select');
+            const loading = document.getElementById('make-loading');
+            const error = document.getElementById('make-error');
+            
+            loading?.classList.remove('hidden');
+            error?.classList.add('hidden');
+            makeSelect.disabled = true;
+            
+            try {
+                // Try localStorage cache first
+                const cacheKey = `nesab-makes-${year}`;
+                const cached = localStorage.getItem(cacheKey);
+                
+                if (cached) {
+                    const makes = JSON.parse(cached);
+                    populateMakes(makes);
+                    loading?.classList.add('hidden');
+                    return;
+                }
+                
+                // Use local database
+                const makes = LOCAL_VEHICLE_DB.makes
+                    .filter(make => make.modelsByYear[year] && make.modelsByYear[year].length > 0)
+                    .map(make => make.name)
+                    .sort((a, b) => a.localeCompare(b));
+                
+                // Cache for 7 days
+                localStorage.setItem(cacheKey, JSON.stringify(makes));
+                localStorage.setItem(`${cacheKey}-expiry`, Date.now() + (7 * 24 * 60 * 60 * 1000));
+                
+                populateMakes(makes);
+                loading?.classList.add('hidden');
+                
+            } catch (err) {
+                console.error('Failed to load makes:', err);
+                loading?.classList.add('hidden');
+                error.textContent = 'Failed to load makes. Please refresh.';
+                error?.classList.remove('hidden');
+                
+                // Fallback to all makes
+                const allMakes = LOCAL_VEHICLE_DB.makes.map(m => m.name).sort();
+                populateMakes(allMakes);
+            }
+        }
+
+        function populateMakes(makes) {
+            const makeSelect = document.getElementById('make-select');
+            makeSelect.innerHTML = '<option value="">Select Make</option>';
+            
+            makes.forEach(makeName => {
+                const option = document.createElement('option');
+                option.value = makeName;
+                option.textContent = makeName;
+                makeSelect.appendChild(option);
+            });
+            
+            makeSelect.disabled = false;
+        }
+
+        async function loadModels(year, make) {
+            const modelSelect = document.getElementById('model-select');
+            const loading = document.getElementById('model-loading');
+            const error = document.getElementById('model-error');
+            
+            loading?.classList.remove('hidden');
+            error?.classList.add('hidden');
+            modelSelect.disabled = true;
+            
+            try {
+                // Try localStorage cache first
+                const cacheKey = `nesab-models-${year}-${make}`;
+                const cached = localStorage.getItem(cacheKey);
+                const expiry = localStorage.getItem(`${cacheKey}-expiry`);
+                
+                if (cached && expiry && Date.now() < parseInt(expiry)) {
+                    const models = JSON.parse(cached);
+                    populateModels(models);
+                    loading?.classList.add('hidden');
+                    return;
+                }
+                
+                // Use local database
+                const makeData = LOCAL_VEHICLE_DB.makes.find(m => m.name === make);
+                if (!makeData || !makeData.modelsByYear[year]) {
+                    throw new Error(`No models found for ${make} in ${year}`);
+                }
+                
+                const models = [...new Set(makeData.modelsByYear[year])].sort();
+                
+                // Cache for 7 days
+                localStorage.setItem(cacheKey, JSON.stringify(models));
+                localStorage.setItem(`${cacheKey}-expiry`, Date.now() + (7 * 24 * 60 * 60 * 1000));
+                
+                populateModels(models);
+                loading?.classList.add('hidden');
+                
+            } catch (err) {
+                console.error('Failed to load models:', err);
+                loading?.classList.add('hidden');
+                error.textContent = `${err.message}. Try again or choose another make.`;
+                error?.classList.remove('hidden');
+                modelSelect.innerHTML = '<option value="">Error loading models</option>';
+                modelSelect.disabled = false;
+            }
+        }
+
+        function populateModels(models) {
+            const modelSelect = document.getElementById('model-select');
+            modelSelect.innerHTML = '<option value="">Select Model</option>';
+            
+            models.forEach(modelName => {
+                const option = document.createElement('option');
+                option.value = modelName;
+                option.textContent = modelName;
+                modelSelect.appendChild(option);
+            });
+            
+            modelSelect.disabled = false;
+        }
+
+        function getMakeId(makeName) {
+            const make = LOCAL_VEHICLE_DB.makes.find(m => m.name === makeName);
+            return make ? make.id : 0;
+        }
+
+        // === VEHICLE TYPE DETECTION ===
+        async function detectVehicleType(make) {
+            const typeDisplay = document.getElementById('vehicle-type-display');
+            const makeData = LOCAL_VEHICLE_DB.makes.find(m => m.name === make);
+            
+            if (makeData && makeData.type === 'truck') {
+                finderState.vehicleType = 'truck';
+                typeDisplay.innerHTML = `
+                    <i data-lucide="truck" class="w-8 h-8 copper-accent mx-auto mb-2"></i>
+                    <p class="font-semibold">Commercial Vehicle Detected</p>
+                    <p class="text-sm text-gray-400">Truck/Bus/Heavy Duty recommendations will be shown</p>
+                `;
+            } else {
+                finderState.vehicleType = 'car';
+                typeDisplay.innerHTML = `
+                    <i data-lucide="car" class="w-8 h-8 copper-accent mx-auto mb-2"></i>
+                    <p class="font-semibold">Passenger Vehicle Detected</p>
+                    <p class="text-sm text-gray-400">Car/SUV recommendations will be shown</p>
+                `;
+            }
+            
+            lucide.createIcons();
+        }
+
+        // === STEP NAVIGATION ===
         function showStep(stepNumber) {
             document.querySelectorAll('.form-step').forEach(step => {
                 step.classList.remove('active');
             });
             document.getElementById(`step-${stepNumber}`).classList.add('active');
         }
-        
+
+        // === RECOMMENDATION ENGINE ===
         function showRecommendation() {
-            // Find matching products
-            const matches = finderProducts.filter(product => {
+            let matches = finderProducts.filter(product => {
                 return product.compatibility.types.includes(finderState.vehicleType) &&
                        product.compatibility.fuel.includes(finderState.fuelType) &&
                        product.compatibility.usage.includes(finderState.usage);
             });
             
-            // Show results step
+            const year = parseInt(finderState.year);
+            if (year < 2000 && matches.length > 0) {
+                const mineralMatches = matches.filter(p => 
+                    p.specs.type.includes('Mineral') || p.specs.type.includes('Semi-Synthetic')
+                );
+                if (mineralMatches.length > 0) matches = mineralMatches;
+            } else if (year > 2015 && matches.length > 0) {
+                const syntheticMatches = matches.filter(p => 
+                    p.specs.type.includes('Synthetic')
+                );
+                if (syntheticMatches.length > 0) matches = syntheticMatches;
+            }
+            
             document.querySelectorAll('.form-step').forEach(step => {
                 step.classList.remove('active');
             });
             document.getElementById('step-results').classList.add('active');
             
-            // Display results
             const resultDiv = document.getElementById('recommendation-result');
             if (matches.length > 0) {
-                const product = matches[0]; // Show best match
+                const product = matches[0];
                 resultDiv.innerHTML = `
                     <div class="bg-gray-800 p-4 rounded-lg border border-gray-700">
+                        <div class="text-sm text-copper mb-2">Recommended for ${finderState.year} ${finderState.make} ${finderState.model}</div>
                         <div class="flex items-center gap-4 mb-4">
                             <img src="${product.image}" alt="${product.name}" class="w-16 h-16 object-cover rounded">
                             <div>
@@ -903,96 +1177,39 @@
                         </button>
                     </div>
                 `;
-                lucide.createIcons();
             } else {
                 resultDiv.innerHTML = `
                     <div class="text-center text-gray-400 py-4">
                         <i data-lucide="alert-circle" class="w-12 h-12 mx-auto mb-2"></i>
-                        <p>No exact match found. Visit our <a href="./pages/shop.html" class="copper-accent">shop</a> for more options.</p>
+                        <p class="mb-4">No exact match for your ${finderState.year} ${finderState.make} ${finderState.model}.</p>
+                        <a href="./pages/shop.html" class="copper-accent underline">View all products</a>
                     </div>
                 `;
-                lucide.createIcons();
             }
+            
+            lucide.createIcons();
         }
-        
+
+        // === RESET FUNCTION ===
         function resetOilFinder() {
-            finderState = {};
+            finderState = { year: '', make: '', model: '', vehicleType: '', fuelType: '', usage: '' };
+            
+            document.getElementById('year-select').value = '';
+            document.getElementById('make-select').innerHTML = '<option value="">Select Year First</option>';
+            document.getElementById('make-select').disabled = true;
+            document.getElementById('model-select').innerHTML = '<option value="">Select Make First</option>';
+            document.getElementById('model-select').disabled = true;
+            
             showStep(1);
         }
-        
-        // Add to cart from oil finder
-        function addToCartFromFinder(productId) {
-            const product = finderProducts.find(p => p.id === productId);
-            if (!product) return;
-            
-            const existingItem = cart.find(item => item.id === productId);
-            
-            if (existingItem) {
-                existingItem.quantity += 1;
-            } else {
-                cart.push({ id: productId, quantity: 1, name: product.name, price: product.price });
-            }
-            
-            localStorage.setItem('nesab-cart', JSON.stringify(cart));
-            alert(`${product.name} added to cart!`);
+
+        function scrollToOilFinder() {
+            document.querySelector('.oil-finder').scrollIntoView({ behavior: 'smooth', block: 'center' });
         }
-        
-        // Viscosity Calculator
-        function calculateViscosity() {
-            const tempMin = parseInt(document.getElementById('temp-min').value);
-            const tempMax = parseInt(document.getElementById('temp-max').value);
-            const usage = document.getElementById('usage-type').value;
-            
-            let recommendation = '';
-            let explanation = '';
-            
-            // Real viscosity logic based on temperature and usage
-            if (tempMin < -5) {
-                // Cold climates
-                if (usage === 'heavy') {
-                    recommendation = '0W-40 or 5W-40';
-                    explanation = 'Low winter rating for cold starts, high viscosity for heavy loads.';
-                } else {
-                    recommendation = '0W-20 or 5W-30';
-                    explanation = 'Low winter rating for cold starts, fuel-efficient grades for moderate use.';
-                }
-            } else if (tempMax > 35) {
-                // Hot climates
-                if (usage === 'heavy') {
-                    recommendation = '20W-50 or 15W-40';
-                    explanation = 'High viscosity for extreme heat and heavy-duty applications.';
-                } else {
-                    recommendation = '10W-40 or 15W-40';
-                    explanation = 'Stable viscosity for high temperatures with good protection.';
-                }
-            } else {
-                // Moderate climates
-                if (usage === 'city') {
-                    recommendation = '5W-30';
-                    explanation = 'Excellent for stop-and-go traffic, good fuel economy.';
-                } else if (usage === 'highway') {
-                    recommendation = '5W-30 or 10W-30';
-                    explanation = 'Stable at cruising speeds, good all-around protection.';
-                } else if (usage === 'heavy') {
-                    recommendation = '15W-40 or 20W-50';
-                    explanation = 'Higher viscosity for towing and heavy loads.';
-                } else {
-                    recommendation = '10W-40';
-                    explanation = 'Versatile grade for mixed driving conditions.';
-                }
-            }
-            
-            // Show result
-            document.getElementById('viscosity-grade').textContent = recommendation;
-            document.getElementById('viscosity-explanation').textContent = explanation;
-            document.getElementById('viscosity-result').classList.remove('hidden');
-        }
-        
-        // Populate featured products carousel
+
+        // === FEATURED PRODUCTS ===
         function loadFeaturedProducts() {
             const carouselList = document.getElementById('featured-products-list');
-            
-            // Select 4 featured products
             const featured = finderProducts.slice(0, 4);
             
             carouselList.innerHTML = featured.map(product => `
@@ -1014,7 +1231,6 @@
                 </li>
             `).join('');
             
-            // Initialize Splide carousel
             new Splide('#product-carousel', {
                 type: 'loop',
                 perPage: 4,
@@ -1032,17 +1248,25 @@
             
             lucide.createIcons();
         }
-        
-        // Scroll to oil finder
-        function scrollToOilFinder() {
-            document.getElementById('step-1').scrollIntoView({ behavior: 'smooth', block: 'center' });
-        }
-        
-        // Initialize page
-        document.addEventListener('DOMContentLoaded', () => {
-            loadFeaturedProducts();
+
+        // === CART FUNCTIONALITY ===
+        function addToCartFromFinder(productId) {
+            const product = finderProducts.find(p => p.id === productId);
+            if (!product) return;
             
-            // Fade in animations on scroll
+            const existingItem = cart.find(item => item.id === productId);
+            if (existingItem) {
+                existingItem.quantity += 1;
+            } else {
+                cart.push({ id: productId, quantity: 1, name: product.name, price: product.price });
+            }
+            
+            localStorage.setItem('nesab-cart', JSON.stringify(cart));
+            alert(`${product.name} added to cart!`);
+        }
+
+        // === ANIMATIONS ===
+        function initializeAnimations() {
             const observer = new IntersectionObserver((entries) => {
                 entries.forEach(entry => {
                     if (entry.isIntersecting) {
@@ -1054,7 +1278,95 @@
             document.querySelectorAll('.fade-in').forEach(el => {
                 observer.observe(el);
             });
+        }
+
+        // === COOKIE CONSENT ===
+        function acceptCookies() {
+            localStorage.setItem('cookiesAccepted', 'true');
+            document.getElementById('cookie-banner').classList.remove('show');
+        }
+        
+        function rejectCookies() {
+            localStorage.setItem('cookiesAccepted', 'false');
+            document.getElementById('cookie-banner').classList.remove('show');
+        }
+        
+        if (!localStorage.getItem('cookiesAccepted')) {
+            setTimeout(() => {
+                document.getElementById('cookie-banner').classList.add('show');
+            }, 1000);
+        }
+
+        // === BACK TO TOP & SCROLL PROGRESS ===
+        document.getElementById('back-to-top').addEventListener('click', () => {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
         });
+        
+        window.addEventListener('scroll', () => {
+            const currentScroll = window.pageYOffset;
+            const backToTop = document.getElementById('back-to-top');
+            
+            if (currentScroll > 500) {
+                backToTop.classList.add('visible');
+            } else {
+                backToTop.classList.remove('visible');
+            }
+            
+            const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+            const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+            const scrolled = height > 0 ? (winScroll / height) * 100 : 0;
+            const circle = document.querySelector('.progress-ring-circle');
+            const circumference = 2 * Math.PI * 22;
+            const offset = circumference - (scrolled / 100) * circumference;
+            circle.style.strokeDasharray = circumference;
+            circle.style.strokeDashoffset = offset;
+        });
+
+        // === VISCOSITY CALCULATOR ===
+        function calculateViscosity() {
+            const tempMin = parseInt(document.getElementById('temp-min').value);
+            const tempMax = parseInt(document.getElementById('temp-max').value);
+            const usage = document.getElementById('usage-type').value;
+            
+            let recommendation = '';
+            let explanation = '';
+            
+            if (tempMin < -5) {
+                if (usage === 'heavy') {
+                    recommendation = '0W-40 or 5W-40';
+                    explanation = 'Low winter rating for cold starts, high viscosity for heavy loads.';
+                } else {
+                    recommendation = '0W-20 or 5W-30';
+                    explanation = 'Low winter rating for cold starts, fuel-efficient grades.';
+                }
+            } else if (tempMax > 35) {
+                if (usage === 'heavy') {
+                    recommendation = '20W-50 or 15W-40';
+                    explanation = 'High viscosity for extreme heat and heavy-duty applications.';
+                } else {
+                    recommendation = '10W-40 or 15W-40';
+                    explanation = 'Stable viscosity for high temperatures.';
+                }
+            } else {
+                if (usage === 'city') {
+                    recommendation = '5W-30';
+                    explanation = 'Excellent for stop-and-go traffic, good fuel economy.';
+                } else if (usage === 'highway') {
+                    recommendation = '5W-30 or 10W-30';
+                    explanation = 'Stable at cruising speeds.';
+                } else if (usage === 'heavy') {
+                    recommendation = '15W-40 or 20W-50';
+                    explanation = 'Higher viscosity for towing and heavy loads.';
+                } else {
+                    recommendation = '10W-40';
+                    explanation = 'Versatile grade for mixed conditions.';
+                }
+            }
+            
+            document.getElementById('viscosity-grade').textContent = recommendation;
+            document.getElementById('viscosity-explanation').textContent = explanation;
+            document.getElementById('viscosity-result').classList.remove('hidden');
+        }
     </script>
 </body>
 </html>
